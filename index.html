@@ -5,27 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>삿포로 3박 4일 일정 브리핑</title>
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap");
     @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css");
 
     :root {
-      --azit-perfection: #f2efe6;
-      --azit-concentration: #000000;
-      --azit-artisan: #f15d22;
-      --azit-perfection-rgb: 242 239 230;
-      --azit-concentration-rgb: 0 0 0;
-      --azit-artisan-rgb-from-hex: 241 93 34;
-      --c-bg: var(--azit-perfection);
-      --c-bg-alt: rgba(0,0,0,0.035);
-      --c-bg-orange: var(--azit-concentration);
-      --c-fg: var(--azit-concentration);
-      --c-fg-2: rgba(0,0,0,0.68);
-      --c-fg-3: rgba(0,0,0,0.38);
-      --c-fg-light: var(--azit-perfection);
-      --c-fg-light-2: rgba(242,239,230,0.7);
-      --c-fg-light-3: rgba(242,239,230,0.46);
-      --c-accent: var(--azit-artisan);
-      --c-border: rgba(0,0,0,0.18);
+      --c-bg: #111111;
+      --c-bg-alt: #1a1a18;
+      --c-bg-orange: #e85d26;
+      --c-fg: #f0ece5;
+      --c-fg-2: #888880;
+      --c-fg-3: #505048;
+      --c-fg-light: #111111;
+      --c-fg-light-2: #2a1810;
+      --c-fg-light-3: rgba(17,17,17,0.55);
+      --c-accent: #e85d26;
+      --c-border: #282826;
       --pad-y: 5.5vh;
       --pad-x: 5.5vw;
       --gap-lg: 3.5vh;
@@ -39,7 +33,7 @@
       --sz-body: 15px;
       --sz-meta: 9px;
       --font-ko: "Pretendard Variable", "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
-      --font-brand-serif: "Cormorant Garamond", "Times New Roman", "Pretendard Variable", "Pretendard", serif;
+      --font-display: "Barlow", "Pretendard Variable", "Pretendard", system-ui, sans-serif;
       --font-meta: "IBM Plex Mono", "Helvetica Neue", Arial, sans-serif;
       --ease-editorial: cubic-bezier(0.77, 0, 0.175, 1);
     }
@@ -96,16 +90,20 @@
     }
 
     .slide.slide--cover,
-    .slide.slide--chapter,
+    .slide.slide--chapter {
+      background: var(--c-bg-orange);
+      color: var(--c-fg-light);
+    }
+
     .slide.slide--end,
     .slide.slide--statement {
-      background: var(--azit-concentration);
-      color: var(--azit-perfection);
+      background: var(--c-bg);
+      color: var(--c-fg);
     }
 
     .slide--statement .slide-chrome,
     .slide--statement .slide-foot {
-      border-color: rgba(242,239,230,0.22);
+      border-color: var(--c-border);
     }
 
     .slide--statement .label,
@@ -218,13 +216,13 @@
     .h1,
     .h2,
     .h3 {
-      font-family: var(--font-ko);
+      font-family: var(--font-display);
       letter-spacing: 0;
       word-break: keep-all;
     }
 
     .display {
-      font-size: 136px;
+      font-size: var(--sz-display);
       line-height: 0.92;
       font-weight: 800;
     }
@@ -275,7 +273,7 @@
     }
 
     .orange .accent {
-      color: var(--c-accent);
+      color: var(--c-fg-light);
     }
 
     .cover-main {
@@ -497,7 +495,7 @@
     }
 
     .stat-value {
-      font-family: var(--font-brand-serif);
+      font-family: var(--font-display);
       font-size: 70px;
       line-height: 0.9;
       font-weight: 700;
@@ -575,17 +573,17 @@
     .compare-panel.panel-orange {
       background: var(--c-accent);
       border-color: var(--c-accent);
-      color: var(--azit-concentration);
+      color: var(--c-fg-light);
     }
 
     .compare-panel.panel-orange .body,
     .compare-panel.panel-orange .bullet-list li {
-      color: rgba(0,0,0,0.72);
+      color: var(--c-fg-light-2);
     }
 
     .compare-panel.panel-orange .tag,
     .compare-panel.panel-orange .bullet-list li::before {
-      color: var(--azit-concentration);
+      color: var(--c-fg-light);
     }
 
     .tag {
@@ -612,7 +610,7 @@
 
     .bar-track {
       height: 2.2vh;
-      background: rgba(0,0,0,0.06);
+      background: var(--c-border);
       border: 1px solid var(--c-border);
       overflow: hidden;
     }
@@ -620,7 +618,7 @@
     .bar-fill {
       height: 100%;
       width: var(--w);
-      background: rgba(0,0,0,0.44);
+      background: var(--c-fg-3);
       transform-origin: left center;
     }
 
@@ -709,9 +707,9 @@
       width: 7px;
       height: 7px;
       padding: 0;
-      border: 1px solid rgba(0,0,0,0.42);
-      background: rgba(242,239,230,0.12);
-      box-shadow: 0 0 0 1px rgba(242,239,230,0.24);
+      border: 1px solid var(--c-fg-3);
+      background: transparent;
+      box-shadow: none;
       cursor: pointer;
     }
 
@@ -821,14 +819,14 @@
     <section class="slide slide--cover orange">
       <div class="broadside-top-chrome">
         <span class="broadside-num">01</span>
-        <span class="corner-label">F&amp;B EATERTAINMENT COMPANY</span>
+        <span class="corner-label">SAPPORO ITINERARY BRIEF</span>
       </div>
       <div class="cover-main">
         <h1 class="display" data-anim="fade-up" data-delay="1">삿포로<br>3박 4일</h1>
         <p class="lead" style="opacity: 0.65; max-width: 60%;" data-anim="fade-up" data-delay="3">숙소 위치, 3일차 자유일정, 4일차 러닝을 반영한 최종안 V5입니다.</p>
       </div>
       <div class="cover-meta">
-        <span>azitmaker itinerary v5</span>
+        <span>dark magazine itinerary v5</span>
         <span>2026.07.04~07</span>
       </div>
     </section>
@@ -840,7 +838,7 @@
       </div>
       <div class="chapter-body">
         <h2 class="h1" data-anim="fade-up" data-delay="1">고정 숙소,<br>선택형 3일차</h2>
-        <p class="lead" style="opacity: 0.65; max-width: 58%;" data-anim="fade-up" data-delay="3">Egnorts 101/102에서 3박을 고정하고, 셋째 날만 오타루·화산·시내 중 각자 고릅니다.</p>
+        <p class="lead" style="opacity: 0.65; max-width: 58%;" data-anim="fade-up" data-delay="3">Egnorts 101/102에서 3박을 고정하고, 셋째 날만 오타루·버스투어·시내 중 각자 고릅니다.</p>
       </div>
     </section>
 
@@ -859,7 +857,7 @@
       </div>
       <footer class="slide-foot">
         <span class="label muted">core route</span>
-        <span class="label muted">F&amp;B EATERTAINMENT COMPANY</span>
+        <span class="label muted">dark magazine itinerary</span>
       </footer>
     </section>
 
@@ -894,7 +892,7 @@
             <div class="brief-date">7/6 월</div>
             <div class="brief-title">선택 자유일정</div>
             <ul class="bullet-list">
-              <li>A 오타루, B 지코츠호·타루마에산, C 삿포로 시내 중 선택합니다.</li>
+              <li>A 오타루, B 노보리베츠·도야호 투어, C 삿포로 시내 중 선택합니다.</li>
               <li>숙소 이동이 없어 각 팀 일정이 분리돼도 부담이 낮습니다.</li>
               <li>저녁은 징기스칸으로 다시 합류합니다.</li>
             </ul>
@@ -1061,8 +1059,8 @@
           </div>
           <div class="stat-card">
             <div class="stat-value" data-anim="scale-in" data-delay="3">B</div>
-            <div class="stat-label">지코츠호와 타루마에산. 호수, 화산, 산책 또는 등산을 보는 자연형 코스입니다.</div>
-            <div class="stat-note">high fatigue / dinner join tight</div>
+            <div class="stat-label">노보리베츠, 도야호, 우스산, 지코츠호를 하루에 묶는 GetYourGuide 10시간 버스투어입니다.</div>
+            <div class="stat-note">high fatigue / fixed tour schedule</div>
           </div>
           <div class="stat-card">
             <div class="stat-value" data-anim="scale-in" data-delay="4">C</div>
@@ -1124,38 +1122,38 @@
         <span class="label muted">10</span>
       </header>
       <div class="slide-body">
-        <p class="kicker" data-anim="fade-up" data-delay="0">volcano route</p>
-        <h2 class="h2" data-anim="fade-up" data-delay="1">B. 지코츠호와 타루마에산</h2>
+        <p class="kicker" data-anim="fade-up" data-delay="0">guided bus tour</p>
+        <h2 class="h2" data-anim="fade-up" data-delay="1">B. 노보리베츠·도야호 투어</h2>
         <div class="vtimeline vtimeline--dense" data-anim="fade-up" data-delay="2">
           <div class="vt-row">
-            <div class="vt-time">07:30~08:00</div><div class="vt-spine"></div>
-            <div class="vt-event"><div class="vt-title">숙소 출발</div><div class="vt-body">자연 코스는 이동이 길어 아침을 가장 일찍 시작합니다.</div></div>
+            <div class="vt-time">출발 확인</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">삿포로 집합</div><div class="vt-body">상품 선택 시간 확인이 필요합니다. 집합 후보는 삿포로 TV타워 또는 Tokyu REI Hotel입니다.</div></div>
           </div>
           <div class="vt-row">
-            <div class="vt-time">09:30~10:20</div><div class="vt-spine"></div>
-            <div class="vt-event"><div class="vt-title">지코츠호 산책</div><div class="vt-body">비지터센터와 호수 주변을 보고 날씨와 컨디션을 확인합니다.</div></div>
+            <div class="vt-time">35분</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">노보리베츠 지옥계곡</div><div class="vt-body">화산 지형과 온천 수증기를 보는 핵심 정류장입니다.</div></div>
           </div>
           <div class="vt-row">
-            <div class="vt-time">10:40~13:30</div><div class="vt-spine"></div>
-            <div class="vt-event"><div class="vt-title">타루마에산 7합목</div><div class="vt-body">전망 산책 또는 등산으로 운영합니다. 강풍이면 무리하지 않습니다.</div></div>
+            <div class="vt-time">25분</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">치큐곶</div><div class="vt-body">무로란 해안 전망 포인트입니다. 날씨가 좋을 때 만족도가 커집니다.</div></div>
           </div>
           <div class="vt-row">
-            <div class="vt-time">13:30~14:30</div><div class="vt-spine"></div>
-            <div class="vt-event"><div class="vt-title">점심</div><div class="vt-body">투어 동선, 휴게소, 온천 주변 식당 중 가능한 곳으로 잡습니다.</div></div>
+            <div class="vt-time">30분</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">도야호 사이로 전망대</div><div class="vt-body">도야호, 나카지마, 주변 산세를 한 번에 보는 전망 정류장입니다.</div></div>
           </div>
           <div class="vt-row">
-            <div class="vt-time">14:30~16:00</div><div class="vt-spine"></div>
-            <div class="vt-event"><div class="vt-title">온천·카페·호수 자유</div><div class="vt-body">체력 소모가 큰 날이라 복귀 전 완충 시간을 둡니다.</div></div>
+            <div class="vt-time">80분</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">우스산·쇼와신잔</div><div class="vt-body">우스산 로프웨이는 상품 조건과 현장 비용을 확인합니다. 쇼와신잔 자유 시간도 포함됩니다.</div></div>
           </div>
           <div class="vt-row">
-            <div class="vt-time">16:00~20:00</div><div class="vt-spine"></div>
-            <div class="vt-event"><div class="vt-title">삿포로 복귀와 저녁 판단</div><div class="vt-body">18:30 전후 복귀가 목표입니다. 늦으면 20:00 징기스칸 또는 별도 저녁으로 전환합니다.</div></div>
+            <div class="vt-time">35분</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">지코츠호 뒤 삿포로 복귀</div><div class="vt-body">총 10시간 투어라 저녁 합류는 20:00 또는 별도 저녁으로 판단합니다.</div></div>
           </div>
         </div>
       </div>
       <footer class="slide-foot">
-        <span class="label muted">lake / volcano / onsen</span>
-        <span class="label muted">weather decides</span>
+        <span class="label muted">getyourguide product 777199</span>
+        <span class="label muted">times may change</span>
       </footer>
     </section>
 
@@ -1221,7 +1219,7 @@
           </div>
           <div class="stat-card">
             <div class="stat-value" data-anim="scale-in" data-delay="4">20:00</div>
-            <div class="stat-label">화산 팀이 늦으면 20:00이 더 안전합니다. 다만 라스트오더는 확인해야 합니다.</div>
+            <div class="stat-label">B 투어 팀은 10시간 일정이라 20:00이 더 안전합니다. 다만 라스트오더는 확인해야 합니다.</div>
             <div class="stat-note">backup time</div>
           </div>
         </div>
@@ -1321,8 +1319,8 @@
           </div>
           <div class="flow-step">
             <div class="flow-num">02</div>
-            <div class="flow-title">B 화산</div>
-            <div class="flow-desc">지코츠호, 타루마에산, 온천 또는 카페. 날씨와 복귀 시간이 변수입니다.</div>
+            <div class="flow-title">B 투어</div>
+            <div class="flow-desc">노보리베츠, 도야호, 우스산, 지코츠호. 10시간 고정 투어라 저녁 합류 시간이 변수입니다.</div>
           </div>
           <div class="flow-step">
             <div class="flow-num">03</div>
@@ -1332,7 +1330,7 @@
           <div class="flow-step">
             <div class="flow-num">04</div>
             <div class="flow-title">저녁 참여</div>
-            <div class="flow-desc">징기스칸 9명 예약 여부를 같이 확인합니다. 화산 팀은 20:00 옵션을 둡니다.</div>
+            <div class="flow-desc">징기스칸 9명 예약 여부를 같이 확인합니다. B 투어 팀은 20:00 옵션을 둡니다.</div>
           </div>
         </div>
       </div>
