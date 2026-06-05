@@ -64,6 +64,12 @@
       font: inherit;
     }
 
+    button.mini-card {
+      color: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+
     #deck {
       display: flex;
       width: max-content;
@@ -737,6 +743,22 @@
 
     .appendix-index .mini-card {
       min-height: 17vh;
+    }
+
+    .appendix-index button.mini-card {
+      appearance: none;
+      border-radius: 0;
+    }
+
+    .appendix-index button.mini-card:hover,
+    .appendix-index button.mini-card:focus-visible {
+      border-color: var(--c-accent);
+      background: rgba(0,0,0,0.06);
+    }
+
+    .appendix-index button.mini-card:focus-visible {
+      outline: 1px solid var(--c-accent);
+      outline-offset: 3px;
     }
 
     [data-anim] {
@@ -1452,15 +1474,15 @@
         <p class="kicker" data-anim="fade-up" data-delay="0">nine spots</p>
         <h2 class="h2" data-anim="fade-up" data-delay="1">부록 목차</h2>
         <div class="appendix-index" data-anim="fade-up" data-delay="2">
-          <div class="mini-card"><p class="mini">01</p><h3 class="h3">오도리·TV타워</h3><p class="body">첫날 저녁에 가장 가볍게 넣기 좋은 시내 스팟입니다.</p></div>
-          <div class="mini-card"><p class="mini">02</p><h3 class="h3">JR타워 T38</h3><p class="body">삿포로역 연결 전망대라 늦은 도착에도 안정적입니다.</p></div>
-          <div class="mini-card"><p class="mini">03</p><h3 class="h3">모이와야마</h3><p class="body">야경 여행지 느낌은 강하지만 날씨 영향을 크게 받습니다.</p></div>
-          <div class="mini-card"><p class="mini">04</p><h3 class="h3">비에이·후라노</h3><p class="body">이번 여행의 가장 강한 메인 전일 일정입니다.</p></div>
-          <div class="mini-card"><p class="mini">05</p><h3 class="h3">오타루</h3><p class="body">오르골당과 운하는 비가 와도 유지하기 좋습니다.</p></div>
-          <div class="mini-card"><p class="mini">06</p><h3 class="h3">샤코탄</h3><p class="body">맑은 날 해안 경관이 가장 강한 자연 스팟입니다.</p></div>
-          <div class="mini-card"><p class="mini">07</p><h3 class="h3">맥주박물관</h3><p class="body">이번 항공편 기준 메인 일정에서는 제외합니다.</p></div>
-          <div class="mini-card"><p class="mini">08</p><h3 class="h3">시코쓰토야</h3><p class="body">자연·등산 선호가 높을 때 Day 3 대체안입니다.</p></div>
-          <div class="mini-card"><p class="mini">09</p><h3 class="h3">조잔케이</h3><p class="body">이번 3박 4일보다 연장 일정에 더 적합합니다.</p></div>
+          <button class="mini-card" type="button" data-slide-target="19" aria-label="오도리·TV타워 설명 페이지로 이동"><p class="mini">01</p><h3 class="h3">오도리·TV타워</h3><p class="body">첫날 저녁에 가장 가볍게 넣기 좋은 시내 스팟입니다.</p></button>
+          <button class="mini-card" type="button" data-slide-target="20" aria-label="JR타워 T38 설명 페이지로 이동"><p class="mini">02</p><h3 class="h3">JR타워 T38</h3><p class="body">삿포로역 연결 전망대라 늦은 도착에도 안정적입니다.</p></button>
+          <button class="mini-card" type="button" data-slide-target="21" aria-label="모이와야마 설명 페이지로 이동"><p class="mini">03</p><h3 class="h3">모이와야마</h3><p class="body">야경 여행지 느낌은 강하지만 날씨 영향을 크게 받습니다.</p></button>
+          <button class="mini-card" type="button" data-slide-target="22" aria-label="비에이·후라노 설명 페이지로 이동"><p class="mini">04</p><h3 class="h3">비에이·후라노</h3><p class="body">이번 여행의 가장 강한 메인 전일 일정입니다.</p></button>
+          <button class="mini-card" type="button" data-slide-target="23" aria-label="오타루 설명 페이지로 이동"><p class="mini">05</p><h3 class="h3">오타루</h3><p class="body">오르골당과 운하는 비가 와도 유지하기 좋습니다.</p></button>
+          <button class="mini-card" type="button" data-slide-target="24" aria-label="샤코탄 설명 페이지로 이동"><p class="mini">06</p><h3 class="h3">샤코탄</h3><p class="body">맑은 날 해안 경관이 가장 강한 자연 스팟입니다.</p></button>
+          <button class="mini-card" type="button" data-slide-target="25" aria-label="맥주박물관 설명 페이지로 이동"><p class="mini">07</p><h3 class="h3">맥주박물관</h3><p class="body">이번 항공편 기준 메인 일정에서는 제외합니다.</p></button>
+          <button class="mini-card" type="button" data-slide-target="26" aria-label="시코쓰토야 설명 페이지로 이동"><p class="mini">08</p><h3 class="h3">시코쓰토야</h3><p class="body">자연·등산 선호가 높을 때 Day 3 대체안입니다.</p></button>
+          <button class="mini-card" type="button" data-slide-target="27" aria-label="조잔케이 설명 페이지로 이동"><p class="mini">09</p><h3 class="h3">조잔케이</h3><p class="body">이번 3박 4일보다 연장 일정에 더 적합합니다.</p></button>
         </div>
       </div>
       <footer class="slide-foot">
@@ -1699,12 +1721,26 @@
       return dot;
     });
 
+    document.querySelectorAll("[data-slide-target]").forEach((button) => {
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const slideNumber = Number(button.dataset.slideTarget);
+        if (Number.isFinite(slideNumber)) {
+          goTo(slideNumber - 1);
+        }
+      });
+    });
+
     function clamp(value) {
       return Math.max(0, Math.min(value, slides.length - 1));
     }
 
     function goTo(index, updateHash = true) {
       current = clamp(index);
+      window.scrollTo(0, 0);
+      document.documentElement.scrollLeft = 0;
+      document.body.scrollLeft = 0;
       deck.style.transform = `translateX(${-current * 100}vw)`;
       slides.forEach((slide, slideIndex) => {
         slide.classList.toggle("is-active", slideIndex === current);
@@ -1745,7 +1781,7 @@
     });
 
     window.addEventListener("click", (event) => {
-      if (event.target.closest("#nav-dots")) {
+      if (event.target.closest("#nav-dots, [data-slide-target]")) {
         return;
       }
       if (event.clientX > window.innerWidth * 0.66) {
