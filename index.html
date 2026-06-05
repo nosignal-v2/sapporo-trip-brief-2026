@@ -70,6 +70,14 @@
       cursor: pointer;
     }
 
+    button.spot-link,
+    button.spot-nav-button {
+      appearance: none;
+      border-radius: 0;
+      font: inherit;
+      cursor: pointer;
+    }
+
     #deck {
       display: flex;
       width: max-content;
@@ -395,6 +403,48 @@
       font-weight: 700;
     }
 
+    .spot-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7vw;
+      align-items: center;
+      margin-top: 0.4vh;
+    }
+
+    .brief-card .spot-links {
+      align-self: end;
+    }
+
+    button.spot-link {
+      border: 0;
+      border-bottom: 1px solid rgba(241,93,34,0.45);
+      background: transparent;
+      color: var(--c-accent);
+      padding: 0 0 0.25vh;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35vw;
+      font-family: var(--font-meta);
+      font-size: 10px;
+      line-height: 1.2;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    button.spot-link::after {
+      content: "↗";
+      font-size: 10px;
+      line-height: 1;
+    }
+
+    button.spot-link:hover,
+    button.spot-link:focus-visible {
+      border-color: var(--c-accent);
+      color: var(--c-fg);
+      outline: none;
+    }
+
     .vtimeline {
       display: grid;
       grid-template-columns: 10vw 2vw 1fr;
@@ -687,6 +737,42 @@
       min-height: 46vh;
     }
 
+    .spot-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6vw;
+      align-items: center;
+    }
+
+    .spot-badge {
+      border: 1px solid var(--c-border);
+      padding: 0.55vh 0.7vw;
+      display: inline-flex;
+      width: fit-content;
+      color: var(--c-fg-2);
+      font-family: var(--font-meta);
+      font-size: 10px;
+      line-height: 1;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .spot-badge.is-recommend {
+      border-color: var(--c-accent);
+      background: var(--c-accent);
+      color: var(--azit-concentration);
+    }
+
+    .spot-badge.is-conditional {
+      border-color: var(--c-accent);
+      color: var(--c-accent);
+    }
+
+    .spot-badge.is-excluded {
+      color: var(--c-fg-3);
+    }
+
     .spot-num {
       font-family: var(--font-brand-serif);
       font-size: 86px;
@@ -734,6 +820,36 @@
       word-break: keep-all;
     }
 
+    .spot-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.7vw;
+      max-width: 82vw;
+    }
+
+    button.spot-nav-button {
+      border: 1px solid var(--c-border);
+      background: transparent;
+      color: var(--c-fg);
+      min-width: 7.4vw;
+      padding: 1vh 1vw;
+      font-family: var(--font-meta);
+      font-size: 10px;
+      line-height: 1.2;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    button.spot-nav-button:hover,
+    button.spot-nav-button:focus-visible {
+      border-color: var(--c-accent);
+      color: var(--c-accent);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
     .appendix-index {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -748,12 +864,29 @@
     .appendix-index button.mini-card {
       appearance: none;
       border-radius: 0;
+      position: relative;
+      padding-right: 3.4vw;
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    }
+
+    .appendix-index button.mini-card::after {
+      content: "VIEW";
+      position: absolute;
+      right: 1.4vw;
+      top: 2.1vh;
+      color: var(--c-accent);
+      font-family: var(--font-meta);
+      font-size: 10px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0;
     }
 
     .appendix-index button.mini-card:hover,
     .appendix-index button.mini-card:focus-visible {
       border-color: var(--c-accent);
       background: rgba(0,0,0,0.06);
+      transform: translateY(-2px);
     }
 
     .appendix-index button.mini-card:focus-visible {
@@ -867,13 +1000,101 @@
       .compare-grid,
       .stats-grid,
       .member-grid,
-      .spot-layout,
-      .appendix-index {
+      .spot-layout {
         grid-template-columns: 1fr;
       }
 
+      .appendix-index {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.8vh;
+        max-width: 88vw;
+      }
+
+      .appendix-index .mini-card {
+        min-height: 11vh;
+        padding: 1.2vh 2vw;
+        gap: 0.5vh;
+      }
+
+      .appendix-index .h3 {
+        font-size: 17px;
+      }
+
+      .appendix-index .mini-card .body {
+        font-size: 11px;
+        line-height: 1.35;
+      }
+
+      .appendix-index button.mini-card {
+        padding-right: 2vw;
+      }
+
+      .appendix-index button.mini-card::after {
+        right: 2vw;
+        top: 1.3vh;
+        font-size: 8px;
+      }
+
+      .spot-layout {
+        grid-template-columns: 0.6fr 1.4fr;
+        gap: 3vw;
+        max-width: 88vw;
+        align-items: start;
+      }
+
+      .spot-intro {
+        min-height: auto;
+        padding: 1.5vh 2.2vw;
+        gap: 1vh;
+      }
+
+      .spot-num {
+        font-size: 44px;
+      }
+
+      .spot-title {
+        font-size: 18px;
+      }
+
+      .spot-intro .body {
+        font-size: 11px;
+        line-height: 1.4;
+      }
+
+      .spot-badges {
+        gap: 0.8vw;
+      }
+
+      .spot-badge {
+        padding: 0.4vh 0.8vw;
+        font-size: 8px;
+      }
+
       .spot-row {
-        grid-template-columns: 24vw 1fr;
+        grid-template-columns: 17vw 1fr;
+        min-height: auto;
+      }
+
+      .spot-key {
+        padding: 0.55vh 1vw 0.55vh 0;
+        font-size: 8px;
+      }
+
+      .spot-value {
+        padding: 0.55vh 0;
+        font-size: 10.5px;
+        line-height: 1.35;
+      }
+
+      .spot-actions {
+        max-width: 88vw;
+        gap: 1.2vw;
+      }
+
+      button.spot-nav-button {
+        min-width: 18vw;
+        padding: 0.75vh 1vw;
+        font-size: 9px;
       }
 
       .stat-card,
@@ -984,6 +1205,10 @@
               <li>Egnorts 101/102 체크인과 객실 배정을 합니다.</li>
               <li>수프카레, 오도리, JR타워 또는 삿포로역으로 가볍게 마무리합니다.</li>
             </ul>
+            <div class="spot-links">
+              <button class="spot-link" type="button" data-slide-target="19">spot 01</button>
+              <button class="spot-link" type="button" data-slide-target="20">spot 02</button>
+            </div>
           </div>
           <div class="brief-card">
             <div class="brief-date">7/5 일</div>
@@ -993,6 +1218,9 @@
               <li>09:10 투어 출발 후 팜 토미타, 사계채의 언덕, 청의호수를 봅니다.</li>
               <li>19:06 삿포로역 도착 후 자유 저녁입니다.</li>
             </ul>
+            <div class="spot-links">
+              <button class="spot-link" type="button" data-slide-target="22">spot 04</button>
+            </div>
           </div>
           <div class="brief-card">
             <div class="brief-date">7/6 월</div>
@@ -1002,6 +1230,11 @@
               <li>숙소 이동이 없어 각 팀 일정이 분리돼도 부담이 낮습니다.</li>
               <li>저녁은 징기스칸으로 다시 합류합니다.</li>
             </ul>
+            <div class="spot-links">
+              <button class="spot-link" type="button" data-slide-target="23">spot 05</button>
+              <button class="spot-link" type="button" data-slide-target="25">spot 07</button>
+              <button class="spot-link" type="button" data-slide-target="26">spot 08</button>
+            </div>
           </div>
           <div class="brief-card">
             <div class="brief-date">7/7 화</div>
@@ -1094,7 +1327,7 @@
           </div>
           <div class="vt-row">
             <div class="vt-time">20:10~21:00</div><div class="vt-spine"></div>
-            <div class="vt-event"><div class="vt-title">오도리와 JR타워 권역</div><div class="vt-body">오도리공원 산책 후 JR타워 또는 삿포로역 주변에서 자유 시간을 둡니다.</div></div>
+            <div class="vt-event"><div class="vt-title">오도리와 JR타워 권역</div><div class="vt-body">오도리공원 산책 후 JR타워 또는 삿포로역 주변에서 자유 시간을 둡니다.</div><div class="spot-links"><button class="spot-link" type="button" data-slide-target="19">spot 01</button><button class="spot-link" type="button" data-slide-target="20">spot 02</button></div></div>
           </div>
           <div class="vt-row">
             <div class="vt-time">22:00</div><div class="vt-spine"></div>
@@ -1131,7 +1364,7 @@
           </div>
           <div class="vt-row">
             <div class="vt-time">낮</div><div class="vt-spine"></div>
-            <div class="vt-event"><div class="vt-title">팜 토미타, 사계채의 언덕, 청의호수</div><div class="vt-body">라벤더와 꽃밭, 블루 폰드까지 핵심 지점을 한 번에 봅니다.</div></div>
+            <div class="vt-event"><div class="vt-title">팜 토미타, 사계채의 언덕, 청의호수</div><div class="vt-body">라벤더와 꽃밭, 블루 폰드까지 핵심 지점을 한 번에 봅니다.</div><div class="spot-links"><button class="spot-link" type="button" data-slide-target="22">spot 04</button></div></div>
           </div>
           <div class="vt-row">
             <div class="vt-time">19:06</div><div class="vt-spine"></div>
@@ -1161,16 +1394,19 @@
           <div class="stat-card">
             <div class="stat-value" data-anim="scale-in" data-delay="2">A</div>
             <div class="stat-label">오타루. 오르골당, 운하, 사카이마치, 초밥과 해산물을 원하는 팀에 맞습니다.</div>
+            <div class="spot-links"><button class="spot-link" type="button" data-slide-target="23">spot 05</button></div>
             <div class="stat-note">medium fatigue / dinner join easy</div>
           </div>
           <div class="stat-card">
             <div class="stat-value" data-anim="scale-in" data-delay="3">B</div>
             <div class="stat-label">노보리베츠, 도야호, 우스산, 지코츠호를 하루에 묶는 GetYourGuide 10시간 버스투어입니다.</div>
+            <div class="spot-links"><button class="spot-link" type="button" data-slide-target="26">spot 08</button></div>
             <div class="stat-note">high fatigue / fixed tour schedule</div>
           </div>
           <div class="stat-card">
             <div class="stat-value" data-anim="scale-in" data-delay="4">C</div>
             <div class="stat-label">삿포로 시내. 카페, 쇼핑, 맥주박물관, 모에레누마를 여유 있게 고릅니다.</div>
+            <div class="spot-links"><button class="spot-link" type="button" data-slide-target="25">spot 07</button></div>
             <div class="stat-note">low fatigue / dinner join easiest</div>
           </div>
         </div>
@@ -1196,7 +1432,7 @@
           </div>
           <div class="vt-row">
             <div class="vt-time">10:20~11:20</div><div class="vt-spine"></div>
-            <div class="vt-event"><div class="vt-title">오타루 오르골당</div><div class="vt-body">오전 첫 동선으로 잡아 붐비기 전 핵심 희망지를 먼저 봅니다.</div></div>
+            <div class="vt-event"><div class="vt-title">오타루 오르골당</div><div class="vt-body">오전 첫 동선으로 잡아 붐비기 전 핵심 희망지를 먼저 봅니다.</div><div class="spot-links"><button class="spot-link" type="button" data-slide-target="23">spot 05</button></div></div>
           </div>
           <div class="vt-row">
             <div class="vt-time">11:20~12:10</div><div class="vt-spine"></div>
@@ -1208,7 +1444,7 @@
           </div>
           <div class="vt-row">
             <div class="vt-time">13:30~15:30</div><div class="vt-spine"></div>
-            <div class="vt-event"><div class="vt-title">운하 산책 후 복귀</div><div class="vt-body">운하를 보고 14:30~15:30 사이 삿포로로 돌아옵니다.</div></div>
+            <div class="vt-event"><div class="vt-title">운하 산책 후 복귀</div><div class="vt-body">운하를 보고 14:30~15:30 사이 삿포로로 돌아옵니다.</div><div class="spot-links"><button class="spot-link" type="button" data-slide-target="23">spot 05</button></div></div>
           </div>
           <div class="vt-row">
             <div class="vt-time">16:00~19:30</div><div class="vt-spine"></div>
@@ -1253,7 +1489,7 @@
           </div>
           <div class="vt-row">
             <div class="vt-time">35분</div><div class="vt-spine"></div>
-            <div class="vt-event"><div class="vt-title">지코츠호 뒤 삿포로 복귀</div><div class="vt-body">총 10시간 투어라 저녁 합류는 20:00 또는 별도 저녁으로 판단합니다.</div></div>
+            <div class="vt-event"><div class="vt-title">지코츠호 뒤 삿포로 복귀</div><div class="vt-body">총 10시간 투어라 저녁 합류는 20:00 또는 별도 저녁으로 판단합니다.</div><div class="spot-links"><button class="spot-link" type="button" data-slide-target="26">spot 08</button></div></div>
           </div>
         </div>
       </div>
@@ -1278,7 +1514,7 @@
           </div>
           <div class="vt-row">
             <div class="vt-time">10:30~12:00</div><div class="vt-spine"></div>
-            <div class="vt-event"><div class="vt-title">오도리·스스키노·카페</div><div class="vt-body">카페와 쇼핑 위주로 컨디션을 회복합니다.</div></div>
+            <div class="vt-event"><div class="vt-title">오도리·스스키노·카페</div><div class="vt-body">카페와 쇼핑 위주로 컨디션을 회복합니다.</div><div class="spot-links"><button class="spot-link" type="button" data-slide-target="19">spot 01</button></div></div>
           </div>
           <div class="vt-row">
             <div class="vt-time">12:00~13:30</div><div class="vt-spine"></div>
@@ -1286,7 +1522,7 @@
           </div>
           <div class="vt-row">
             <div class="vt-time">14:00~15:30</div><div class="vt-spine"></div>
-            <div class="vt-event"><div class="vt-title">삿포로 맥주박물관</div><div class="vt-body">첫날 못 갔거나 관심 있는 팀은 이 시간대에 넣습니다.</div></div>
+            <div class="vt-event"><div class="vt-title">삿포로 맥주박물관</div><div class="vt-body">첫날 못 갔거나 관심 있는 팀은 이 시간대에 넣습니다.</div><div class="spot-links"><button class="spot-link" type="button" data-slide-target="25">spot 07</button></div></div>
           </div>
           <div class="vt-row">
             <div class="vt-time">16:00~18:00</div><div class="vt-spine"></div>
@@ -1422,16 +1658,19 @@
             <div class="flow-num">01</div>
             <div class="flow-title">A 오타루</div>
             <div class="flow-desc">오르골당, 운하, 초밥, 해산물. 저녁 합류가 쉽습니다.</div>
+            <div class="spot-links"><button class="spot-link" type="button" data-slide-target="23">spot 05</button></div>
           </div>
           <div class="flow-step">
             <div class="flow-num">02</div>
             <div class="flow-title">B 투어</div>
             <div class="flow-desc">노보리베츠, 도야호, 우스산, 지코츠호. 10시간 고정 투어라 저녁 합류 시간이 변수입니다.</div>
+            <div class="spot-links"><button class="spot-link" type="button" data-slide-target="26">spot 08</button></div>
           </div>
           <div class="flow-step">
             <div class="flow-num">03</div>
             <div class="flow-title">C 시내</div>
             <div class="flow-desc">카페, 쇼핑, 박물관. 가장 여유롭고 징기스칸 합류가 쉽습니다.</div>
+            <div class="spot-links"><button class="spot-link" type="button" data-slide-target="25">spot 07</button></div>
           </div>
           <div class="flow-step">
             <div class="flow-num">04</div>
@@ -1500,7 +1739,7 @@
         <p class="kicker" data-anim="fade-up" data-delay="0">odori / tv tower</p>
         <h2 class="h2" data-anim="fade-up" data-delay="1">오도리공원 / 삿포로 TV타워</h2>
         <div class="spot-layout" data-anim="fade-up" data-delay="2">
-          <div class="spot-intro"><div class="spot-num">01</div><div class="spot-title">Day 1 저녁</div><p class="body">삿포로 첫날 가볍게 보기 좋고, 숙소가 오도리·스스키노 근처면 접근성이 좋습니다.</p></div>
+          <div class="spot-intro"><div class="spot-num">01</div><div class="spot-badges"><span class="spot-badge is-recommend">추천</span><span class="spot-badge">Day 1</span></div><div class="spot-title">Day 1 저녁</div><p class="body">삿포로 첫날 가볍게 보기 좋고, 숙소가 오도리·스스키노 근처면 접근성이 좋습니다.</p></div>
           <div class="spot-table">
             <div class="spot-row"><div class="spot-key">추천 일정</div><div class="spot-value">Day 1 저녁</div></div>
             <div class="spot-row"><div class="spot-key">소요 시간</div><div class="spot-value">오도리공원 산책 30분, TV타워 전망대 포함 시 45~60분</div></div>
@@ -1508,6 +1747,10 @@
             <div class="spot-row"><div class="spot-key">운영 참고</div><div class="spot-value">TV타워 전망대는 9:00~22:00, 티켓 판매는 폐장 10분 전까지입니다.</div></div>
             <div class="spot-row"><div class="spot-key">단체 팁</div><div class="spot-value">9명 전원이 전망대에 올라가기보다, 외관 사진 + 일부 전망대 선택도 괜찮음</div></div>
           </div>
+        </div>
+        <div class="spot-actions" data-anim="fade-up" data-delay="3">
+          <button class="spot-nav-button" type="button" data-slide-target="18">목차</button>
+          <button class="spot-nav-button" type="button" data-slide-target="20">다음</button>
         </div>
       </div>
       <footer class="slide-foot"><span class="label muted">light first-night stop</span><span class="label muted">optional observatory</span></footer>
@@ -1522,7 +1765,7 @@
         <p class="kicker" data-anim="fade-up" data-delay="0">jr tower t38</p>
         <h2 class="h2" data-anim="fade-up" data-delay="1">JR타워 전망대 T38</h2>
         <div class="spot-layout" data-anim="fade-up" data-delay="2">
-          <div class="spot-intro"><div class="spot-num">02</div><div class="spot-title">Day 1 밤</div><p class="body">삿포로역 바로 연결이라 첫날 늦은 도착 후에도 가장 안정적인 전망대입니다.</p></div>
+          <div class="spot-intro"><div class="spot-num">02</div><div class="spot-badges"><span class="spot-badge is-recommend">추천</span><span class="spot-badge">안정적</span></div><div class="spot-title">Day 1 밤</div><p class="body">삿포로역 바로 연결이라 첫날 늦은 도착 후에도 가장 안정적인 전망대입니다.</p></div>
           <div class="spot-table">
             <div class="spot-row"><div class="spot-key">추천 일정</div><div class="spot-value">Day 1 밤</div></div>
             <div class="spot-row"><div class="spot-key">소요 시간</div><div class="spot-value">40~60분</div></div>
@@ -1530,6 +1773,11 @@
             <div class="spot-row"><div class="spot-key">운영·요금</div><div class="spot-value">10:00~22:00, 최종 입장 21:30, 성인 740엔입니다.</div></div>
             <div class="spot-row"><div class="spot-key">단체 팁</div><div class="spot-value">9명은 단체 할인 기준인 10명에 미달하므로 일반 요금 기준으로 계산</div></div>
           </div>
+        </div>
+        <div class="spot-actions" data-anim="fade-up" data-delay="3">
+          <button class="spot-nav-button" type="button" data-slide-target="19">이전</button>
+          <button class="spot-nav-button" type="button" data-slide-target="18">목차</button>
+          <button class="spot-nav-button" type="button" data-slide-target="21">다음</button>
         </div>
       </div>
       <footer class="slide-foot"><span class="label muted">station-connected observatory</span><span class="label muted">stable night option</span></footer>
@@ -1544,7 +1792,7 @@
         <p class="kicker" data-anim="fade-up" data-delay="0">mt. moiwa</p>
         <h2 class="h2" data-anim="fade-up" data-delay="1">모이와야마 전망대</h2>
         <div class="spot-layout" data-anim="fade-up" data-delay="2">
-          <div class="spot-intro"><div class="spot-num">03</div><div class="spot-title">야경 선택지</div><p class="body">도시 외곽 산 위에서 보는 야경입니다. 날씨가 좋을 때만 확실히 가치가 있습니다.</p></div>
+          <div class="spot-intro"><div class="spot-num">03</div><div class="spot-badges"><span class="spot-badge is-conditional">조건부</span><span class="spot-badge">날씨</span></div><div class="spot-title">야경 선택지</div><p class="body">도시 외곽 산 위에서 보는 야경입니다. 날씨가 좋을 때만 확실히 가치가 있습니다.</p></div>
           <div class="spot-table">
             <div class="spot-row"><div class="spot-key">추천 일정</div><div class="spot-value">Day 3 저녁 선택</div></div>
             <div class="spot-row"><div class="spot-key">소요 시간</div><div class="spot-value">이동 포함 2~2.5시간</div></div>
@@ -1553,6 +1801,11 @@
             <div class="spot-row"><div class="spot-key">주의</div><div class="spot-value">날씨 영향을 많이 받음. 흐리거나 비 오면 JR타워 쪽이 더 안정적</div></div>
             <div class="spot-row"><div class="spot-key">단체 팁</div><div class="spot-value">Day 3 투어 후 피곤하면 과감히 생략. 가려면 택시 이동 권장</div></div>
           </div>
+        </div>
+        <div class="spot-actions" data-anim="fade-up" data-delay="3">
+          <button class="spot-nav-button" type="button" data-slide-target="20">이전</button>
+          <button class="spot-nav-button" type="button" data-slide-target="18">목차</button>
+          <button class="spot-nav-button" type="button" data-slide-target="22">다음</button>
         </div>
       </div>
       <footer class="slide-foot"><span class="label muted">weather-sensitive</span><span class="label muted">taxi recommended</span></footer>
@@ -1567,7 +1820,7 @@
         <p class="kicker" data-anim="fade-up" data-delay="0">biei / furano</p>
         <h2 class="h2" data-anim="fade-up" data-delay="1">비에이·후라노</h2>
         <div class="spot-layout" data-anim="fade-up" data-delay="2">
-          <div class="spot-intro"><div class="spot-num">04</div><div class="spot-title">Day 2 전일</div><p class="body">팜 토미타, 사계채의 언덕, 청의호수를 묶는 이번 여행의 메인 일정입니다.</p></div>
+          <div class="spot-intro"><div class="spot-num">04</div><div class="spot-badges"><span class="spot-badge is-recommend">추천</span><span class="spot-badge">메인</span></div><div class="spot-title">Day 2 전일</div><p class="body">팜 토미타, 사계채의 언덕, 청의호수를 묶는 이번 여행의 메인 일정입니다.</p></div>
           <div class="spot-table">
             <div class="spot-row"><div class="spot-key">추천 일정</div><div class="spot-value">Day 2 전일</div></div>
             <div class="spot-row"><div class="spot-key">소요 시간</div><div class="spot-value">삿포로 출발 기준 약 10시간</div></div>
@@ -1577,6 +1830,11 @@
             <div class="spot-row"><div class="spot-key">부가 정보</div><div class="spot-value">팜 토미타 라벤더 이스트는 2026년 6월 20일~7월 20일 운영 예정입니다.</div></div>
             <div class="spot-row"><div class="spot-key">단체 팁</div><div class="spot-value">라벤더 성수기라 9명 좌석은 빠르게 예약 필요</div></div>
           </div>
+        </div>
+        <div class="spot-actions" data-anim="fade-up" data-delay="3">
+          <button class="spot-nav-button" type="button" data-slide-target="21">이전</button>
+          <button class="spot-nav-button" type="button" data-slide-target="18">목차</button>
+          <button class="spot-nav-button" type="button" data-slide-target="23">다음</button>
         </div>
       </div>
       <footer class="slide-foot"><span class="label muted">main full-day route</span><span class="label muted">book seats early</span></footer>
@@ -1591,7 +1849,7 @@
         <p class="kicker" data-anim="fade-up" data-delay="0">otaru</p>
         <h2 class="h2" data-anim="fade-up" data-delay="1">오타루 오르골당 / 오타루 운하</h2>
         <div class="spot-layout" data-anim="fade-up" data-delay="2">
-          <div class="spot-intro"><div class="spot-num">05</div><div class="spot-title">Day 3 오후</div><p class="body">오타루의 대표 실내 스팟입니다. 비가 와도 일정 유지가 쉽습니다.</p></div>
+          <div class="spot-intro"><div class="spot-num">05</div><div class="spot-badges"><span class="spot-badge is-recommend">추천</span><span class="spot-badge">실내</span></div><div class="spot-title">Day 3 오후</div><p class="body">오타루의 대표 실내 스팟입니다. 비가 와도 일정 유지가 쉽습니다.</p></div>
           <div class="spot-table">
             <div class="spot-row"><div class="spot-key">추천 일정</div><div class="spot-value">Day 3 오후</div></div>
             <div class="spot-row"><div class="spot-key">소요 시간</div><div class="spot-value">오르골당 30~45분, 운하 산책 20~30분</div></div>
@@ -1600,6 +1858,11 @@
             <div class="spot-row"><div class="spot-key">일정 제약</div><div class="spot-value">Day 3 버스 자유시간이 13:45~15:45라 점심, 오르골당, 운하를 모두 하려면 빠르게 움직여야 함</div></div>
             <div class="spot-row"><div class="spot-key">단체 팁</div><div class="spot-value">“점심팀 / 오르골당 먼저 보는 팀”으로 30~40분 분리했다가 운하에서 합류하면 효율적</div></div>
           </div>
+        </div>
+        <div class="spot-actions" data-anim="fade-up" data-delay="3">
+          <button class="spot-nav-button" type="button" data-slide-target="22">이전</button>
+          <button class="spot-nav-button" type="button" data-slide-target="18">목차</button>
+          <button class="spot-nav-button" type="button" data-slide-target="24">다음</button>
         </div>
       </div>
       <footer class="slide-foot"><span class="label muted">indoor-friendly</span><span class="label muted">split then regroup</span></footer>
@@ -1614,7 +1877,7 @@
         <p class="kicker" data-anim="fade-up" data-delay="0">cape kamui</p>
         <h2 class="h2" data-anim="fade-up" data-delay="1">샤코탄 가무이곶</h2>
         <div class="spot-layout" data-anim="fade-up" data-delay="2">
-          <div class="spot-intro"><div class="spot-num">06</div><div class="spot-title">맑은 날 자연 스팟</div><p class="body">7월 맑은 날 해안 경관이 가장 강합니다. 비와 강풍이면 바로 리스크가 생깁니다.</p></div>
+          <div class="spot-intro"><div class="spot-num">06</div><div class="spot-badges"><span class="spot-badge is-conditional">조건부</span><span class="spot-badge">맑은 날</span></div><div class="spot-title">맑은 날 자연 스팟</div><p class="body">7월 맑은 날 해안 경관이 가장 강합니다. 비와 강풍이면 바로 리스크가 생깁니다.</p></div>
           <div class="spot-table">
             <div class="spot-row"><div class="spot-key">추천 일정</div><div class="spot-value">Day 3 오전</div></div>
             <div class="spot-row"><div class="spot-key">소요 시간</div><div class="spot-value">현지 체류 60분 이상 권장</div></div>
@@ -1624,6 +1887,11 @@
             <div class="spot-row"><div class="spot-key">주의</div><div class="spot-value">비·강풍 시 게이트가 닫힐 수 있음</div></div>
             <div class="spot-row"><div class="spot-key">단체 팁</div><div class="spot-value">신발은 운동화 권장. 바람 강한 날 치마·샌들은 비추천</div></div>
           </div>
+        </div>
+        <div class="spot-actions" data-anim="fade-up" data-delay="3">
+          <button class="spot-nav-button" type="button" data-slide-target="23">이전</button>
+          <button class="spot-nav-button" type="button" data-slide-target="18">목차</button>
+          <button class="spot-nav-button" type="button" data-slide-target="25">다음</button>
         </div>
       </div>
       <footer class="slide-foot"><span class="label muted">weather gate risk</span><span class="label muted">sneakers recommended</span></footer>
@@ -1638,7 +1906,7 @@
         <p class="kicker" data-anim="fade-up" data-delay="0">beer museum</p>
         <h2 class="h2" data-anim="fade-up" data-delay="1">삿포로 맥주박물관</h2>
         <div class="spot-layout" data-anim="fade-up" data-delay="2">
-          <div class="spot-intro"><div class="spot-num">07</div><div class="spot-title">메인 일정 제외</div><p class="body">이번 항공편 기준으로는 Day 1과 Day 4 모두 시간이 맞지 않습니다.</p></div>
+          <div class="spot-intro"><div class="spot-num">07</div><div class="spot-badges"><span class="spot-badge is-excluded">제외</span><span class="spot-badge">대체</span></div><div class="spot-title">메인 일정 제외</div><p class="body">이번 항공편 기준으로는 Day 1과 Day 4 모두 시간이 맞지 않습니다.</p></div>
           <div class="spot-table">
             <div class="spot-row"><div class="spot-key">추천 일정</div><div class="spot-value">이번 항공편 기준 메인 일정 제외</div></div>
             <div class="spot-row"><div class="spot-key">소요 시간</div><div class="spot-value">전시만 20~30분, 시음 포함 1시간 내외</div></div>
@@ -1646,6 +1914,11 @@
             <div class="spot-row"><div class="spot-key">제외 이유</div><div class="spot-value">7/4는 시내 도착·체크인 후 17:30 최종 입장에 맞추기 어렵고, 7/7은 12:55 출국이라 11:00 개관 후 방문 불가</div></div>
             <div class="spot-row"><div class="spot-key">대체 방법</div><div class="spot-value">Day 3을 오타루·샤코탄 대신 “오전 오타루 + 오후 맥주박물관”으로 바꾸는 경우에만 가능</div></div>
           </div>
+        </div>
+        <div class="spot-actions" data-anim="fade-up" data-delay="3">
+          <button class="spot-nav-button" type="button" data-slide-target="24">이전</button>
+          <button class="spot-nav-button" type="button" data-slide-target="18">목차</button>
+          <button class="spot-nav-button" type="button" data-slide-target="26">다음</button>
         </div>
       </div>
       <footer class="slide-foot"><span class="label muted">excluded from main route</span><span class="label muted">day 3 swap only</span></footer>
@@ -1660,7 +1933,7 @@
         <p class="kicker" data-anim="fade-up" data-delay="0">shikotsu-toya</p>
         <h2 class="h2" data-anim="fade-up" data-delay="1">시코쓰토야 국립공원 / 지코츠호 / 타루마에산</h2>
         <div class="spot-layout" data-anim="fade-up" data-delay="2">
-          <div class="spot-intro"><div class="spot-num">08</div><div class="spot-title">Day 3 대체안</div><p class="body">호수, 화산, 숲을 보는 자연형 전일 일정입니다. 넣으려면 기존 메인 중 하나를 빼야 합니다.</p></div>
+          <div class="spot-intro"><div class="spot-num">08</div><div class="spot-badges"><span class="spot-badge is-conditional">조건부</span><span class="spot-badge">대체</span></div><div class="spot-title">Day 3 대체안</div><p class="body">호수, 화산, 숲을 보는 자연형 전일 일정입니다. 넣으려면 기존 메인 중 하나를 빼야 합니다.</p></div>
           <div class="spot-table">
             <div class="spot-row"><div class="spot-key">추천 일정</div><div class="spot-value">메인 일정 제외, Day 3 대체안</div></div>
             <div class="spot-row"><div class="spot-key">소요 시간</div><div class="spot-value">삿포로 출발 기준 전일</div></div>
@@ -1670,6 +1943,11 @@
             <div class="spot-row"><div class="spot-key">제외 이유</div><div class="spot-value">이번 일정에서는 전일 일정이 Day 2·Day 3뿐이라, 넣으면 비에이 또는 오타루·샤코탄 중 하나를 빼야 함</div></div>
             <div class="spot-row"><div class="spot-key">추천 판단</div><div class="spot-value">자연·등산 선호가 과반이면 Day 3 대체 가능. 단체 전체 만족도 기준으로는 오타루·샤코탄 우선 추천</div></div>
           </div>
+        </div>
+        <div class="spot-actions" data-anim="fade-up" data-delay="3">
+          <button class="spot-nav-button" type="button" data-slide-target="25">이전</button>
+          <button class="spot-nav-button" type="button" data-slide-target="18">목차</button>
+          <button class="spot-nav-button" type="button" data-slide-target="27">다음</button>
         </div>
       </div>
       <footer class="slide-foot"><span class="label muted">alternative full-day nature route</span><span class="label muted">requires a swap</span></footer>
@@ -1684,7 +1962,7 @@
         <p class="kicker" data-anim="fade-up" data-delay="0">jozankei sauna</p>
         <h2 class="h2" data-anim="fade-up" data-delay="1">조잔케이 휴일탕 / 사우나</h2>
         <div class="spot-layout" data-anim="fade-up" data-delay="2">
-          <div class="spot-intro"><div class="spot-num">09</div><div class="spot-title">연장 일정 후보</div><p class="body">온천, 사우나, 라운지형 휴식 일정입니다. 3박 4일 안에서는 우선순위가 낮습니다.</p></div>
+          <div class="spot-intro"><div class="spot-num">09</div><div class="spot-badges"><span class="spot-badge is-excluded">제외</span><span class="spot-badge">연장</span></div><div class="spot-title">연장 일정 후보</div><p class="body">온천, 사우나, 라운지형 휴식 일정입니다. 3박 4일 안에서는 우선순위가 낮습니다.</p></div>
           <div class="spot-table">
             <div class="spot-row"><div class="spot-key">추천 일정</div><div class="spot-value">메인 일정 제외, 대체 또는 연장 일정</div></div>
             <div class="spot-row"><div class="spot-key">소요 시간</div><div class="spot-value">삿포로 왕복 이동 포함 최소 반나절</div></div>
@@ -1693,6 +1971,10 @@
             <div class="spot-row"><div class="spot-key">제외 이유</div><div class="spot-value">귀국일 오전에는 시간 부족, Day 1 밤에는 이동 피로가 큼</div></div>
             <div class="spot-row"><div class="spot-key">추천 판단</div><div class="spot-value">이번 3박 4일에서는 제외. 홋카이도 재방문 또는 1박 추가 시 추천</div></div>
           </div>
+        </div>
+        <div class="spot-actions" data-anim="fade-up" data-delay="3">
+          <button class="spot-nav-button" type="button" data-slide-target="26">이전</button>
+          <button class="spot-nav-button" type="button" data-slide-target="18">목차</button>
         </div>
       </div>
       <footer class="slide-foot"><span class="label muted">better with one extra night</span><span class="label muted">rest route</span></footer>
