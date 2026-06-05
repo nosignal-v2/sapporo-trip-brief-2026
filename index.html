@@ -1,0 +1,1379 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>삿포로 3박 4일 일정 브리핑</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap");
+    @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css");
+
+    :root {
+      --c-bg: #111111;
+      --c-bg-alt: #1a1a18;
+      --c-bg-orange: #e85d26;
+      --c-fg: #f0ece5;
+      --c-fg-2: #888880;
+      --c-fg-3: #505048;
+      --c-fg-light: #111111;
+      --c-fg-light-2: #2a1810;
+      --c-fg-light-3: rgba(17,17,17,0.55);
+      --c-accent: #e85d26;
+      --c-border: #282826;
+      --pad-y: 5.5vh;
+      --pad-x: 5.5vw;
+      --gap-lg: 3.5vh;
+      --gap-md: 2vh;
+      --gap-sm: 1vh;
+      --sz-display: 160px;
+      --sz-h1: 94px;
+      --sz-h2: 56px;
+      --sz-h3: 34px;
+      --sz-lead: 20px;
+      --sz-body: 14px;
+      --sz-meta: 9px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: var(--c-bg);
+      color: var(--c-fg);
+      font-family: "Pretendard Variable", "Pretendard", "Barlow", "Noto Sans SC", system-ui, sans-serif;
+      letter-spacing: 0;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    #deck {
+      display: flex;
+      width: max-content;
+      height: 100vh;
+      transition: transform 0.78s cubic-bezier(0.77, 0, 0.175, 1);
+      will-change: transform;
+    }
+
+    .slide {
+      position: relative;
+      flex: 0 0 100vw;
+      width: 100vw;
+      height: 100vh;
+      padding: var(--pad-y) var(--pad-x);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      overflow: hidden;
+      background: var(--c-bg);
+      color: var(--c-fg);
+    }
+
+    .slide.orange {
+      background: var(--c-bg-orange);
+      color: var(--c-fg-light);
+    }
+
+    .slide--cover,
+    .slide--chapter,
+    .slide--end {
+      display: block;
+    }
+
+    .slide-chrome,
+    .slide-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 3vh;
+    }
+
+    .slide-chrome {
+      padding-bottom: 1.3vh;
+      border-bottom: 1px solid var(--c-border);
+    }
+
+    .slide-foot {
+      padding-top: 1.3vh;
+      border-top: 1px solid var(--c-border);
+    }
+
+    .slide-body {
+      min-height: 0;
+      display: grid;
+      align-content: center;
+      gap: var(--gap-md);
+    }
+
+    .label,
+    .kicker,
+    .tag,
+    .corner-label,
+    .broadside-num,
+    .stat-note,
+    .chart-source,
+    .mini,
+    .time,
+    #slide-counter {
+      font-family: "IBM Plex Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      font-weight: 700;
+    }
+
+    .label,
+    .corner-label {
+      font-size: var(--sz-meta);
+      color: var(--c-fg-2);
+    }
+
+    .broadside-top-chrome {
+      position: absolute;
+      inset: var(--pad-y) var(--pad-x) auto var(--pad-x);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      z-index: 2;
+    }
+
+    .broadside-num,
+    .orange .corner-label {
+      font-size: 12px;
+      letter-spacing: 0;
+      color: var(--c-fg-light-3);
+    }
+
+    .rule {
+      width: 2.8vw;
+      height: 0.22vh;
+      background: var(--c-accent);
+      margin-bottom: var(--gap-sm);
+    }
+
+    .orange .rule {
+      background: var(--c-fg-light);
+    }
+
+    .kicker {
+      color: var(--c-accent);
+      font-size: var(--sz-meta);
+      margin-bottom: var(--gap-sm);
+    }
+
+    .orange .kicker {
+      color: var(--c-fg-light-3);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+      word-break: keep-all;
+    }
+
+    .display,
+    .h1,
+    .h2,
+    .h3 {
+      font-family: "Barlow", "Pretendard Variable", "Pretendard", "Noto Sans SC", system-ui, sans-serif;
+      letter-spacing: 0;
+      word-break: keep-all;
+    }
+
+    .display {
+      font-size: var(--sz-display);
+      line-height: 0.88;
+      font-weight: 900;
+    }
+
+    .h1 {
+      font-size: var(--sz-h1);
+      line-height: 0.92;
+      font-weight: 900;
+    }
+
+    .h2 {
+      font-size: var(--sz-h2);
+      line-height: 1.05;
+      font-weight: 900;
+    }
+
+    .h3 {
+      font-size: var(--sz-h3);
+      line-height: 1.08;
+      font-weight: 800;
+    }
+
+    .lead,
+    .body {
+      line-height: 1.6;
+      font-weight: 400;
+      word-break: keep-all;
+    }
+
+    .lead {
+      font-size: var(--sz-lead);
+      color: var(--c-fg-2);
+      max-width: 62vw;
+    }
+
+    .body {
+      font-size: var(--sz-body);
+      color: var(--c-fg-2);
+    }
+
+    .orange .lead,
+    .orange .body {
+      color: var(--c-fg-light-2);
+    }
+
+    .accent {
+      color: var(--c-accent);
+    }
+
+    .orange .accent {
+      color: var(--c-fg-light);
+    }
+
+    .cover-main {
+      position: absolute;
+      left: var(--pad-x);
+      right: var(--pad-x);
+      bottom: 12vh;
+      display: grid;
+      gap: var(--gap-md);
+    }
+
+    .cover-meta {
+      position: absolute;
+      left: var(--pad-x);
+      right: var(--pad-x);
+      bottom: var(--pad-y);
+      display: flex;
+      justify-content: space-between;
+      color: var(--c-fg-light-3);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .chapter-body,
+    .end-body {
+      position: absolute;
+      left: var(--pad-x);
+      right: var(--pad-x);
+      top: 24vh;
+      display: grid;
+      gap: var(--gap-md);
+    }
+
+    .end-body {
+      top: auto;
+      bottom: 13vh;
+    }
+
+    .statement-wrap {
+      max-width: 78vw;
+      display: grid;
+      gap: var(--gap-md);
+    }
+
+    .brief-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.4vw;
+    }
+
+    .brief-card,
+    .stat-card,
+    .flow-step,
+    .compare-panel,
+    .mini-card {
+      border: 1px solid var(--c-border);
+      background: var(--c-bg-alt);
+    }
+
+    .brief-card {
+      min-height: 38vh;
+      padding: 2.4vh 1.5vw;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 1.4vh;
+    }
+
+    .brief-date,
+    .time,
+    .mini {
+      color: var(--c-accent);
+      font-size: 10px;
+    }
+
+    .brief-title {
+      font-family: "Barlow", "Pretendard Variable", "Pretendard", system-ui, sans-serif;
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: 0;
+      word-break: keep-all;
+    }
+
+    .bullet-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 1.1vh;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 2vw;
+      color: var(--c-fg-2);
+      font-size: 13px;
+      line-height: 1.55;
+      word-break: keep-all;
+    }
+
+    .bullet-list li::before {
+      content: "/";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--c-accent);
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 700;
+    }
+
+    .vtimeline {
+      display: grid;
+      grid-template-columns: 10vw 2vw 1fr;
+      row-gap: 1.4vh;
+      align-items: stretch;
+      max-width: 78vw;
+    }
+
+    .vt-row {
+      display: contents;
+    }
+
+    .vt-time {
+      padding-top: 1.6vh;
+      color: var(--c-accent);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0;
+      font-weight: 700;
+    }
+
+    .vt-spine {
+      position: relative;
+      min-height: 7.8vh;
+    }
+
+    .vt-spine::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: -1.4vh;
+      border-left: 1px solid var(--c-border);
+    }
+
+    .vt-row:last-child .vt-spine::before {
+      bottom: 50%;
+    }
+
+    .vt-spine::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 2vh;
+      width: 8px;
+      height: 8px;
+      transform: translateX(-50%);
+      background: var(--c-accent);
+    }
+
+    .vt-event {
+      border: 1px solid var(--c-border);
+      background: var(--c-bg-alt);
+      padding: 1.35vh 1.4vw;
+      display: grid;
+      gap: 0.65vh;
+      min-height: 7.8vh;
+    }
+
+    .vt-title {
+      font-family: "Barlow", "Pretendard Variable", "Pretendard", system-ui, sans-serif;
+      font-size: 20px;
+      line-height: 1.08;
+      font-weight: 900;
+      letter-spacing: 0;
+      word-break: keep-all;
+    }
+
+    .vt-body {
+      color: var(--c-fg-2);
+      font-size: 12px;
+      line-height: 1.5;
+      word-break: keep-all;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2vw;
+    }
+
+    .stat-card {
+      min-height: 32vh;
+      padding: 3vh 2vw;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 2vh;
+    }
+
+    .stat-value {
+      font-family: "Barlow", "Pretendard Variable", "Pretendard", system-ui, sans-serif;
+      font-size: 70px;
+      line-height: 0.9;
+      font-weight: 900;
+      letter-spacing: 0;
+      color: var(--c-accent);
+    }
+
+    .stat-label {
+      align-self: start;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--c-fg);
+      word-break: keep-all;
+    }
+
+    .stat-note {
+      color: var(--c-fg-3);
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.4vw;
+      align-items: stretch;
+    }
+
+    .flow-step {
+      min-height: 32vh;
+      padding: 2.6vh 1.6vw;
+      display: grid;
+      align-content: start;
+      gap: 2vh;
+    }
+
+    .flow-num {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      letter-spacing: 0;
+      color: var(--c-accent);
+    }
+
+    .flow-title {
+      font-family: "Barlow", "Pretendard Variable", "Pretendard", system-ui, sans-serif;
+      font-size: 27px;
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: 0;
+      word-break: keep-all;
+    }
+
+    .flow-desc {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--c-fg-2);
+      word-break: keep-all;
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2vw;
+      align-items: stretch;
+    }
+
+    .compare-panel {
+      min-height: 45vh;
+      padding: 3.2vh 2.4vw;
+      display: grid;
+      align-content: start;
+      gap: 2vh;
+    }
+
+    .compare-panel.panel-orange {
+      background: var(--c-bg-orange);
+      border-color: var(--c-bg-orange);
+      color: var(--c-fg-light);
+    }
+
+    .compare-panel.panel-orange .body,
+    .compare-panel.panel-orange .bullet-list li {
+      color: var(--c-fg-light-2);
+    }
+
+    .compare-panel.panel-orange .tag,
+    .compare-panel.panel-orange .bullet-list li::before {
+      color: var(--c-fg-light);
+    }
+
+    .tag {
+      color: var(--c-accent);
+      font-size: 10px;
+    }
+
+    .chart-wrap {
+      display: grid;
+      gap: 2.2vh;
+      max-width: 74vw;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 12vw 1fr 10vw;
+      gap: 2vw;
+      align-items: center;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      letter-spacing: 0;
+      color: var(--c-fg-2);
+    }
+
+    .bar-track {
+      height: 2.2vh;
+      background: var(--c-bg-alt);
+      border: 1px solid var(--c-border);
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      width: var(--w);
+      background: var(--c-fg-3);
+      transform-origin: left center;
+    }
+
+    .bar-fill.accent {
+      background: var(--c-accent);
+    }
+
+    .slide.is-active .bar-fill {
+      animation: kBarRise 0.85s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+
+    .chart-baseline {
+      height: 1px;
+      background: var(--c-border);
+      width: 100%;
+    }
+
+    .chart-source {
+      color: var(--c-fg-3);
+      font-size: 10px;
+      line-height: 1.4;
+    }
+
+    .member-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4vw;
+    }
+
+    .mini-card {
+      min-height: 20vh;
+      padding: 2.2vh 1.6vw;
+      display: grid;
+      gap: 1.2vh;
+      align-content: start;
+    }
+
+    .mini-card .body {
+      font-size: 12px;
+      line-height: 1.48;
+    }
+
+    [data-anim] {
+      opacity: 0;
+    }
+
+    .slide.is-active [data-anim="fade-up"] {
+      animation: kFadeUp 0.78s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+
+    .slide.is-active [data-anim="fade-in"] {
+      animation: kFadeIn 0.78s ease both;
+    }
+
+    .slide.is-active [data-anim="reveal-right"] {
+      animation: kRevealRight 0.78s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+
+    .slide.is-active [data-anim="reveal-left"] {
+      animation: kRevealLeft 0.78s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+
+    .slide.is-active [data-anim="scale-in"] {
+      animation: kScaleIn 0.78s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+
+    [data-delay="0"] { animation-delay: 0s; }
+    [data-delay="1"] { animation-delay: 0.13s; }
+    [data-delay="2"] { animation-delay: 0.26s; }
+    [data-delay="3"] { animation-delay: 0.39s; }
+    [data-delay="4"] { animation-delay: 0.52s; }
+    [data-delay="5"] { animation-delay: 0.65s; }
+    [data-delay="6"] { animation-delay: 0.78s; }
+
+    #nav-dots {
+      position: fixed;
+      right: 2vw;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 20;
+      display: grid;
+      gap: 1vh;
+    }
+
+    #nav-dots button {
+      width: 7px;
+      height: 7px;
+      padding: 0;
+      border: 1px solid var(--c-fg-3);
+      background: transparent;
+      cursor: pointer;
+    }
+
+    #nav-dots button.is-active {
+      background: var(--c-accent);
+      border-color: var(--c-accent);
+    }
+
+    #slide-counter {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      z-index: 20;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      color: var(--c-fg-3);
+      font-size: 10px;
+    }
+
+    @media (max-width: 760px) {
+      :root {
+        --sz-display: 96px;
+        --sz-h1: 62px;
+        --sz-h2: 36px;
+        --sz-h3: 25px;
+        --sz-lead: 15px;
+        --sz-body: 12px;
+        --sz-meta: 8px;
+        --pad-y: 4.5vh;
+        --pad-x: 6vw;
+      }
+
+      .brief-grid,
+      .flow {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .brief-card {
+        min-height: 22vh;
+      }
+
+      .vtimeline {
+        grid-template-columns: 18vw 4vw 1fr;
+        max-width: 86vw;
+      }
+
+      .vt-event {
+        padding: 1.15vh 3vw;
+      }
+
+      .compare-grid,
+      .stats-grid,
+      .member-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-card,
+      .compare-panel,
+      .mini-card,
+      .flow-step {
+        min-height: auto;
+      }
+    }
+
+    @keyframes kFadeUp {
+      from { opacity: 0; transform: translateY(3vh); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes kFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes kRevealRight {
+      from { opacity: 0; transform: translateX(-3vw); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes kRevealLeft {
+      from { opacity: 0; transform: translateX(3vw); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes kScaleIn {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes kBarRise {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+
+    @keyframes kDonutSweep {
+      from { stroke-dasharray: 0 100; }
+      to { stroke-dasharray: 100 100; }
+    }
+  </style>
+</head>
+<body>
+  <main id="deck" aria-live="polite">
+    <section class="slide slide--cover orange">
+      <div class="broadside-top-chrome">
+        <span class="broadside-num">01</span>
+        <span class="corner-label">Sapporo itinerary brief</span>
+      </div>
+      <div class="cover-main">
+        <h1 class="display" data-anim="fade-up" data-delay="1">삿포로<br>3박 4일</h1>
+        <p class="lead" style="opacity: 0.65; max-width: 55%;" data-anim="fade-up" data-delay="3">9명이 함께 움직이는 2026년 7월 4일~7일 여행 일정 브리핑입니다.</p>
+      </div>
+      <div class="cover-meta">
+        <span>editorial itinerary</span>
+        <span>2026.07.04~07</span>
+      </div>
+    </section>
+
+    <section class="slide slide--chapter orange">
+      <div class="broadside-top-chrome">
+        <span class="broadside-num">02 / chapter</span>
+        <span class="corner-label">answer first</span>
+      </div>
+      <div class="chapter-body">
+        <h2 class="h1" data-anim="fade-up" data-delay="1">무리하지<br>않는 쪽</h2>
+        <p class="lead" style="opacity: 0.65; max-width: 56%;" data-anim="fade-up" data-delay="3">시내 1일, 라벤더 1일, 해안 1일, 출국일 1일로 끊어야 일정이 읽히고 예산도 관리됩니다.</p>
+      </div>
+    </section>
+
+    <section class="slide slide--statement dark">
+      <header class="slide-chrome">
+        <span class="label muted">Recommendation</span>
+        <span class="label muted">03</span>
+      </header>
+      <div class="slide-body">
+        <div class="statement-wrap">
+          <div class="rule" data-anim="reveal-right" data-delay="0"></div>
+          <p class="kicker" data-anim="fade-up" data-delay="1">one sentence</p>
+          <h2 class="h1" data-anim="fade-up" data-delay="2">라벤더는 둘째 날,<br><span class="accent">해안은 셋째 날</span></h2>
+          <p class="lead" data-anim="fade-up" data-delay="4">첫날은 삿포로 시내와 야경, 마지막 날은 JR타워와 공항 이동입니다. Day 3만 전세차 견적에 따라 예산이 흔들립니다.</p>
+        </div>
+      </div>
+      <footer class="slide-foot">
+        <span class="label muted">core route</span>
+        <span class="label muted">Sapporo itinerary brief</span>
+      </footer>
+    </section>
+
+    <section class="slide slide--diagram dark">
+      <header class="slide-chrome">
+        <span class="label muted">Overview</span>
+        <span class="label muted">04</span>
+      </header>
+      <div class="slide-body">
+        <p class="kicker" data-anim="fade-up" data-delay="0">four days at a glance</p>
+        <h2 class="h2" data-anim="fade-up" data-delay="1">전체 일정표</h2>
+        <div class="brief-grid" data-anim="fade-up" data-delay="2">
+          <div class="brief-card">
+            <div class="brief-date">7/4 토</div>
+            <div class="brief-title">삿포로 시내</div>
+            <ul class="bullet-list">
+              <li>오전 인천에서 신치토세로 이동합니다.</li>
+              <li>오후 맥주박물관, 저녁 오도리공원을 봅니다.</li>
+              <li>밤에는 모이와야마 전망대를 갑니다.</li>
+            </ul>
+          </div>
+          <div class="brief-card">
+            <div class="brief-date">7/5 일</div>
+            <div class="brief-title">비에이·후라노</div>
+            <ul class="bullet-list">
+              <li>09:10 삿포로역에서 버스로 출발합니다.</li>
+              <li>팜 토미타, 사계채의 언덕, 청의호수를 봅니다.</li>
+              <li>19:06 삿포로역에 돌아옵니다.</li>
+            </ul>
+          </div>
+          <div class="brief-card">
+            <div class="brief-date">7/6 월</div>
+            <div class="brief-title">오타루·샤코탄</div>
+            <ul class="bullet-list">
+              <li>오전에는 오타루 오르골당과 운하를 봅니다.</li>
+              <li>오후에는 샤코탄 가무이곶으로 이동합니다.</li>
+              <li>전세차 또는 가이드 차량을 권합니다.</li>
+            </ul>
+          </div>
+          <div class="brief-card">
+            <div class="brief-date">7/7 화</div>
+            <div class="brief-title">JR타워·출국</div>
+            <ul class="bullet-list">
+              <li>오전 체크아웃 뒤 JR타워 T38을 봅니다.</li>
+              <li>삿포로역에서 쇼핑과 브런치를 합니다.</li>
+              <li>항공 3시간 전 신치토세공항으로 갑니다.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-foot">
+        <span class="label muted">city / lavender / coast / departure</span>
+        <span class="label muted">main plan</span>
+      </footer>
+    </section>
+
+    <section class="slide slide--vtimeline dark">
+      <header class="slide-chrome">
+        <span class="label muted">Day 1</span>
+        <span class="label muted">05</span>
+      </header>
+      <div class="slide-body">
+        <p class="kicker" data-anim="fade-up" data-delay="0">7/4 saturday</p>
+        <h2 class="h2" data-anim="fade-up" data-delay="1">삿포로에 들어가는 날</h2>
+        <div class="vtimeline" data-anim="fade-up" data-delay="2">
+          <div class="vt-row">
+            <div class="vt-time">오전</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">인천공항에서 신치토세공항</div><div class="vt-body">오전 도착 항공편을 가장 추천합니다. 늦게 도착하면 맥주박물관은 Day 4 오전으로 넘깁니다.</div></div>
+          </div>
+          <div class="vt-row">
+            <div class="vt-time">점심~오후</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">신치토세공항에서 삿포로역</div><div class="vt-body">JR 공항열차 기준 최단 약 33분입니다. 호텔 체크인 전 짐 보관을 먼저 확인합니다.</div></div>
+          </div>
+          <div class="vt-row">
+            <div class="vt-time">14:30</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">삿포로 맥주박물관</div><div class="vt-body">운영은 11:00~18:00, 최종 입장은 17:30입니다. 도착이 늦으면 무리하지 않습니다.</div></div>
+          </div>
+          <div class="vt-row">
+            <div class="vt-time">17:30</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">삿포로 맥주원 또는 역 근처 저녁</div><div class="vt-body">9명 식사는 예약이 필요합니다. 첫날은 이동 피로가 있어 숙소 접근성을 우선합니다.</div></div>
+          </div>
+          <div class="vt-row">
+            <div class="vt-time">19:30~20:30</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">오도리공원, TV타워, 모이와야마</div><div class="vt-body">오도리공원 산책 뒤 날씨가 좋으면 모이와야마 전망대로 갑니다. 흐리면 JR타워로 대체합니다.</div></div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-foot">
+        <span class="label muted">arrival / city night</span>
+        <span class="label muted">late flight changes the plan</span>
+      </footer>
+    </section>
+
+    <section class="slide slide--vtimeline dark">
+      <header class="slide-chrome">
+        <span class="label muted">Day 2</span>
+        <span class="label muted">06</span>
+      </header>
+      <div class="slide-body">
+        <p class="kicker" data-anim="fade-up" data-delay="0">7/5 sunday</p>
+        <h2 class="h2" data-anim="fade-up" data-delay="1">라벤더를 보러 가는 날</h2>
+        <div class="vtimeline" data-anim="fade-up" data-delay="2">
+          <div class="vt-row">
+            <div class="vt-time">09:10</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">삿포로역 출발</div><div class="vt-body">홋카이도 중앙버스 G코스 기준입니다. 한국어 오디오 안내가 있어 단체 이동에 맞습니다.</div></div>
+          </div>
+          <div class="vt-row">
+            <div class="vt-time">11:35~12:25</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">하이랜드 후라노 점심</div><div class="vt-body">점심이 포함된 코스입니다. 별도 식당 예약 부담이 줄어듭니다.</div></div>
+          </div>
+          <div class="vt-row">
+            <div class="vt-time">12:50~13:50</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">팜 토미타</div><div class="vt-body">라벤더 시즌의 핵심 장소입니다. 7월 초중순 만족도가 가장 높습니다.</div></div>
+          </div>
+          <div class="vt-row">
+            <div class="vt-time">14:20~14:50</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">사계채의 언덕</div><div class="vt-body">입장료가 투어에 포함됩니다. 꽃밭 사진을 찍는 구간입니다.</div></div>
+          </div>
+          <div class="vt-row">
+            <div class="vt-time">15:15~19:06</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">청의호수 뒤 삿포로 복귀</div><div class="vt-body">청의호수를 본 뒤 삿포로역으로 돌아옵니다. 저녁은 스스키노나 라멘으로 가볍게 잡습니다.</div></div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-foot">
+        <span class="label muted">adult fare: 9,800 yen</span>
+        <span class="label muted">lunch included</span>
+      </footer>
+    </section>
+
+    <section class="slide slide--stats dark">
+      <header class="slide-chrome">
+        <span class="label muted">Day 2 facts</span>
+        <span class="label muted">07</span>
+      </header>
+      <div class="slide-body">
+        <p class="kicker" data-anim="fade-up" data-delay="0">why bus</p>
+        <h2 class="h2" data-anim="fade-up" data-delay="1">비에이는 버스가 편합니다</h2>
+        <div class="stats-grid" data-anim="fade-up" data-delay="2">
+          <div class="stat-card">
+            <div class="stat-value" data-anim="scale-in" data-delay="2">09:10</div>
+            <div class="stat-label">삿포로역에서 출발해 주요 라벤더 스팟을 하루에 묶습니다.</div>
+            <div class="stat-note">중앙버스 G코스 · 2026년 7월</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" data-anim="scale-in" data-delay="3">9,800엔</div>
+            <div class="stat-label">점심과 사계채의 언덕 입장료가 포함된 성인 요금입니다.</div>
+            <div class="stat-note">사용자 제공 메모 · 2026년 6월</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" data-anim="scale-in" data-delay="4">19:06</div>
+            <div class="stat-label">삿포로역 도착 시간이 정해져 있어 저녁 계획을 잡기 쉽습니다.</div>
+            <div class="stat-note">중앙버스 G코스 · 도착 기준</div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-foot">
+        <span class="label muted">reservation first</span>
+        <span class="label muted">lavender season</span>
+      </footer>
+    </section>
+
+    <section class="slide slide--vtimeline dark">
+      <header class="slide-chrome">
+        <span class="label muted">Day 3</span>
+        <span class="label muted">08</span>
+      </header>
+      <div class="slide-body">
+        <p class="kicker" data-anim="fade-up" data-delay="0">7/6 monday</p>
+        <h2 class="h2" data-anim="fade-up" data-delay="1">오타루와 샤코탄을 묶는 날</h2>
+        <div class="vtimeline" data-anim="fade-up" data-delay="2">
+          <div class="vt-row">
+            <div class="vt-time">08:30</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">삿포로 출발</div><div class="vt-body">9명 기준 전세차나 미니버스를 권합니다. 짐과 장거리 이동 피로를 줄입니다.</div></div>
+          </div>
+          <div class="vt-row">
+            <div class="vt-time">09:30~11:00</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">오타루 오르골당과 사카이마치 거리</div><div class="vt-body">오르골당 본관 운영은 9:00~18:00입니다. 오전에 먼저 보는 편이 안전합니다.</div></div>
+          </div>
+          <div class="vt-row">
+            <div class="vt-time">11:00~13:00</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">오타루 운하, 카페, 점심</div><div class="vt-body">운하 산책 뒤 오타루 또는 요이치에서 초밥과 해산물 점심을 잡습니다.</div></div>
+          </div>
+          <div class="vt-row">
+            <div class="vt-time">14:00~15:20</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">샤코탄 가무이곶</div><div class="vt-body">주차장에서 끝 지점까지 왕복 약 40분입니다. 비나 강풍이면 출입이 제한될 수 있습니다.</div></div>
+          </div>
+          <div class="vt-row">
+            <div class="vt-time">15:40~19:00</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">시마무이 해안 뒤 삿포로 복귀</div><div class="vt-body">날씨가 좋으면 해안 경관을 더 보고, 저녁 시간대 삿포로로 돌아옵니다.</div></div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-foot">
+        <span class="label muted">otaru first / coast second</span>
+        <span class="label muted">charter recommended</span>
+      </footer>
+    </section>
+
+    <section class="slide slide--compare dark">
+      <header class="slide-chrome">
+        <span class="label muted">Day 3 decision</span>
+        <span class="label muted">09</span>
+      </header>
+      <div class="slide-body">
+        <p class="kicker" data-anim="fade-up" data-delay="0">bus or charter</p>
+        <h2 class="h2" data-anim="fade-up" data-delay="1">셋째 날은 차량이 핵심입니다</h2>
+        <div class="compare-grid" data-anim="fade-up" data-delay="2">
+          <div class="compare-panel">
+            <p class="tag">budget first</p>
+            <h3 class="h3">정기 샤코탄 버스</h3>
+            <ul class="bullet-list">
+              <li>1인 9,700엔으로 예산 관리는 쉽습니다.</li>
+              <li>점심 포함이라 비용 예측이 편합니다.</li>
+              <li>오타루역 도착이 늦어 오르골당 시간이 거의 없습니다.</li>
+            </ul>
+          </div>
+          <div class="compare-panel panel-orange">
+            <p class="tag">recommended</p>
+            <h3 class="h3">전세차·가이드 차량</h3>
+            <ul class="bullet-list">
+              <li>오르골당과 샤코탄을 한 날에 모두 반영합니다.</li>
+              <li>9명 단체 이동에서 대기 시간과 피로가 줄어듭니다.</li>
+              <li>견적이 높으면 1인 100만 원을 넘을 수 있습니다.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-foot">
+        <span class="label muted">regular bus vs charter</span>
+        <span class="label muted">quote needed</span>
+      </footer>
+    </section>
+
+    <section class="slide slide--vtimeline dark">
+      <header class="slide-chrome">
+        <span class="label muted">Day 4</span>
+        <span class="label muted">10</span>
+      </header>
+      <div class="slide-body">
+        <p class="kicker" data-anim="fade-up" data-delay="0">7/7 tuesday</p>
+        <h2 class="h2" data-anim="fade-up" data-delay="1">출국일은 짧게 둡니다</h2>
+        <div class="vtimeline" data-anim="fade-up" data-delay="2">
+          <div class="vt-row">
+            <div class="vt-time">09:30</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">체크아웃과 짐 보관</div><div class="vt-body">호텔 보관 또는 삿포로역 코인락커를 씁니다. 이동 전 짐 동선을 먼저 정합니다.</div></div>
+          </div>
+          <div class="vt-row">
+            <div class="vt-time">10:00~11:00</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">JR타워 전망대 T38</div><div class="vt-body">운영은 10:00~22:00, 성인 요금은 740엔입니다. 9명은 단체 할인 기준에 못 미칩니다.</div></div>
+          </div>
+          <div class="vt-row">
+            <div class="vt-time">11:00~13:00</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">삿포로역 쇼핑과 브런치</div><div class="vt-body">다이마루, 스텔라플레이스, 기념품 쇼핑을 역 주변에서 해결합니다.</div></div>
+          </div>
+          <div class="vt-row">
+            <div class="vt-time">항공 3시간 전</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">삿포로역에서 신치토세공항</div><div class="vt-body">국제선은 여유가 필요합니다. 공항 쇼핑까지 고려해 일찍 움직입니다.</div></div>
+          </div>
+          <div class="vt-row">
+            <div class="vt-time">대체</div><div class="vt-spine"></div>
+            <div class="vt-event"><div class="vt-title">맥주박물관 보강</div><div class="vt-body">Day 1 도착이 늦었다면 JR타워 대신 맥주박물관을 Day 4 오전에 넣습니다.</div></div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-foot">
+        <span class="label muted">t38 / station / airport</span>
+        <span class="label muted">keep it light</span>
+      </footer>
+    </section>
+
+    <section class="slide slide--chart dark">
+      <header class="slide-chrome">
+        <span class="label muted">Budget</span>
+        <span class="label muted">11</span>
+      </header>
+      <div class="slide-body">
+        <p class="kicker" data-anim="fade-up" data-delay="0">money line</p>
+        <h2 class="h2" data-anim="fade-up" data-delay="1">1인 100만 원은 타이트합니다</h2>
+        <div class="chart-wrap" data-anim="fade-up" data-delay="2">
+          <div class="bar-row">
+            <span>항공권</span>
+            <div class="bar-track"><div class="bar-fill" style="--w: 78%;"></div></div>
+            <span>40만~50만 원</span>
+          </div>
+          <div class="bar-row">
+            <span>숙박 3박</span>
+            <div class="bar-track"><div class="bar-fill" style="--w: 48%;"></div></div>
+            <span>24만~30만 원</span>
+          </div>
+          <div class="bar-row">
+            <span>비에이 버스</span>
+            <div class="bar-track"><div class="bar-fill" style="--w: 26%;"></div></div>
+            <span>약 9.3만 원</span>
+          </div>
+          <div class="bar-row">
+            <span>셋째 날 차량</span>
+            <div class="bar-track"><div class="bar-fill accent" style="--w: 58%;"></div></div>
+            <span>9.2만~17만 원</span>
+          </div>
+          <div class="bar-row">
+            <span>식비·예비비</span>
+            <div class="bar-track"><div class="bar-fill" style="--w: 52%;"></div></div>
+            <span>16만~23만 원</span>
+          </div>
+          <div class="chart-baseline"></div>
+          <p class="chart-source">출처: 사용자 제공 견적 메모, 2026년 6월 4일 기준</p>
+        </div>
+      </div>
+      <footer class="slide-foot">
+        <span class="label muted">target: around ₩1,000,000</span>
+        <span class="label muted">day 3 is the swing</span>
+      </footer>
+    </section>
+
+    <section class="slide slide--stats dark">
+      <header class="slide-chrome">
+        <span class="label muted">Budget guardrail</span>
+        <span class="label muted">12</span>
+      </header>
+      <div class="slide-body">
+        <p class="kicker" data-anim="fade-up" data-delay="0">how to stay near budget</p>
+        <h2 class="h2" data-anim="fade-up" data-delay="1">세 숫자를 잠가야 합니다</h2>
+        <div class="stats-grid" data-anim="fade-up" data-delay="2">
+          <div class="stat-card">
+            <div class="stat-value" data-anim="scale-in" data-delay="2">45만</div>
+            <div class="stat-label">왕복 항공권은 45만 원 이하로 잡아야 전체 예산이 버팁니다.</div>
+            <div class="stat-note">예산 목표 · 1인 기준</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" data-anim="scale-in" data-delay="3">28만</div>
+            <div class="stat-label">숙박 3박은 삿포로역 또는 스스키노 접근성을 보며 28만 원 이하를 목표로 합니다.</div>
+            <div class="stat-note">예산 목표 · 1인 기준</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" data-anim="scale-in" data-delay="4">12만</div>
+            <div class="stat-label">Day 3 차량비는 1인 12만 원 이하 견적을 우선 확인합니다.</div>
+            <div class="stat-note">예산 목표 · 1인 기준</div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-foot">
+        <span class="label muted">air / stay / charter</span>
+        <span class="label muted">budget lock</span>
+      </footer>
+    </section>
+
+    <section class="slide slide--compare dark">
+      <header class="slide-chrome">
+        <span class="label muted">Alternatives</span>
+        <span class="label muted">13</span>
+      </header>
+      <div class="slide-body">
+        <p class="kicker" data-anim="fade-up" data-delay="0">optional routes</p>
+        <h2 class="h2" data-anim="fade-up" data-delay="1">대체안은 따로 둡니다</h2>
+        <div class="compare-grid" data-anim="fade-up" data-delay="2">
+          <div class="compare-panel">
+            <p class="tag">replace day 3</p>
+            <h3 class="h3">시코쓰호·타루마에산</h3>
+            <ul class="bullet-list">
+              <li>오타루·샤코탄을 빼고 넣어야 동선이 깔끔합니다.</li>
+              <li>시코쓰호 비지터센터와 타루마에산 7합목 등산을 묶습니다.</li>
+              <li>이 경우 오르골당과 샤코탄 희망이 빠집니다.</li>
+            </ul>
+          </div>
+          <div class="compare-panel">
+            <p class="tag">small group only</p>
+            <h3 class="h3">조잔케이 휴일탕</h3>
+            <ul class="bullet-list">
+              <li>귀국 항공편이 늦을 때 일부 인원만 선택합니다.</li>
+              <li>9명 전원이 가면 JR타워, 쇼핑, 공항 이동이 빠듯합니다.</li>
+              <li>전체 일정의 메인 코스로 두지는 않습니다.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-foot">
+        <span class="label muted">not deleted / just optional</span>
+        <span class="label muted">avoid fatigue</span>
+      </footer>
+    </section>
+
+    <section class="slide slide--compare dark">
+      <header class="slide-chrome">
+        <span class="label muted">Members</span>
+        <span class="label muted">14</span>
+      </header>
+      <div class="slide-body">
+        <p class="kicker" data-anim="fade-up" data-delay="0">wish map</p>
+        <h2 class="h2" data-anim="fade-up" data-delay="1">누구의 희망이 어디에 들어갔나</h2>
+        <div class="member-grid" data-anim="fade-up" data-delay="2">
+          <div class="mini-card">
+            <p class="mini">day 1</p>
+            <h3 class="h3">삿포로 시내</h3>
+            <p class="body">백현규님의 맥주박물관, 윤지민님의 오도리공원, 김수형님의 모이와야마 전망대를 반영합니다.</p>
+          </div>
+          <div class="mini-card">
+            <p class="mini">day 2</p>
+            <h3 class="h3">비에이 투어</h3>
+            <p class="body">최선웅님의 비에이 희망을 라벤더 성수기 핵심 일정으로 배치합니다.</p>
+          </div>
+          <div class="mini-card">
+            <p class="mini">day 3</p>
+            <h3 class="h3">오타루·샤코탄</h3>
+            <p class="body">한홍수님의 오르골당과 염진우님의 샤코탄 희망을 전세차 일정으로 묶습니다.</p>
+          </div>
+          <div class="mini-card">
+            <p class="mini">day 4</p>
+            <h3 class="h3">JR타워</h3>
+            <p class="body">이고운님의 JR타워 전망대 희망을 출국일 오전에 배치합니다.</p>
+          </div>
+          <div class="mini-card">
+            <p class="mini">optional</p>
+            <h3 class="h3">국립공원</h3>
+            <p class="body">노신호님의 시코쓰토야 국립공원과 타루마에산 희망은 대체안으로 남깁니다.</p>
+          </div>
+          <div class="mini-card">
+            <p class="mini">optional</p>
+            <h3 class="h3">휴일탕</h3>
+            <p class="body">조잔케이 사우나는 귀국편이 늦고 일부 인원만 원할 때 선택합니다.</p>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-foot">
+        <span class="label muted">main wishes covered</span>
+        <span class="label muted">optional wishes remain visible</span>
+      </footer>
+    </section>
+
+    <section class="slide slide--diagram dark">
+      <header class="slide-chrome">
+        <span class="label muted">Reservation</span>
+        <span class="label muted">15</span>
+      </header>
+      <div class="slide-body">
+        <p class="kicker" data-anim="fade-up" data-delay="0">booking order</p>
+        <h2 class="h2" data-anim="fade-up" data-delay="1">예약 순서가 일정의 순서입니다</h2>
+        <div class="flow" data-anim="fade-up" data-delay="2">
+          <div class="flow-step">
+            <div class="flow-num">01</div>
+            <div class="flow-title">항공권</div>
+            <div class="flow-desc">인천~신치토세 오전 출발, 귀국은 오후 늦은 편을 우선 확인합니다.</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">02</div>
+            <div class="flow-title">숙소</div>
+            <div class="flow-desc">삿포로역 또는 스스키노 근처로 잡아 아침 출발 부담을 줄입니다.</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">03</div>
+            <div class="flow-title">비에이 버스</div>
+            <div class="flow-desc">라벤더 성수기라 Day 2 투어는 먼저 좌석을 확인합니다.</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">04</div>
+            <div class="flow-title">차량 견적</div>
+            <div class="flow-desc">9명, 10~11시간, 통행료와 주차료 포함 여부를 같은 조건으로 비교합니다.</div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-foot">
+        <span class="label muted">book in this order</span>
+        <span class="label muted">avoid price drift</span>
+      </footer>
+    </section>
+
+    <section class="slide slide--end dark">
+      <div class="end-body">
+        <div class="rule" data-anim="reveal-right" data-delay="0"></div>
+        <h2 class="display" data-anim="fade-up" data-delay="1">차량이<br><span class="accent">관건</span></h2>
+        <p class="lead" data-anim="fade-up" data-delay="3">항공권과 숙소를 먼저 잠그고, Day 3 차량 견적이 1인 12만 원 안쪽인지 확인하면 최종안이 결정됩니다.</p>
+      </div>
+    </section>
+  </main>
+
+  <nav id="nav-dots" aria-label="슬라이드 바로가기"></nav>
+  <div id="slide-counter" aria-live="polite"></div>
+
+  <script>
+    const deck = document.getElementById("deck");
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const navDots = document.getElementById("nav-dots");
+    const counter = document.getElementById("slide-counter");
+    let current = 0;
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    const dots = slides.map((slide, index) => {
+      const dot = document.createElement("button");
+      const title = slide.querySelector(".display, .h1, .h2")?.textContent.trim().replace(/\s+/g, " ") || `${index + 1}번 슬라이드`;
+      dot.type = "button";
+      dot.setAttribute("aria-label", `${String(index + 1).padStart(2, "0")} ${title}`);
+      dot.addEventListener("click", () => goTo(index));
+      navDots.appendChild(dot);
+      return dot;
+    });
+
+    function clamp(value) {
+      return Math.max(0, Math.min(value, slides.length - 1));
+    }
+
+    function goTo(index, updateHash = true) {
+      current = clamp(index);
+      deck.style.transform = `translateX(${-current * 100}vw)`;
+      slides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("is-active", slideIndex === current);
+        slide.setAttribute("aria-hidden", slideIndex === current ? "false" : "true");
+      });
+      dots.forEach((dot, dotIndex) => {
+        dot.classList.toggle("is-active", dotIndex === current);
+        dot.setAttribute("aria-current", dotIndex === current ? "true" : "false");
+      });
+      counter.textContent = `${String(current + 1).padStart(2, "0")} / ${String(slides.length).padStart(2, "0")}`;
+      if (updateHash) {
+        history.replaceState(null, "", `#${current + 1}`);
+      }
+    }
+
+    function readHash() {
+      const hashNumber = Number(window.location.hash.replace("#", ""));
+      goTo(Number.isFinite(hashNumber) && hashNumber > 0 ? hashNumber - 1 : 0, false);
+    }
+
+    window.addEventListener("keydown", (event) => {
+      if (["ArrowRight", "ArrowDown", "PageDown", " "].includes(event.key)) {
+        event.preventDefault();
+        goTo(current + 1);
+      }
+      if (["ArrowLeft", "ArrowUp", "PageUp"].includes(event.key)) {
+        event.preventDefault();
+        goTo(current - 1);
+      }
+      if (event.key === "Home") {
+        event.preventDefault();
+        goTo(0);
+      }
+      if (event.key === "End") {
+        event.preventDefault();
+        goTo(slides.length - 1);
+      }
+    });
+
+    window.addEventListener("click", (event) => {
+      if (event.target.closest("#nav-dots")) {
+        return;
+      }
+      if (event.clientX > window.innerWidth * 0.66) {
+        goTo(current + 1);
+      } else if (event.clientX < window.innerWidth * 0.34) {
+        goTo(current - 1);
+      }
+    });
+
+    window.addEventListener("touchstart", (event) => {
+      const touch = event.touches[0];
+      touchStartX = touch.clientX;
+      touchStartY = touch.clientY;
+    }, { passive: true });
+
+    window.addEventListener("touchend", (event) => {
+      const touch = event.changedTouches[0];
+      const deltaX = touch.clientX - touchStartX;
+      const deltaY = touch.clientY - touchStartY;
+      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > window.innerWidth * 0.08) {
+        goTo(deltaX < 0 ? current + 1 : current - 1);
+      }
+    }, { passive: true });
+
+    window.addEventListener("hashchange", readHash);
+    readHash();
+  </script>
+</body>
+</html>
