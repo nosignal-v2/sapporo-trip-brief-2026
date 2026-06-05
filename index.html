@@ -5,21 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>삿포로 3박 4일 일정 브리핑</title>
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap");
     @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css");
 
     :root {
-      --c-bg: #111111;
-      --c-bg-alt: #1a1a18;
-      --c-bg-orange: #e85d26;
-      --c-fg: #f0ece5;
-      --c-fg-2: #888880;
-      --c-fg-3: #505048;
-      --c-fg-light: #111111;
-      --c-fg-light-2: #2a1810;
-      --c-fg-light-3: rgba(17,17,17,0.55);
-      --c-accent: #e85d26;
-      --c-border: #282826;
+      --azit-perfection: #f2efe6;
+      --azit-concentration: #000000;
+      --azit-artisan: #f15d22;
+      --azit-perfection-rgb: 242 239 230;
+      --azit-concentration-rgb: 0 0 0;
+      --azit-artisan-rgb-from-hex: 241 93 34;
+      --c-bg: var(--azit-perfection);
+      --c-bg-alt: rgba(0,0,0,0.035);
+      --c-bg-orange: var(--azit-concentration);
+      --c-fg: var(--azit-concentration);
+      --c-fg-2: rgba(0,0,0,0.68);
+      --c-fg-3: rgba(0,0,0,0.38);
+      --c-fg-light: var(--azit-perfection);
+      --c-fg-light-2: rgba(242,239,230,0.7);
+      --c-fg-light-3: rgba(242,239,230,0.46);
+      --c-accent: var(--azit-artisan);
+      --c-border: rgba(0,0,0,0.18);
       --pad-y: 5.5vh;
       --pad-x: 5.5vw;
       --gap-lg: 3.5vh;
@@ -32,6 +38,10 @@
       --sz-lead: 20px;
       --sz-body: 15px;
       --sz-meta: 9px;
+      --font-ko: "Pretendard Variable", "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+      --font-brand-serif: "Cormorant Garamond", "Times New Roman", "Pretendard Variable", "Pretendard", serif;
+      --font-meta: "IBM Plex Mono", "Helvetica Neue", Arial, sans-serif;
+      --ease-editorial: cubic-bezier(0.77, 0, 0.175, 1);
     }
 
     * {
@@ -46,7 +56,7 @@
       overflow: hidden;
       background: var(--c-bg);
       color: var(--c-fg);
-      font-family: "Pretendard Variable", "Pretendard", "Barlow", "Noto Sans SC", system-ui, sans-serif;
+      font-family: var(--font-ko);
       letter-spacing: 0;
     }
 
@@ -58,7 +68,7 @@
       display: flex;
       width: max-content;
       height: 100vh;
-      transition: transform 0.78s cubic-bezier(0.77, 0, 0.175, 1);
+      transition: transform 0.78s var(--ease-editorial);
       will-change: transform;
     }
 
@@ -75,9 +85,35 @@
       color: var(--c-fg);
     }
 
+    .slide.dark {
+      background: var(--c-bg);
+      color: var(--c-fg);
+    }
+
     .slide.orange {
       background: var(--c-bg-orange);
       color: var(--c-fg-light);
+    }
+
+    .slide.slide--cover,
+    .slide.slide--chapter,
+    .slide.slide--end,
+    .slide.slide--statement {
+      background: var(--azit-concentration);
+      color: var(--azit-perfection);
+    }
+
+    .slide--statement .slide-chrome,
+    .slide--statement .slide-foot {
+      border-color: rgba(242,239,230,0.22);
+    }
+
+    .slide--statement .label,
+    .slide--statement .lead,
+    .slide--statement .body,
+    .slide--end .lead,
+    .slide--end .body {
+      color: var(--c-fg-light-2);
     }
 
     .slide--cover,
@@ -121,7 +157,7 @@
     .mini,
     .time,
     #slide-counter {
-      font-family: "IBM Plex Mono", monospace;
+      font-family: var(--font-meta);
       text-transform: uppercase;
       letter-spacing: 0;
       font-weight: 700;
@@ -157,7 +193,7 @@
     }
 
     .orange .rule {
-      background: var(--c-fg-light);
+      background: var(--c-accent);
     }
 
     .kicker {
@@ -167,7 +203,7 @@
     }
 
     .orange .kicker {
-      color: var(--c-fg-light-3);
+      color: var(--c-accent);
     }
 
     h1,
@@ -182,27 +218,27 @@
     .h1,
     .h2,
     .h3 {
-      font-family: "Barlow", "Pretendard Variable", "Pretendard", "Noto Sans SC", system-ui, sans-serif;
+      font-family: var(--font-ko);
       letter-spacing: 0;
       word-break: keep-all;
     }
 
     .display {
-      font-size: var(--sz-display);
-      line-height: 0.88;
-      font-weight: 900;
+      font-size: 136px;
+      line-height: 0.92;
+      font-weight: 800;
     }
 
     .h1 {
       font-size: var(--sz-h1);
-      line-height: 0.92;
-      font-weight: 900;
+      line-height: 0.94;
+      font-weight: 800;
     }
 
     .h2 {
       font-size: var(--sz-h2);
-      line-height: 1.05;
-      font-weight: 900;
+      line-height: 1.04;
+      font-weight: 800;
     }
 
     .h3 {
@@ -239,7 +275,7 @@
     }
 
     .orange .accent {
-      color: var(--c-fg-light);
+      color: var(--c-accent);
     }
 
     .cover-main {
@@ -259,7 +295,7 @@
       display: flex;
       justify-content: space-between;
       color: var(--c-fg-light-3);
-      font-family: "IBM Plex Mono", monospace;
+      font-family: var(--font-meta);
       font-size: 11px;
       letter-spacing: 0;
       text-transform: uppercase;
@@ -299,6 +335,7 @@
     .mini-card {
       border: 1px solid var(--c-border);
       background: var(--c-bg-alt);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.04);
     }
 
     .brief-card {
@@ -317,10 +354,10 @@
     }
 
     .brief-title {
-      font-family: "Barlow", "Pretendard Variable", "Pretendard", system-ui, sans-serif;
+      font-family: var(--font-ko);
       font-size: 28px;
       line-height: 1;
-      font-weight: 900;
+      font-weight: 800;
       letter-spacing: 0;
       word-break: keep-all;
     }
@@ -348,7 +385,7 @@
       left: 0;
       top: 0;
       color: var(--c-accent);
-      font-family: "IBM Plex Mono", monospace;
+      font-family: var(--font-meta);
       font-weight: 700;
     }
 
@@ -367,7 +404,7 @@
     .vt-time {
       padding-top: 1.6vh;
       color: var(--c-accent);
-      font-family: "IBM Plex Mono", monospace;
+      font-family: var(--font-meta);
       font-size: 12px;
       letter-spacing: 0;
       font-weight: 700;
@@ -412,10 +449,10 @@
     }
 
     .vt-title {
-      font-family: "Barlow", "Pretendard Variable", "Pretendard", system-ui, sans-serif;
-      font-size: 20px;
+      font-family: var(--font-ko);
+      font-size: 22px;
       line-height: 1.08;
-      font-weight: 900;
+      font-weight: 800;
       letter-spacing: 0;
       word-break: keep-all;
     }
@@ -442,10 +479,10 @@
     }
 
     .stat-value {
-      font-family: "Barlow", "Pretendard Variable", "Pretendard", system-ui, sans-serif;
+      font-family: var(--font-brand-serif);
       font-size: 70px;
       line-height: 0.9;
-      font-weight: 900;
+      font-weight: 700;
       letter-spacing: 0;
       color: var(--c-accent);
     }
@@ -487,10 +524,10 @@
     }
 
     .flow-title {
-      font-family: "Barlow", "Pretendard Variable", "Pretendard", system-ui, sans-serif;
-      font-size: 27px;
+      font-family: var(--font-ko);
+      font-size: 31px;
       line-height: 1.05;
-      font-weight: 900;
+      font-weight: 800;
       letter-spacing: 0;
       word-break: keep-all;
     }
@@ -518,19 +555,19 @@
     }
 
     .compare-panel.panel-orange {
-      background: var(--c-bg-orange);
-      border-color: var(--c-bg-orange);
-      color: var(--c-fg-light);
+      background: var(--c-accent);
+      border-color: var(--c-accent);
+      color: var(--azit-concentration);
     }
 
     .compare-panel.panel-orange .body,
     .compare-panel.panel-orange .bullet-list li {
-      color: var(--c-fg-light-2);
+      color: rgba(0,0,0,0.72);
     }
 
     .compare-panel.panel-orange .tag,
     .compare-panel.panel-orange .bullet-list li::before {
-      color: var(--c-fg-light);
+      color: var(--azit-concentration);
     }
 
     .tag {
@@ -557,7 +594,7 @@
 
     .bar-track {
       height: 2.2vh;
-      background: var(--c-bg-alt);
+      background: rgba(0,0,0,0.06);
       border: 1px solid var(--c-border);
       overflow: hidden;
     }
@@ -565,7 +602,7 @@
     .bar-fill {
       height: 100%;
       width: var(--w);
-      background: var(--c-fg-3);
+      background: rgba(0,0,0,0.44);
       transform-origin: left center;
     }
 
@@ -654,8 +691,9 @@
       width: 7px;
       height: 7px;
       padding: 0;
-      border: 1px solid var(--c-fg-3);
-      background: transparent;
+      border: 1px solid rgba(0,0,0,0.42);
+      background: rgba(242,239,230,0.12);
+      box-shadow: 0 0 0 1px rgba(242,239,230,0.24);
       cursor: pointer;
     }
 
@@ -765,14 +803,14 @@
     <section class="slide slide--cover orange">
       <div class="broadside-top-chrome">
         <span class="broadside-num">01</span>
-        <span class="corner-label">Sapporo itinerary brief</span>
+        <span class="corner-label">F&B EATERTAINMENT COMPANY</span>
       </div>
       <div class="cover-main">
         <h1 class="display" data-anim="fade-up" data-delay="1">삿포로<br>3박 4일</h1>
         <p class="lead" style="opacity: 0.65; max-width: 55%;" data-anim="fade-up" data-delay="3">9명이 함께 움직이는 2026년 7월 4일~7일 여행 일정 브리핑입니다.</p>
       </div>
       <div class="cover-meta">
-        <span>editorial itinerary</span>
+        <span>azitmaker editorial itinerary</span>
         <span>2026.07.04~07</span>
       </div>
     </section>
@@ -780,7 +818,7 @@
     <section class="slide slide--chapter orange">
       <div class="broadside-top-chrome">
         <span class="broadside-num">02 / chapter</span>
-        <span class="corner-label">answer first</span>
+        <span class="corner-label">concentration first</span>
       </div>
       <div class="chapter-body">
         <h2 class="h1" data-anim="fade-up" data-delay="1">무리하지<br>않는 쪽</h2>
@@ -803,7 +841,7 @@
       </div>
       <footer class="slide-foot">
         <span class="label muted">core route</span>
-        <span class="label muted">Sapporo itinerary brief</span>
+        <span class="label muted">F&B EATERTAINMENT COMPANY</span>
       </footer>
     </section>
 
@@ -862,7 +900,7 @@
 
     <section class="slide slide--vtimeline dark">
       <header class="slide-chrome">
-        <span class="label muted">Day 1</span>
+        <span class="label muted">DAY 01</span>
         <span class="label muted">05</span>
       </header>
       <div class="slide-body">
@@ -899,7 +937,7 @@
 
     <section class="slide slide--vtimeline dark">
       <header class="slide-chrome">
-        <span class="label muted">Day 2</span>
+        <span class="label muted">DAY 02</span>
         <span class="label muted">06</span>
       </header>
       <div class="slide-body">
@@ -936,7 +974,7 @@
 
     <section class="slide slide--stats dark">
       <header class="slide-chrome">
-        <span class="label muted">Day 2 facts</span>
+        <span class="label muted">DAY 02 FACTS</span>
         <span class="label muted">07</span>
       </header>
       <div class="slide-body">
@@ -968,7 +1006,7 @@
 
     <section class="slide slide--vtimeline dark">
       <header class="slide-chrome">
-        <span class="label muted">Day 3</span>
+        <span class="label muted">DAY 03</span>
         <span class="label muted">08</span>
       </header>
       <div class="slide-body">
@@ -1005,7 +1043,7 @@
 
     <section class="slide slide--compare dark">
       <header class="slide-chrome">
-        <span class="label muted">Day 3 decision</span>
+        <span class="label muted">DAY 03 DECISION</span>
         <span class="label muted">09</span>
       </header>
       <div class="slide-body">
@@ -1040,7 +1078,7 @@
 
     <section class="slide slide--vtimeline dark">
       <header class="slide-chrome">
-        <span class="label muted">Day 4</span>
+        <span class="label muted">DAY 04</span>
         <span class="label muted">10</span>
       </header>
       <div class="slide-body">
