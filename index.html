@@ -569,6 +569,27 @@
       word-break: keep-all;
     }
 
+    .team-members {
+      border-top: 1px solid var(--c-border);
+      padding-top: 1.2vh;
+      color: var(--c-fg);
+      font-size: 15px;
+      line-height: 1.45;
+      font-weight: 700;
+      word-break: keep-all;
+    }
+
+    .team-members span {
+      display: block;
+      margin-bottom: 0.45vh;
+      color: var(--c-accent);
+      font-family: var(--font-meta);
+      font-size: 10px;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
     .stat-note {
       color: var(--c-fg-3);
       font-size: 11px;
@@ -1103,6 +1124,43 @@
       .flow-step {
         min-height: auto;
       }
+
+      .stats-grid--teams {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1vw;
+      }
+
+      .stats-grid--teams .stat-card {
+        padding: 1.2vh 1.5vw;
+        gap: 0.8vh;
+      }
+
+      .stats-grid--teams .stat-value {
+        font-size: 42px;
+      }
+
+      .stats-grid--teams .stat-label {
+        font-size: 10.5px;
+        line-height: 1.35;
+      }
+
+      .team-members {
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .stats-grid--teams .team-members {
+        padding-top: 0.75vh;
+        font-size: 10.5px;
+      }
+
+      .stats-grid--teams .team-members span {
+        font-size: 8px;
+      }
+
+      .stats-grid--teams button.spot-link {
+        font-size: 8px;
+      }
     }
 
     @keyframes kFadeUp {
@@ -1390,22 +1448,25 @@
       <div class="slide-body">
         <p class="kicker" data-anim="fade-up" data-delay="0">7/6 monday</p>
         <h2 class="h2" data-anim="fade-up" data-delay="1">셋째 날은 세 갈래입니다</h2>
-        <div class="stats-grid" data-anim="fade-up" data-delay="2">
+        <div class="stats-grid stats-grid--teams" data-anim="fade-up" data-delay="2">
           <div class="stat-card">
             <div class="stat-value" data-anim="scale-in" data-delay="2">A</div>
-            <div class="stat-label">오타루. 오르골당, 운하, 사카이마치, 초밥과 해산물을 원하는 팀에 맞습니다.</div>
+            <div class="stat-label">오타루 외. 오르골당, 운하, 사카이마치, 초밥과 해산물을 원하는 팀에 맞습니다.</div>
+            <div class="team-members"><span>A team</span>선웅 · 진우</div>
             <div class="spot-links"><button class="spot-link" type="button" data-slide-target="23">spot 05</button></div>
             <div class="stat-note">medium fatigue / dinner join easy</div>
           </div>
           <div class="stat-card">
             <div class="stat-value" data-anim="scale-in" data-delay="3">B</div>
-            <div class="stat-label">노보리베츠, 도야호, 우스산, 지코츠호를 하루에 묶는 GetYourGuide 10시간 버스투어입니다.</div>
+            <div class="stat-label">화산투어. 노보리베츠, 도야호, 우스산, 지코츠호를 하루에 묶는 GetYourGuide 10시간 버스투어입니다.</div>
+            <div class="team-members"><span>B team</span>미영 · 신호 · 수형</div>
             <div class="spot-links"><button class="spot-link" type="button" data-slide-target="26">spot 08</button></div>
             <div class="stat-note">high fatigue / fixed tour schedule</div>
           </div>
           <div class="stat-card">
             <div class="stat-value" data-anim="scale-in" data-delay="4">C</div>
-            <div class="stat-label">삿포로 시내. 카페, 쇼핑, 맥주박물관, 모에레누마를 여유 있게 고릅니다.</div>
+            <div class="stat-label">삿포로 시내 외. 카페, 쇼핑, 맥주박물관, 모에레누마를 여유 있게 고릅니다.</div>
+            <div class="team-members"><span>C team</span>고운 · 홍수 · 현규 · 지민</div>
             <div class="spot-links"><button class="spot-link" type="button" data-slide-target="25">spot 07</button></div>
             <div class="stat-note">low fatigue / dinner join easiest</div>
           </div>
@@ -1647,41 +1708,41 @@
 
     <section class="slide slide--diagram dark">
       <header class="slide-chrome">
-        <span class="label muted">Vote</span>
+        <span class="label muted">DAY 03 TEAMS</span>
         <span class="label muted">15</span>
       </header>
       <div class="slide-body">
-        <p class="kicker" data-anim="fade-up" data-delay="0">what to decide</p>
-        <h2 class="h2" data-anim="fade-up" data-delay="1">투표는 셋째 날만 받습니다</h2>
+        <p class="kicker" data-anim="fade-up" data-delay="0">team schedule share</p>
+        <h2 class="h2" data-anim="fade-up" data-delay="1">3일차 팀 일정 공유</h2>
         <div class="flow" data-anim="fade-up" data-delay="2">
           <div class="flow-step">
             <div class="flow-num">01</div>
-            <div class="flow-title">A 오타루</div>
-            <div class="flow-desc">오르골당, 운하, 초밥, 해산물. 저녁 합류가 쉽습니다.</div>
+            <div class="flow-title">A팀 오타루 외</div>
+            <div class="flow-desc">선웅, 진우. 오르골당, 운하, 초밥, 해산물 쪽으로 움직이고 저녁 합류가 쉽습니다.</div>
             <div class="spot-links"><button class="spot-link" type="button" data-slide-target="23">spot 05</button></div>
           </div>
           <div class="flow-step">
             <div class="flow-num">02</div>
-            <div class="flow-title">B 투어</div>
-            <div class="flow-desc">노보리베츠, 도야호, 우스산, 지코츠호. 10시간 고정 투어라 저녁 합류 시간이 변수입니다.</div>
+            <div class="flow-title">B팀 화산투어</div>
+            <div class="flow-desc">미영, 신호, 수형. 노보리베츠, 도야호, 우스산, 지코츠호를 묶는 10시간 투어입니다.</div>
             <div class="spot-links"><button class="spot-link" type="button" data-slide-target="26">spot 08</button></div>
           </div>
           <div class="flow-step">
             <div class="flow-num">03</div>
-            <div class="flow-title">C 시내</div>
-            <div class="flow-desc">카페, 쇼핑, 박물관. 가장 여유롭고 징기스칸 합류가 쉽습니다.</div>
+            <div class="flow-title">C팀 삿포로 시내 외</div>
+            <div class="flow-desc">고운, 홍수, 현규, 지민. 카페, 쇼핑, 박물관 중심으로 가장 여유롭게 움직입니다.</div>
             <div class="spot-links"><button class="spot-link" type="button" data-slide-target="25">spot 07</button></div>
           </div>
           <div class="flow-step">
             <div class="flow-num">04</div>
             <div class="flow-title">저녁 참여</div>
-            <div class="flow-desc">징기스칸 9명 예약 여부를 같이 확인합니다. B 투어 팀은 20:00 옵션을 둡니다.</div>
+            <div class="flow-desc">저녁은 9명 합류를 기본으로 봅니다. B팀은 투어 종료 시간에 따라 20:00 합류 옵션을 둡니다.</div>
           </div>
         </div>
       </div>
       <footer class="slide-foot">
-        <span class="label muted">day 1 / day 2 / stay fixed</span>
-        <span class="label muted">day 3 choice form</span>
+        <span class="label muted">2 / 3 / 4 split</span>
+        <span class="label muted">regroup at dinner</span>
       </footer>
     </section>
 
