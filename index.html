@@ -584,6 +584,64 @@
       gap: 2vh;
     }
 
+    .stats-grid--teams {
+      gap: 1.2vw;
+    }
+
+    .stats-grid--teams .stat-card {
+      min-height: 48vh;
+      padding: 1.6vh 1.25vw;
+      grid-template-rows: auto auto auto auto auto auto;
+      gap: 0.85vh;
+    }
+
+    .stats-grid--teams .stat-value {
+      font-size: 54px;
+    }
+
+    .stats-grid--teams .stat-label {
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .stats-grid--teams .team-members {
+      padding-top: 0.8vh;
+      font-size: 14px;
+    }
+
+    .stats-grid--teams .option-carousel {
+      height: 15vh;
+    }
+
+    .stats-grid--teams .option-carousel .spot-image figcaption {
+      left: 0.7vw;
+      right: 0.7vw;
+      bottom: 0.65vh;
+      font-size: 10px;
+    }
+
+    .stats-grid--teams .option-carousel .spot-image figcaption span,
+    .stats-grid--teams .option-carousel .spot-image figcaption a {
+      padding: 0.32vh 0.42vw;
+    }
+
+    .stats-grid--teams .option-carousel .spot-carousel-button {
+      width: 24px;
+      height: 30px;
+      font-size: 14px;
+    }
+
+    .stats-grid--teams .option-carousel .spot-carousel-dots {
+      left: 0.7vw;
+      top: 0.65vh;
+      gap: 0.25vw;
+    }
+
+    .stats-grid--teams .option-carousel .spot-carousel-dot {
+      width: 6px;
+      height: 6px;
+    }
+
     .stat-value {
       font-family: var(--font-brand-serif);
       font-size: 70px;
@@ -1797,12 +1855,49 @@
       }
 
       .stats-grid--teams .stat-value {
-        font-size: 42px;
+        font-size: 32px;
       }
 
       .stats-grid--teams .stat-label {
-        font-size: 10.5px;
-        line-height: 1.35;
+        font-size: 9px;
+        line-height: 1.3;
+      }
+
+      .stats-grid--teams .option-carousel {
+        height: 10vh;
+      }
+
+      .stats-grid--teams .option-carousel .spot-image figcaption {
+        left: 0.9vw;
+        right: 0.9vw;
+        bottom: 0.5vh;
+        font-size: 7px;
+      }
+
+      .stats-grid--teams .option-carousel .spot-image figcaption span,
+      .stats-grid--teams .option-carousel .spot-image figcaption a {
+        padding: 0.2vh 0.55vw;
+      }
+
+      .stats-grid--teams .option-carousel .spot-image figcaption a {
+        display: none;
+      }
+
+      .stats-grid--teams .option-carousel .spot-carousel-button {
+        width: 18px;
+        height: 24px;
+        font-size: 11px;
+      }
+
+      .stats-grid--teams .option-carousel .spot-carousel-dots {
+        left: 0.9vw;
+        top: 0.45vh;
+        gap: 0.45vw;
+      }
+
+      .stats-grid--teams .option-carousel .spot-carousel-dot {
+        width: 5px;
+        height: 5px;
       }
 
       .team-members {
@@ -2105,6 +2200,7 @@
         <div class="stats-grid stats-grid--teams" data-anim="fade-up" data-delay="2">
           <div class="stat-card">
             <div class="stat-value" data-anim="scale-in" data-delay="2">A</div>
+            <div class="spot-carousel option-carousel" data-spot-carousel="optionA" aria-label="A팀 오타루 외 대표 이미지"></div>
             <div class="stat-label">오타루 외. 오르골당, 운하, 사카이마치, 초밥과 해산물을 원하는 팀에 맞습니다.</div>
             <div class="team-members"><span>A team</span>선웅 · 진우</div>
             <div class="spot-links"><button class="spot-link" type="button" data-slide-target="20">spot 05</button></div>
@@ -2112,6 +2208,7 @@
           </div>
           <div class="stat-card">
             <div class="stat-value" data-anim="scale-in" data-delay="3">B</div>
+            <div class="spot-carousel option-carousel" data-spot-carousel="optionB" aria-label="B팀 노보리베츠 도야호 화산투어 대표 이미지"></div>
             <div class="stat-label">화산투어. 노보리베츠, 도야호, 우스산, 지코츠호를 하루에 묶는 GetYourGuide 10시간 버스투어입니다.</div>
             <div class="team-members"><span>B team</span>미영 · 신호 · 수형</div>
             <div class="spot-links"><button class="spot-link" type="button" data-slide-target="23">spot 08</button></div>
@@ -2119,6 +2216,7 @@
           </div>
           <div class="stat-card">
             <div class="stat-value" data-anim="scale-in" data-delay="4">C</div>
+            <div class="spot-carousel option-carousel" data-spot-carousel="optionC" aria-label="C팀 삿포로 시내 외 대표 이미지"></div>
             <div class="stat-label">삿포로 시내 외. 카페, 쇼핑, 맥주박물관, 모에레누마를 여유 있게 고릅니다.</div>
             <div class="team-members"><span>C team</span>고운 · 홍수 · 현규 · 지민</div>
             <div class="spot-links"><button class="spot-link" type="button" data-slide-target="22">spot 07</button></div>
@@ -2825,6 +2923,27 @@
       otaru: [
         { file: "Hokkaido Otaru-unga.jpg", label: "오타루 운하" },
         { file: "Otaru Music Box Museum interior.jpg", label: "오타루 오르골당" }
+      ],
+      optionA: [
+        { file: "Otaru Canal HDR1.jpg", label: "오타루 운하" },
+        { file: "Orgel Doh Otaru 小樽音樂盒堂 - panoramio.jpg", label: "오타루 오르골당" },
+        { file: "Sakaimachi street Otaru Hokkaido09n.jpg", label: "사카이마치 거리" },
+        { file: "2009, sushi in Otaru -81219.jpeg", label: "오타루 스시" },
+        { file: "Otaru Glass Market 20230729 01.jpg", label: "오타루 유리 공예" }
+      ],
+      optionB: [
+        { file: "Jigokudani (Hell Valley), Noboribetsu Onsen, Hokkaido, April 2023 27.jpg", label: "노보리베츠 지옥계곡" },
+        { file: "130922 Lake Toya Toyako Hokkaido Japan03s3.jpg", label: "도야호" },
+        { file: "130922 Usuzan Ropeway Sobetsu Hokkaido Japan01s3.jpg", label: "우스산 로프웨이" },
+        { file: "Mount Showa-shinzan 01.jpg", label: "쇼와신잔" },
+        { file: "CAPE CHIKYU.JPG", label: "치큐곶" }
+      ],
+      optionC: [
+        { file: "Odori park at Sapporo TV tower.jpg", label: "오도리공원" },
+        { file: "Tanukikoji - the 150th Anniversary.jpg", label: "다누키코지" },
+        { file: "Sapporo beer museum-20091012-RM-211854.jpg", label: "삿포로 맥주박물관" },
+        { file: "Moerenuma Park - panoramio.jpg", label: "모에레누마공원" },
+        { file: "Susukino Chikagai.JPG", label: "스스키노 권역" }
       ],
       shakotan: [
         { file: "130823 Cape Kamui Shakotan Hokkaido Japan01s3.jpg", label: "가무이곶 산책로" },
