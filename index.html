@@ -1895,6 +1895,302 @@
       font-size: 10px;
     }
 
+    #trip-tool {
+      position: fixed;
+      left: 2vw;
+      bottom: 2vh;
+      z-index: 30;
+      color: var(--c-fg);
+      font-family: var(--font-ko);
+    }
+
+    .trip-tool-toggle,
+    .trip-tool-close,
+    .tool-chip,
+    .tool-action,
+    .tool-result,
+    .tool-member-link {
+      appearance: none;
+      border-radius: 0;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .trip-tool-toggle {
+      border: 1px solid var(--c-border);
+      background: var(--c-bg);
+      color: var(--c-fg);
+      padding: 1vh 1.1vw;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7vw;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.16);
+    }
+
+    .trip-tool-toggle .mark {
+      color: var(--c-accent);
+      font-family: var(--font-meta);
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .trip-tool-panel {
+      position: absolute;
+      left: 0;
+      bottom: calc(100% + 1vh);
+      width: min(460px, 92vw);
+      max-height: min(78vh, 680px);
+      border: 1px solid var(--c-border);
+      background: var(--c-bg);
+      box-shadow: 0 22px 52px rgba(0,0,0,0.22);
+      display: none;
+      grid-template-rows: auto 1fr;
+      overflow: hidden;
+    }
+
+    #trip-tool.is-open .trip-tool-panel {
+      display: grid;
+    }
+
+    .tool-head {
+      min-height: 5.4vh;
+      padding: 1.2vh 1.2vw;
+      border-bottom: 1px solid var(--c-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1vw;
+    }
+
+    .tool-title {
+      display: grid;
+      gap: 0.25vh;
+    }
+
+    .tool-title strong {
+      font-size: 17px;
+      line-height: 1.1;
+    }
+
+    .tool-title span {
+      color: var(--c-accent);
+      font-family: var(--font-meta);
+      font-size: 9px;
+      line-height: 1;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .trip-tool-close {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--c-border);
+      background: transparent;
+      color: var(--c-fg);
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .tool-body {
+      overflow: auto;
+      display: grid;
+      gap: 1.3vh;
+      padding: 1.3vh 1.2vw 1.5vh;
+    }
+
+    .tool-section {
+      display: grid;
+      gap: 0.8vh;
+      padding-bottom: 1.2vh;
+      border-bottom: 1px solid var(--c-border);
+    }
+
+    .tool-section:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .tool-label {
+      color: var(--c-accent);
+      font-family: var(--font-meta);
+      font-size: 9px;
+      line-height: 1;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .tool-search {
+      width: 100%;
+      border: 1px solid var(--c-border);
+      background: rgba(0,0,0,0.04);
+      color: var(--c-fg);
+      padding: 1vh 0.9vw;
+      font: inherit;
+      font-size: 14px;
+      line-height: 1.2;
+      outline: none;
+    }
+
+    .tool-search:focus {
+      border-color: var(--c-accent);
+      background: rgba(241,93,34,0.07);
+    }
+
+    .tool-results {
+      display: grid;
+      gap: 0.55vh;
+    }
+
+    .tool-result {
+      border: 1px solid var(--c-border);
+      background: transparent;
+      color: var(--c-fg);
+      padding: 0.85vh 0.9vw;
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 0.75vw;
+      text-align: left;
+    }
+
+    .tool-result .num,
+    .tool-member-link .num {
+      color: var(--c-accent);
+      font-family: var(--font-meta);
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .tool-result .text {
+      font-size: 13px;
+      line-height: 1.35;
+      word-break: keep-all;
+    }
+
+    .tool-chip-grid,
+    .tool-actions {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.6vw;
+    }
+
+    .tool-chip,
+    .tool-action,
+    .tool-member-link {
+      border: 1px solid var(--c-border);
+      background: rgba(0,0,0,0.035);
+      color: var(--c-fg);
+      padding: 0.8vh 0.75vw;
+      font-size: 12px;
+      line-height: 1.25;
+      font-weight: 750;
+      text-align: left;
+      word-break: keep-all;
+      transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+    }
+
+    .tool-chip:hover,
+    .tool-chip:focus-visible,
+    .tool-action:hover,
+    .tool-action:focus-visible,
+    .tool-result:hover,
+    .tool-result:focus-visible,
+    .tool-member-link:hover,
+    .tool-member-link:focus-visible,
+    .trip-tool-toggle:hover,
+    .trip-tool-toggle:focus-visible,
+    .trip-tool-close:hover,
+    .trip-tool-close:focus-visible {
+      border-color: var(--c-accent);
+      background: rgba(241,93,34,0.08);
+      outline: none;
+    }
+
+    .tool-chip:hover,
+    .tool-action:hover,
+    .tool-result:hover,
+    .tool-member-link:hover {
+      transform: translateY(-1px);
+    }
+
+    .tool-select {
+      width: 100%;
+      border: 1px solid var(--c-border);
+      background: rgba(0,0,0,0.035);
+      color: var(--c-fg);
+      padding: 0.9vh 0.8vw;
+      font: inherit;
+      font-size: 14px;
+    }
+
+    .tool-member-card {
+      border: 1px solid var(--c-border);
+      background: rgba(0,0,0,0.025);
+      padding: 1vh 0.9vw;
+      display: grid;
+      gap: 0.8vh;
+    }
+
+    .tool-member-name {
+      font-size: 18px;
+      line-height: 1.1;
+      font-weight: 900;
+    }
+
+    .tool-member-meta,
+    .tool-check-progress,
+    .tool-status {
+      color: var(--c-fg-2);
+      font-size: 12px;
+      line-height: 1.45;
+      word-break: keep-all;
+    }
+
+    .tool-member-links {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.55vw;
+    }
+
+    .tool-checklist {
+      display: grid;
+      gap: 0.55vh;
+    }
+
+    .tool-check {
+      border: 1px solid var(--c-border);
+      background: rgba(0,0,0,0.025);
+      min-height: 4.6vh;
+      padding: 0.75vh 0.8vw;
+      display: grid;
+      grid-template-columns: 18px 1fr auto;
+      gap: 0.7vw;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .tool-check input {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--c-accent);
+    }
+
+    .tool-check span {
+      color: var(--c-fg);
+      font-size: 13px;
+      line-height: 1.35;
+      word-break: keep-all;
+    }
+
+    .tool-check .jump {
+      color: var(--c-accent);
+      font-family: var(--font-meta);
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
     @media (max-width: 760px) {
       :root {
         --sz-display: 96px;
@@ -2377,6 +2673,62 @@
 
       .stats-grid--teams button.spot-link {
         font-size: 8px;
+      }
+
+      #trip-tool {
+        left: 4vw;
+        right: 4vw;
+        bottom: 1.6vh;
+      }
+
+      .trip-tool-toggle {
+        padding: 0.85vh 2.8vw;
+      }
+
+      .trip-tool-panel {
+        width: 92vw;
+        max-height: 82vh;
+      }
+
+      .tool-head {
+        padding: 1vh 3vw;
+      }
+
+      .tool-body {
+        padding: 1.2vh 3vw 1.4vh;
+      }
+
+      .tool-search,
+      .tool-select {
+        padding: 0.9vh 2.4vw;
+      }
+
+      .tool-chip-grid,
+      .tool-actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.7vh 2vw;
+      }
+
+      .tool-member-links {
+        grid-template-columns: 1fr;
+        gap: 0.55vh;
+      }
+
+      .tool-chip,
+      .tool-action,
+      .tool-member-link,
+      .tool-result {
+        padding: 0.85vh 2.2vw;
+      }
+
+      .tool-check {
+        grid-template-columns: 18px 1fr;
+        gap: 0.8vh 2vw;
+        padding: 0.75vh 2.2vw;
+      }
+
+      .tool-check .jump {
+        grid-column: 2;
       }
     }
 
@@ -3352,6 +3704,59 @@
     </section>
   </main>
 
+  <aside id="trip-tool" aria-label="여행 일정 도구">
+    <button class="trip-tool-toggle" type="button" aria-expanded="false" aria-controls="trip-tool-panel">
+      <span class="mark">tool</span>
+      <span>Trip Utility</span>
+    </button>
+    <div class="trip-tool-panel" id="trip-tool-panel" role="dialog" aria-modal="false" aria-label="Trip Utility">
+      <div class="tool-head">
+        <div class="tool-title">
+          <span>deployed itinerary</span>
+          <strong>여행 도구</strong>
+        </div>
+        <button class="trip-tool-close" type="button" aria-label="여행 도구 닫기">×</button>
+      </div>
+      <div class="tool-body">
+        <section class="tool-section" aria-label="슬라이드 검색">
+          <div class="tool-label">Search</div>
+          <input class="tool-search" type="search" placeholder="숙소, 러닝, 오타루, 예약..." autocomplete="off">
+          <div class="tool-results" aria-live="polite"></div>
+        </section>
+        <section class="tool-section" aria-label="빠른 이동">
+          <div class="tool-label">Quick jump</div>
+          <div class="tool-chip-grid">
+            <button class="tool-chip" type="button" data-tool-slide="3">숙소</button>
+            <button class="tool-chip" type="button" data-tool-slide="6">3일차 선택</button>
+            <button class="tool-chip" type="button" data-tool-slide="11">러닝</button>
+            <button class="tool-chip" type="button" data-tool-slide="12">귀국 동선</button>
+            <button class="tool-chip" type="button" data-tool-slide="13">확인할 것</button>
+            <button class="tool-chip" type="button" data-tool-slide="14">부록 목차</button>
+          </div>
+        </section>
+        <section class="tool-section" aria-label="멤버별 일정">
+          <div class="tool-label">My plan</div>
+          <select class="tool-select" aria-label="멤버 선택"></select>
+          <div class="tool-member-card"></div>
+        </section>
+        <section class="tool-section" aria-label="준비 체크리스트">
+          <div class="tool-label">Checklist</div>
+          <div class="tool-check-progress"></div>
+          <div class="tool-checklist"></div>
+        </section>
+        <section class="tool-section" aria-label="공유와 지도">
+          <div class="tool-label">Actions</div>
+          <div class="tool-actions">
+            <button class="tool-action" type="button" data-tool-action="copy-link">현재 링크 복사</button>
+            <button class="tool-action" type="button" data-tool-action="open-map">숙소 지도</button>
+            <button class="tool-action" type="button" data-tool-action="running">러닝 코스</button>
+          </div>
+          <div class="tool-status" aria-live="polite"></div>
+        </section>
+      </div>
+    </div>
+  </aside>
+
   <nav id="nav-dots" aria-label="슬라이드 바로가기"></nav>
   <div id="slide-counter" aria-live="polite"></div>
 
@@ -3566,9 +3971,9 @@
       return Math.max(0, Math.min(value, slides.length - 1));
     }
 
-    function goTo(index, updateHash = true) {
-      current = clamp(index);
-      window.scrollTo(0, 0);
+	    function goTo(index, updateHash = true) {
+	      current = clamp(index);
+	      window.scrollTo(0, 0);
       document.documentElement.scrollLeft = 0;
       document.body.scrollLeft = 0;
       deck.style.transform = `translateX(${-current * 100}vw)`;
@@ -3583,19 +3988,315 @@
       counter.textContent = `${String(current + 1).padStart(2, "0")} / ${String(slides.length).padStart(2, "0")}`;
       if (updateHash) {
         history.replaceState(null, "", `#${current + 1}`);
+	      }
+	    }
+
+    const tripTool = document.getElementById("trip-tool");
+    const toolToggle = tripTool?.querySelector(".trip-tool-toggle");
+    const toolClose = tripTool?.querySelector(".trip-tool-close");
+    const toolSearch = tripTool?.querySelector(".tool-search");
+    const toolResults = tripTool?.querySelector(".tool-results");
+    const toolSelect = tripTool?.querySelector(".tool-select");
+    const toolMemberCard = tripTool?.querySelector(".tool-member-card");
+    const toolChecklist = tripTool?.querySelector(".tool-checklist");
+    const toolCheckProgress = tripTool?.querySelector(".tool-check-progress");
+    const toolStatus = tripTool?.querySelector(".tool-status");
+
+    const tripStorage = {
+      get(key, fallback) {
+        try {
+          const value = localStorage.getItem(key);
+          return value ? JSON.parse(value) : fallback;
+        } catch {
+          return fallback;
+        }
+      },
+      set(key, value) {
+        try {
+          localStorage.setItem(key, JSON.stringify(value));
+        } catch {
+          // Private browsing or locked storage should not break the itinerary.
+        }
+      }
+    };
+
+    const slideSearchIndex = slides.map((slide, index) => {
+      const label = slide.querySelector(".slide-chrome .label")?.textContent.trim() || "";
+      const title = slide.querySelector(".display, .h1, .h2")?.textContent.trim().replace(/\s+/g, " ") || `${index + 1}번 슬라이드`;
+      const text = slide.textContent.trim().replace(/\s+/g, " ");
+      return { index, label, title, text: `${label} ${title} ${text}`.toLowerCase() };
+    });
+
+    const quickSearchSlides = [2, 3, 6, 11, 13, 14];
+    const memberProfiles = {
+      "미영": { role: "팀장", room: "여4 / Egnorts 102", team: "B팀 화산투어", teamSlide: 8, note: "노보리베츠·도야호 투어를 기준으로 저녁 합류 시간을 넉넉하게 봅니다." },
+      "신호": { role: "멤버", room: "남2 / 신호·진우", team: "B팀 화산투어", teamSlide: 8, note: "투어 종료가 늦을 수 있어 징기스칸 합류는 20:00도 열어둡니다." },
+      "수형": { role: "멤버", room: "여4 / Egnorts 102", team: "B팀 화산투어", teamSlide: 8, note: "전일 투어라 아침 출발 전 간단한 간식과 물을 먼저 챙깁니다." },
+      "지민": { role: "멤버", room: "여4 / Egnorts 102", team: "C팀 삿포로 시내 외", teamSlide: 9, note: "시내 회복 코스라 카페·쇼핑·맥주박물관 후보를 가볍게 봅니다." },
+      "현규": { role: "멤버", room: "남2 / 홍수·현규", team: "C팀 삿포로 시내 외", teamSlide: 9, note: "시내 팀은 저녁 합류가 가장 안정적입니다." },
+      "홍수": { role: "멤버", room: "남2 / 홍수·현규", team: "C팀 삿포로 시내 외", teamSlide: 9, note: "오도리·스스키노·카페 중심으로 피로도를 낮춥니다." },
+      "고운": { role: "멤버", room: "여4 / Egnorts 102", team: "C팀 삿포로 시내 외", teamSlide: 9, note: "비가 와도 유지하기 쉬운 시내 코스로 둡니다." },
+      "선웅": { role: "멤버", room: "남1 단독 / Egnorts 101", team: "A팀 오타루 외", teamSlide: 7, note: "단독 침실 배정입니다. 오타루 팀은 오전 출발을 빠르게 잡습니다." },
+      "진우": { role: "멤버", room: "남2 / 신호·진우", team: "A팀 오타루 외", teamSlide: 7, note: "오타루 운하와 오르골당 중심으로 짧게 움직입니다." }
+    };
+
+    const checklistItems = [
+      { id: "passport", text: "여권, 입국 서류, 항공권 확인", slide: 1 },
+      { id: "stay", text: "Egnorts 101/102 주소와 객실 배정 확인", slide: 3 },
+      { id: "biei", text: "Day 2 비에이·후라노 버스 예약 확인", slide: 5 },
+      { id: "day3", text: "3일차 A/B/C 팀 선택 확인", slide: 6 },
+      { id: "dinner", text: "징기스칸 9명 예약 후보 확인", slide: 10 },
+      { id: "running", text: "러닝 참여자는 복장과 샤워 순서 확인", slide: 11 },
+      { id: "airport", text: "공항버스 09:13 / 09:18 탑승 시간 확인", slide: 12 },
+      { id: "weather", text: "모이와야마·샤코탄 날씨 대체 판단", slide: 17 }
+    ];
+
+    function setToolStatus(message) {
+      if (!toolStatus) return;
+      toolStatus.textContent = message;
+      if (message) {
+        window.clearTimeout(setToolStatus.timer);
+        setToolStatus.timer = window.setTimeout(() => {
+          toolStatus.textContent = "";
+        }, 2800);
       }
     }
 
-    function readHash() {
-      const hashNumber = Number(window.location.hash.replace("#", ""));
+    function openTool(focusSearch = false) {
+      if (!tripTool) return;
+      tripTool.classList.add("is-open");
+      toolToggle?.setAttribute("aria-expanded", "true");
+      if (focusSearch) toolSearch?.focus();
+    }
+
+    function closeTool() {
+      if (!tripTool) return;
+      tripTool.classList.remove("is-open");
+      toolToggle?.setAttribute("aria-expanded", "false");
+    }
+
+    function goToToolSlide(slideNumber) {
+      if (!Number.isFinite(slideNumber)) return;
+      goTo(slideNumber - 1);
+      setToolStatus(`${String(slideNumber).padStart(2, "0")}번으로 이동했습니다.`);
+    }
+
+    function createToolResult(item) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "tool-result";
+      button.dataset.toolSlide = String(item.index + 1);
+      const num = document.createElement("span");
+      num.className = "num";
+      num.textContent = String(item.index + 1).padStart(2, "0");
+      const text = document.createElement("span");
+      text.className = "text";
+      text.textContent = item.label ? `${item.label} · ${item.title}` : item.title;
+      button.append(num, text);
+      return button;
+    }
+
+    function renderToolSearch() {
+      if (!toolResults || !toolSearch) return;
+      const query = toolSearch.value.trim().toLowerCase();
+      const matches = query
+        ? slideSearchIndex.filter((item) => item.text.includes(query)).slice(0, 7)
+        : quickSearchSlides.map((slideNumber) => slideSearchIndex[slideNumber - 1]).filter(Boolean);
+      toolResults.replaceChildren(...matches.map(createToolResult));
+    }
+
+    function renderMemberOptions() {
+      if (!toolSelect) return;
+      const savedMember = tripStorage.get("sapporoTripMember", "미영");
+      toolSelect.replaceChildren(...Object.keys(memberProfiles).map((name) => {
+        const option = document.createElement("option");
+        option.value = name;
+        option.textContent = name;
+        return option;
+      }));
+      toolSelect.value = memberProfiles[savedMember] ? savedMember : "미영";
+    }
+
+    function createMemberLink(label, slideNumber) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "tool-member-link";
+      button.dataset.toolSlide = String(slideNumber);
+      const num = document.createElement("span");
+      num.className = "num";
+      num.textContent = String(slideNumber).padStart(2, "0");
+      const text = document.createElement("span");
+      text.textContent = label;
+      button.append(num, text);
+      return button;
+    }
+
+    function renderMemberCard() {
+      if (!toolSelect || !toolMemberCard) return;
+      const name = toolSelect.value;
+      const profile = memberProfiles[name];
+      if (!profile) return;
+      tripStorage.set("sapporoTripMember", name);
+      const title = document.createElement("div");
+      title.className = "tool-member-name";
+      title.textContent = `${name} · ${profile.role}`;
+      const meta = document.createElement("div");
+      meta.className = "tool-member-meta";
+      meta.textContent = `${profile.room} / ${profile.team}. ${profile.note}`;
+      const links = document.createElement("div");
+      links.className = "tool-member-links";
+      links.append(
+        createMemberLink("숙소", 3),
+        createMemberLink("팀 일정", profile.teamSlide),
+        createMemberLink("러닝", 11)
+      );
+      toolMemberCard.replaceChildren(title, meta, links);
+    }
+
+    function getChecklistState() {
+      return tripStorage.get("sapporoTripChecklist", {});
+    }
+
+    function updateChecklistProgress(state = getChecklistState()) {
+      if (!toolCheckProgress) return;
+      const doneCount = checklistItems.filter((item) => state[item.id]).length;
+      toolCheckProgress.textContent = `${doneCount}/${checklistItems.length} 완료`;
+    }
+
+    function renderChecklist() {
+      if (!toolChecklist) return;
+      const state = getChecklistState();
+      const rows = checklistItems.map((item) => {
+        const row = document.createElement("div");
+        row.className = "tool-check";
+        row.dataset.toolSlide = String(item.slide);
+        const input = document.createElement("input");
+        input.type = "checkbox";
+        input.checked = Boolean(state[item.id]);
+        input.setAttribute("aria-label", item.text);
+        input.addEventListener("change", () => {
+          const next = getChecklistState();
+          next[item.id] = input.checked;
+          tripStorage.set("sapporoTripChecklist", next);
+          updateChecklistProgress(next);
+        });
+        const text = document.createElement("span");
+        text.textContent = item.text;
+        const jump = document.createElement("span");
+        jump.className = "jump";
+        jump.textContent = `slide ${String(item.slide).padStart(2, "0")}`;
+        row.append(input, text, jump);
+        return row;
+      });
+      toolChecklist.replaceChildren(...rows);
+      updateChecklistProgress(state);
+    }
+
+    async function copyCurrentLink() {
+      const url = window.location.href;
+      try {
+        await navigator.clipboard.writeText(url);
+        setToolStatus("현재 슬라이드 링크를 복사했습니다.");
+      } catch {
+        const fallback = document.createElement("input");
+        fallback.value = url;
+        document.body.appendChild(fallback);
+        fallback.select();
+        document.execCommand("copy");
+        fallback.remove();
+        setToolStatus("현재 슬라이드 링크를 복사했습니다.");
+      }
+    }
+
+    function initTripTool() {
+      if (!tripTool) return;
+      renderToolSearch();
+      renderMemberOptions();
+      renderMemberCard();
+      renderChecklist();
+
+      toolToggle?.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const willOpen = !tripTool.classList.contains("is-open");
+        if (willOpen) openTool();
+        else closeTool();
+      });
+
+      toolClose?.addEventListener("click", (event) => {
+        event.preventDefault();
+        closeTool();
+      });
+
+      toolSearch?.addEventListener("input", renderToolSearch);
+      toolSelect?.addEventListener("change", renderMemberCard);
+
+      tripTool.addEventListener("click", (event) => {
+        const checkRow = event.target.closest(".tool-check[data-tool-slide]");
+        if (checkRow) {
+          const input = checkRow.querySelector("input");
+          if (event.target.tagName === "INPUT") {
+            event.stopPropagation();
+            return;
+          }
+          event.preventDefault();
+          event.stopPropagation();
+          if (event.target.closest(".jump")) {
+            goToToolSlide(Number(checkRow.dataset.toolSlide));
+            return;
+          }
+          if (input) {
+            input.checked = !input.checked;
+            input.dispatchEvent(new Event("change", { bubbles: true }));
+          }
+          return;
+        }
+
+        const slideButton = event.target.closest("[data-tool-slide]");
+        if (slideButton) {
+          event.preventDefault();
+          event.stopPropagation();
+          goToToolSlide(Number(slideButton.dataset.toolSlide));
+          return;
+        }
+
+        const action = event.target.closest("[data-tool-action]")?.dataset.toolAction;
+        if (!action) return;
+        event.preventDefault();
+        event.stopPropagation();
+        if (action === "copy-link") copyCurrentLink();
+        if (action === "open-map") window.open("https://www.google.com/maps/search/?api=1&query=%E6%9C%AD%E5%B9%8C%E5%B8%82%E8%B1%8A%E5%B9%B3%E5%8C%BA%E8%B1%8A%E5%B9%B32%E6%9D%A15%E4%B8%81%E7%9B%AE1-16%20Egnorts%20101", "_blank", "noopener");
+        if (action === "running") goToToolSlide(11);
+      });
+    }
+
+    initTripTool();
+
+	    function readHash() {
+	      const hashNumber = Number(window.location.hash.replace("#", ""));
       goTo(Number.isFinite(hashNumber) && hashNumber > 0 ? hashNumber - 1 : 0, false);
     }
 
-    window.addEventListener("keydown", (event) => {
-      if (["ArrowRight", "ArrowDown", "PageDown", " "].includes(event.key)) {
+	    window.addEventListener("keydown", (event) => {
+      const activeTag = document.activeElement?.tagName;
+      const isTyping = ["INPUT", "TEXTAREA", "SELECT"].includes(activeTag);
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
         event.preventDefault();
-        goTo(current + 1);
+        openTool(true);
+        return;
       }
+      if (event.key === "Escape" && tripTool?.classList.contains("is-open")) {
+        event.preventDefault();
+        closeTool();
+        return;
+      }
+      if (isTyping) {
+        return;
+      }
+	      if (["ArrowRight", "ArrowDown", "PageDown", " "].includes(event.key)) {
+	        event.preventDefault();
+	        goTo(current + 1);
+	      }
       if (["ArrowLeft", "ArrowUp", "PageUp"].includes(event.key)) {
         event.preventDefault();
         goTo(current - 1);
@@ -3610,10 +4311,10 @@
       }
     });
 
-    window.addEventListener("click", (event) => {
-      if (event.target.closest("#nav-dots, [data-slide-target], [data-run-route], .spot-carousel")) {
-        return;
-      }
+	    window.addEventListener("click", (event) => {
+	      if (event.target.closest("#trip-tool, #nav-dots, [data-slide-target], [data-run-route], .spot-carousel")) {
+	        return;
+	      }
       if (event.clientX > window.innerWidth * 0.66) {
         goTo(current + 1);
       } else if (event.clientX < window.innerWidth * 0.34) {
