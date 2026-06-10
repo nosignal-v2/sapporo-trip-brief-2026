@@ -123,6 +123,25 @@
       color: var(--azit-perfection);
     }
 
+    .slide:not(.slide--cover)::after {
+      content: "";
+      position: absolute;
+      right: var(--pad-x);
+      bottom: calc(var(--pad-y) + 4.2vh);
+      width: min(92px, 7vw);
+      height: min(25px, 2vw);
+      background: url("assets/azitmaker-symbol-black.png") center / contain no-repeat;
+      opacity: 0.09;
+      pointer-events: none;
+    }
+
+    .slide.slide--chapter::after,
+    .slide.slide--end::after,
+    .slide.slide--statement::after {
+      filter: invert(1);
+      opacity: 0.16;
+    }
+
     .slide--statement .slide-chrome,
     .slide--statement .slide-foot {
       border-color: rgba(242,239,230,0.22);
@@ -915,6 +934,13 @@
 	      font-weight: 800;
 	      letter-spacing: 0;
 	      text-transform: uppercase;
+	    }
+
+	    .cover-ci-logo {
+	      display: block;
+	      width: min(330px, 26vw);
+	      height: auto;
+	      object-fit: contain;
 	    }
 
 	    .run-branch-label.is-short rect {
@@ -1927,6 +1953,10 @@
         font-size: 14px;
       }
 
+      .cover-ci-logo {
+        width: min(260px, 42vw);
+      }
+
       .running-map-card {
         min-height: auto;
         padding: 1.15vh 2vw;
@@ -2395,7 +2425,7 @@
     <section class="slide slide--cover orange">
       <div class="broadside-top-chrome">
         <span class="broadside-num">01</span>
-        <span class="corner-label">F&amp;B EATERTAINMENT COMPANY</span>
+        <img class="cover-ci-logo" src="assets/azitmaker-logo-white.png" alt="AZITMAKER">
       </div>
       <div class="cover-main">
         <h1 class="display" data-anim="fade-up" data-delay="1">삿포로<br>3박 4일</h1>
