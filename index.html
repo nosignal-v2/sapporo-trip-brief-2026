@@ -261,6 +261,13 @@
       word-break: keep-all;
     }
 
+    .display[tabindex="-1"]:focus,
+    .h1[tabindex="-1"]:focus,
+    .h2[tabindex="-1"]:focus,
+    .h3[tabindex="-1"]:focus {
+      outline: none;
+    }
+
     .display {
       font-size: var(--sz-display);
       line-height: 0.92;
