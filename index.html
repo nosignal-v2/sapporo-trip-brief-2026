@@ -26,6 +26,12 @@
       --c-fg-light-3: rgba(242,239,230,0.46);
       --c-accent: var(--azit-artisan);
       --c-border: rgba(0,0,0,0.18);
+      --run-short: rgb(42 110 203);
+      --run-short-rgb: 42 110 203;
+      --run-base: var(--c-accent);
+      --run-base-rgb: var(--azit-artisan-rgb-from-hex);
+      --run-long: rgb(45 143 83);
+      --run-long-rgb: 45 143 83;
       --pad-y: 5.5vh;
       --pad-x: 5.5vw;
       --gap-lg: 3.5vh;
@@ -782,22 +788,33 @@
       stroke-width: 15;
     }
 
-    .run-route {
-      stroke: var(--c-accent);
-      stroke-width: 10;
-      opacity: 0.26;
-      transition: opacity 0.22s ease, stroke-width 0.22s ease;
-    }
+	    .run-route {
+	      stroke: var(--c-fg-3);
+	      stroke-width: 9;
+	      opacity: 0.16;
+	      transition: opacity 0.22s ease, stroke-width 0.22s ease, stroke 0.22s ease;
+	    }
 
-    .running-map.is-short .run-route-short,
-    .running-map.is-base .run-route-short,
-    .running-map.is-base .run-route-base,
-    .running-map.is-long .run-route-short,
-    .running-map.is-long .run-route-base,
-    .running-map.is-long .run-route-long {
-      opacity: 1;
-      stroke-width: 13;
-    }
+	    .running-map.is-short .run-route-short {
+	      stroke: var(--run-short);
+	      opacity: 1;
+	      stroke-width: 14;
+	    }
+
+	    .running-map.is-base .run-route-short,
+	    .running-map.is-base .run-route-base {
+	      stroke: var(--run-base);
+	      opacity: 1;
+	      stroke-width: 14;
+	    }
+
+	    .running-map.is-long .run-route-short,
+	    .running-map.is-long .run-route-base,
+	    .running-map.is-long .run-route-long {
+	      stroke: var(--run-long);
+	      opacity: 1;
+	      stroke-width: 14;
+	    }
 
     .slide.is-active .run-route {
       stroke-dasharray: 720;
@@ -805,20 +822,40 @@
       animation: kRunTrace 1.05s cubic-bezier(0.2, 0.8, 0.2, 1) both;
     }
 
-    .run-marker {
-      fill: var(--c-bg);
-      stroke: var(--c-accent);
-      stroke-width: 8;
-    }
+	    .run-marker {
+	      fill: var(--c-bg);
+	      stroke: var(--c-fg);
+	      stroke-width: 8;
+	      transition: stroke 0.22s ease, fill 0.22s ease, stroke-width 0.22s ease;
+	    }
 
-    .run-marker.is-start {
-      stroke: var(--c-fg);
-    }
+	    .run-marker.is-start {
+	      stroke: var(--c-fg);
+	    }
 
-    .run-marker.is-park {
-      fill: var(--c-accent);
-      stroke: var(--c-bg);
-    }
+	    .run-marker.is-short {
+	      stroke: var(--run-short);
+	    }
+
+	    .run-marker.is-base {
+	      stroke: var(--run-base);
+	    }
+
+	    .run-marker.is-long {
+	      stroke: var(--run-long);
+	    }
+
+	    .run-marker.is-park {
+	      fill: var(--run-long);
+	      stroke: var(--c-bg);
+	    }
+
+	    .running-map.is-short .run-marker.is-short,
+	    .running-map.is-base .run-marker.is-base,
+	    .running-map.is-long .run-marker.is-long {
+	      fill: var(--c-bg);
+	      stroke-width: 11;
+	    }
 
     .run-km-label {
       opacity: 0.46;
@@ -831,13 +868,66 @@
       stroke-width: 1;
     }
 
-    .run-km-label text {
-      fill: var(--c-fg);
-      font-family: var(--font-ko);
+	    .run-km-label text {
+	      fill: var(--c-fg);
+	      font-family: var(--font-ko);
       font-size: 19px;
       font-weight: 800;
-      letter-spacing: 0;
-    }
+	      letter-spacing: 0;
+	    }
+
+	    .run-km-short rect {
+	      stroke: var(--run-short);
+	    }
+
+	    .run-km-short text {
+	      fill: var(--run-short);
+	    }
+
+	    .run-km-base rect {
+	      stroke: var(--run-base);
+	    }
+
+	    .run-km-base text {
+	      fill: var(--run-base);
+	    }
+
+	    .run-km-long rect {
+	      stroke: var(--run-long);
+	    }
+
+	    .run-km-long text {
+	      fill: var(--run-long);
+	    }
+
+	    .run-km-label rect {
+	      fill: var(--c-bg);
+	    }
+
+	    .run-branch-label rect {
+	      fill: var(--c-fg);
+	    }
+
+	    .run-branch-label text {
+	      fill: var(--c-bg);
+	      font-family: var(--font-meta);
+	      font-size: 12px;
+	      font-weight: 800;
+	      letter-spacing: 0;
+	      text-transform: uppercase;
+	    }
+
+	    .run-branch-label.is-short rect {
+	      fill: var(--run-short);
+	    }
+
+	    .run-branch-label.is-base rect {
+	      fill: var(--run-base);
+	    }
+
+	    .run-branch-label.is-long rect {
+	      fill: var(--run-long);
+	    }
 
     .running-map.is-short .run-km-short,
     .running-map.is-base .run-km-base,
@@ -860,13 +950,25 @@
       gap: 0.45vw;
     }
 
-    .run-legend span::before {
-      content: "";
-      width: 9px;
-      height: 9px;
-      background: var(--c-accent);
-      display: inline-block;
-    }
+	    .run-legend span::before {
+	      content: "";
+	      width: 9px;
+	      height: 9px;
+	      background: var(--legend-color, var(--c-accent));
+	      display: inline-block;
+	    }
+
+	    .run-legend .is-short {
+	      --legend-color: var(--run-short);
+	    }
+
+	    .run-legend .is-base {
+	      --legend-color: var(--run-base);
+	    }
+
+	    .run-legend .is-long {
+	      --legend-color: var(--run-long);
+	    }
 
     .running-options {
       display: grid;
@@ -874,8 +976,10 @@
       align-content: stretch;
     }
 
-    .run-option {
-      appearance: none;
+	    .run-option {
+	      --route-color: var(--run-base);
+	      --route-rgb: var(--run-base-rgb);
+	      appearance: none;
       border-radius: 0;
       border: 1px solid var(--c-border);
       background: var(--c-bg-alt);
@@ -888,24 +992,34 @@
       text-align: left;
       cursor: pointer;
       transition: border-color 0.22s ease, background 0.22s ease, transform 0.22s ease;
-    }
+	    }
 
-    .run-option:hover,
-    .run-option:focus-visible,
-    .run-option.is-selected {
-      border-color: var(--c-accent);
-      background: rgba(241,93,34,0.08);
-      outline: none;
-    }
+	    .run-option[data-run-route="short"] {
+	      --route-color: var(--run-short);
+	      --route-rgb: var(--run-short-rgb);
+	    }
+
+	    .run-option[data-run-route="long"] {
+	      --route-color: var(--run-long);
+	      --route-rgb: var(--run-long-rgb);
+	    }
+
+	    .run-option:hover,
+	    .run-option:focus-visible,
+	    .run-option.is-selected {
+	      border-color: var(--route-color);
+	      background: rgb(var(--route-rgb) / 0.08);
+	      outline: none;
+	    }
 
     .run-option:hover,
     .run-option:focus-visible {
       transform: translateY(-2px);
     }
 
-    .run-option-km {
-      color: var(--c-accent);
-      font-family: var(--font-brand-serif);
+	    .run-option-km {
+	      color: var(--route-color);
+	      font-family: var(--font-brand-serif);
       font-size: 44px;
       line-height: 0.9;
       font-weight: 700;
@@ -1056,58 +1170,248 @@
       gap: 1.4vw;
     }
 
-    .stay-layout {
-      display: grid;
-      grid-template-columns: 1.12fr 0.88fr;
-      gap: 1.4vw;
-      max-width: 84vw;
-      align-items: stretch;
-    }
+	    .stay-layout {
+	      display: grid;
+	      grid-template-columns: 0.86fr 1.14fr;
+	      gap: 1.4vw;
+	      max-width: 84vw;
+	      align-items: stretch;
+	    }
 
-    .stay-cards {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.4vw;
-    }
+	    .stay-basecamp,
+	    .stay-zoning {
+	      border: 1px solid var(--c-border);
+	      background: var(--c-bg-alt);
+	      box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+	      padding: 2.2vh 1.6vw;
+	      display: grid;
+	      gap: 1.15vh;
+	      min-height: 0;
+	    }
 
-    .mini-card {
-      min-height: 20vh;
-      padding: 2.2vh 1.6vw;
-      display: grid;
-      gap: 1.2vh;
-      align-content: start;
-    }
+	    .stay-basecamp {
+	      grid-template-rows: auto auto 1fr auto;
+	    }
 
-    .mini-card .body {
-      font-size: 14px;
-      line-height: 1.55;
-    }
+	    .stay-basecamp-head,
+	    .stay-zoning-head {
+	      display: grid;
+	      gap: 0.7vh;
+	    }
 
-    .room-highlight {
-      border-left: 3px solid var(--c-accent);
-      padding-left: 0.9vw;
-      color: var(--c-fg);
-      font-size: 15px;
-      line-height: 1.45;
-      font-weight: 800;
-      word-break: keep-all;
-    }
+	    .stay-address {
+	      color: var(--c-fg);
+	      font-size: 15px;
+	      line-height: 1.55;
+	      font-weight: 750;
+	      word-break: keep-all;
+	    }
 
-    .stay-map-card {
-      border: 1px solid var(--c-border);
-      background: var(--c-bg-alt);
-      min-height: 100%;
-      padding: 2.2vh 1.6vw;
-      display: grid;
-      grid-template-rows: auto auto 1fr auto;
-      gap: 1.2vh;
-    }
+	    .stay-badges {
+	      display: flex;
+	      flex-wrap: wrap;
+	      gap: 0.55vw;
+	    }
 
-    .map-frame {
-      width: 100%;
-      min-height: 39vh;
-      border: 1px solid var(--c-border);
-      filter: grayscale(1) contrast(1.08);
+	    .stay-badge {
+	      border: 1px solid var(--c-border);
+	      padding: 0.55vh 0.65vw;
+	      color: var(--c-fg-2);
+	      font-family: var(--font-meta);
+	      font-size: 10px;
+	      line-height: 1;
+	      font-weight: 800;
+	      text-transform: uppercase;
+	      white-space: nowrap;
+	    }
+
+	    .stay-map-note {
+	      color: var(--c-fg-2);
+	      font-size: 14px;
+	      line-height: 1.55;
+	      word-break: keep-all;
+	    }
+
+	    .stay-zoning {
+	      grid-template-rows: auto 1fr auto;
+	    }
+
+	    .stay-zoning-head {
+	      grid-template-columns: 0.78fr 1fr;
+	      align-items: end;
+	    }
+
+	    .stay-zoning-head .body {
+	      text-align: right;
+	      font-size: 14px;
+	      line-height: 1.5;
+	    }
+
+	    .floorplan-grid {
+	      display: grid;
+	      grid-template-columns: repeat(2, minmax(0, 1fr));
+	      gap: 1vw;
+	      height: 31vh;
+	      min-height: 0;
+	    }
+
+	    .unit-plan {
+	      border: 1px solid var(--c-border);
+	      background: rgba(0,0,0,0.025);
+	      padding: 1.1vh 0.8vw;
+	      display: grid;
+	      grid-template-rows: auto 1fr;
+	      gap: 0.85vh;
+	      min-width: 0;
+	    }
+
+	    .unit-label {
+	      display: flex;
+	      align-items: center;
+	      justify-content: space-between;
+	      gap: 1vw;
+	      color: var(--c-fg);
+	      font-family: var(--font-meta);
+	      font-size: 11px;
+	      font-weight: 800;
+	      text-transform: uppercase;
+	    }
+
+	    .unit-label span {
+	      color: var(--c-accent);
+	    }
+
+	    .unit-zones {
+	      display: grid;
+	      grid-template-columns: repeat(4, minmax(0, 1fr));
+	      grid-template-rows: repeat(5, minmax(0, 1fr));
+	      gap: 0.62vh;
+	      min-height: 0;
+	    }
+
+	    .zone-room {
+	      border: 1px solid var(--c-border);
+	      background: var(--c-bg);
+	      padding: 0.85vh 0.7vw;
+	      display: grid;
+	      align-content: start;
+	      gap: 0.45vh;
+	      min-width: 0;
+	      overflow: hidden;
+	    }
+
+	    .zone-label {
+	      color: var(--c-accent);
+	      font-family: var(--font-meta);
+	      font-size: 9px;
+	      line-height: 1;
+	      font-weight: 800;
+	      text-transform: uppercase;
+	    }
+
+	    .zone-title {
+	      color: var(--c-fg);
+	      font-size: 20px;
+	      line-height: 1;
+	      font-weight: 900;
+	      word-break: keep-all;
+	    }
+
+	    .zone-people {
+	      color: var(--c-fg-2);
+	      font-size: 13px;
+	      line-height: 1.35;
+	      font-weight: 650;
+	      word-break: keep-all;
+	    }
+
+	    .zone-room.is-common {
+	      border-style: dashed;
+	      background: rgba(0,0,0,0.015);
+	    }
+
+	    .zone-room.is-men {
+	      background: rgba(0,0,0,0.04);
+	    }
+
+	    .zone-room.is-women {
+	      background: rgba(0,0,0,0.075);
+	    }
+
+	    .zone-room.is-bath {
+	      background: rgba(0,0,0,0.03);
+	    }
+
+	    .zone-room.is-single {
+	      border-color: var(--c-accent);
+	      background: rgba(241,93,34,0.12);
+	    }
+
+	    .zone-room.is-single .zone-title {
+	      color: var(--c-accent);
+	    }
+
+	    .zone-room[data-zone="101-living"] {
+	      grid-column: 1 / 5;
+	      grid-row: 1 / 2;
+	    }
+
+	    .zone-room[data-zone="101-men"] {
+	      grid-column: 1 / 3;
+	      grid-row: 2 / 6;
+	    }
+
+	    .zone-room[data-zone="101-bath"] {
+	      grid-column: 3 / 5;
+	      grid-row: 2 / 3;
+	    }
+
+	    .zone-room[data-zone="101-single"] {
+	      grid-column: 3 / 5;
+	      grid-row: 3 / 6;
+	    }
+
+	    .zone-room[data-zone="102-men"] {
+	      grid-column: 1 / 3;
+	      grid-row: 1 / 3;
+	    }
+
+	    .zone-room[data-zone="102-bath"] {
+	      grid-column: 3 / 5;
+	      grid-row: 1 / 2;
+	    }
+
+	    .zone-room[data-zone="102-living"] {
+	      grid-column: 3 / 5;
+	      grid-row: 2 / 4;
+	    }
+
+	    .zone-room[data-zone="102-women"] {
+	      grid-column: 1 / 5;
+	      grid-row: 4 / 6;
+	    }
+
+	    .room-legend {
+	      display: grid;
+	      grid-template-columns: repeat(4, minmax(0, 1fr));
+	      gap: 0.7vw;
+	    }
+
+	    .room-legend span {
+	      border-top: 1px solid var(--c-border);
+	      padding-top: 0.8vh;
+	      color: var(--c-fg-2);
+	      font-size: 13px;
+	      line-height: 1.35;
+	      word-break: keep-all;
+	    }
+
+	    .map-frame {
+	      width: 100%;
+	      height: 30vh;
+	      min-height: 30vh;
+	      border: 1px solid var(--c-border);
+	      filter: grayscale(1) contrast(1.08);
       background: rgba(0,0,0,0.06);
     }
 
@@ -1627,54 +1931,97 @@
         line-height: 1.35;
       }
 
-      .stay-layout {
-        grid-template-columns: 1fr;
-        max-width: 88vw;
-        gap: 1vh;
-      }
+	      .stay-layout {
+	        grid-template-columns: 1fr;
+	        max-width: 88vw;
+	        gap: 1vh;
+	      }
 
-      .stay-cards {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1vh;
-      }
+	      .stay-basecamp,
+	      .stay-zoning {
+	        padding: 1.15vh 2vw;
+	        gap: 0.6vh;
+	      }
 
-      .stay-cards .mini-card {
-        padding: 1.15vh 2vw;
-        gap: 0.55vh;
-      }
+	      .stay-basecamp .h3,
+	      .stay-zoning .h3 {
+	        font-size: 19px;
+	      }
 
-      .stay-cards .h3 {
-        font-size: 19px;
-      }
+	      .stay-address,
+	      .stay-map-note,
+	      .stay-zoning-head .body {
+	        font-size: 11.5px;
+	        line-height: 1.35;
+	      }
 
-      .stay-cards .mini-card .body {
-        font-size: 10.5px;
-        line-height: 1.35;
-      }
+	      .stay-zoning-head {
+	        grid-template-columns: 1fr;
+	      }
 
-      .room-highlight {
-        padding-left: 1.6vw;
-        font-size: 11px;
-        line-height: 1.3;
-      }
+	      .stay-zoning-head .body {
+	        text-align: left;
+	      }
 
-      .stay-map-card {
-        padding: 1.15vh 2vw;
-        gap: 0.6vh;
-      }
+	      .stay-badges {
+	        gap: 0.8vw;
+	      }
 
-      .stay-map-card .h3 {
-        font-size: 19px;
-      }
+	      .stay-badge {
+	        padding: 0.45vh 1vw;
+	        font-size: 8px;
+	      }
 
-      .stay-map-card .body {
-        font-size: 10.5px;
-        line-height: 1.35;
-      }
+	      .floorplan-grid {
+	        gap: 0.8vw;
+	        height: 25vh;
+	      }
 
-      .map-frame {
-        min-height: 18vh;
-      }
+	      .unit-plan {
+	        padding: 0.8vh 1.2vw;
+	        gap: 0.55vh;
+	      }
+
+	      .unit-label {
+	        font-size: 8px;
+	      }
+
+	      .unit-zones {
+	        gap: 0.35vh;
+	      }
+
+	      .zone-room {
+	        padding: 0.55vh 1vw;
+	        gap: 0.25vh;
+	      }
+
+	      .zone-label {
+	        font-size: 7px;
+	      }
+
+	      .zone-title {
+	        font-size: 13px;
+	      }
+
+	      .zone-people {
+	        font-size: 9.5px;
+	        line-height: 1.25;
+	      }
+
+	      .room-legend {
+	        grid-template-columns: repeat(2, minmax(0, 1fr));
+	        gap: 0.5vh 1vw;
+	      }
+
+	      .room-legend span {
+	        padding-top: 0.45vh;
+	        font-size: 10px;
+	      }
+
+	      .map-frame {
+	        height: 18vh;
+	        min-height: 18vh;
+	      }
 
       .appendix-index {
         grid-template-columns: repeat(3, 1fr);
@@ -2057,49 +2404,92 @@
         <span class="label muted">03</span>
       </header>
       <div class="slide-body">
-        <p class="kicker" data-anim="fade-up" data-delay="0">three nights fixed</p>
-        <h2 class="h2" data-anim="fade-up" data-delay="1">숙소는 Egnorts 101/102</h2>
-        <div class="stay-layout" data-anim="fade-up" data-delay="2">
-          <div class="stay-cards">
-            <div class="mini-card">
-              <p class="mini">address</p>
-              <h3 class="h3">도요히라구</h3>
-              <p class="body">札幌市豊平区豊平2条5丁目1-16 Egnorts 101. 7/4 토부터 7/7 화까지 3박입니다.</p>
-            </div>
-            <div class="mini-card">
-              <p class="mini">room 01</p>
-              <h3 class="h3">남1</h3>
-              <p class="room-highlight">코골이가 심한 선웅을 위한 단독 침실</p>
-              <p class="body">선웅 단독 사용. 아침 출발과 러닝 준비 동선이 가장 단순한 방입니다.</p>
-            </div>
-            <div class="mini-card">
-              <p class="mini">room 02</p>
-              <h3 class="h3">남2</h3>
-              <p class="body">홍수, 현규 2인실. Day 3 오타루 또는 시내 선택 시 합류가 쉽습니다.</p>
-            </div>
-            <div class="mini-card">
-              <p class="mini">room 03</p>
-              <h3 class="h3">남2</h3>
-              <p class="body">신호, 진우 2인실. 자유일정 분기 후에도 같은 숙소로 돌아옵니다.</p>
-            </div>
-            <div class="mini-card">
-              <p class="mini">room 04</p>
-              <h3 class="h3">여4</h3>
-              <p class="body">미영, 고운, 수형, 지민 4인실. 체크인 때 짐 정리와 욕실 순서를 먼저 맞춥니다.</p>
-            </div>
-            <div class="mini-card">
-              <p class="mini">move</p>
-              <h3 class="h3">권역</h3>
-              <p class="body">가쿠엔마에·기쿠스이 권역을 활용합니다. 셋째 날 짐 이동은 없습니다.</p>
-            </div>
-          </div>
-          <div class="stay-map-card">
-            <p class="mini">interactive map</p>
-            <h3 class="h3">숙소 위치</h3>
-            <iframe class="map-frame" title="Egnorts 101 숙소 근처 지도" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=%E6%9C%AD%E5%B9%8C%E5%B8%82%E8%B1%8A%E5%B9%B3%E5%8C%BA%E8%B1%8A%E5%B9%B32%E6%9D%A15%E4%B8%81%E7%9B%AE1-16%20Egnorts%20101&output=embed"></iframe>
-            <p class="body">도요히라구 고정 숙소입니다. 가쿠엔마에·기쿠스이 권역 이동 판단에 사용합니다.</p>
-          </div>
-        </div>
+	        <p class="kicker" data-anim="fade-up" data-delay="0">three nights fixed</p>
+	        <h2 class="h2" data-anim="fade-up" data-delay="1">숙소는 Egnorts 101/102</h2>
+	        <div class="stay-layout" data-anim="fade-up" data-delay="2">
+	          <div class="stay-basecamp">
+	            <div class="stay-basecamp-head">
+	              <p class="mini">basecamp / interactive map</p>
+	              <h3 class="h3">도요히라구 고정 숙소</h3>
+	              <p class="stay-address">札幌市豊平区豊平2条5丁目1-16 Egnorts 101/102</p>
+	            </div>
+	            <div class="stay-badges" aria-label="숙소 핵심 정보">
+	              <span class="stay-badge">7/4-7/7</span>
+	              <span class="stay-badge">3 nights</span>
+	              <span class="stay-badge">no luggage move</span>
+	              <span class="stay-badge">gakuenmae / kikusui</span>
+	            </div>
+	            <iframe class="map-frame" title="Egnorts 101 숙소 근처 지도" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=%E6%9C%AD%E5%B9%8C%E5%B8%82%E8%B1%8A%E5%B9%B3%E5%8C%BA%E8%B1%8A%E5%B9%B32%E6%9D%A15%E4%B8%81%E7%9B%AE1-16%20Egnorts%20101&output=embed"></iframe>
+	            <p class="stay-map-note">도요히라강 러닝, 스스키노 저녁, Day 3 팀 분리 후 복귀 판단의 기준점입니다. 셋째 날 짐 이동은 없습니다.</p>
+	          </div>
+	          <div class="stay-zoning">
+	            <div class="stay-zoning-head">
+	              <div>
+	                <p class="mini">room zoning</p>
+	                <h3 class="h3">침실 배정 인포그래픽</h3>
+	              </div>
+	              <p class="body">101/102를 두 생활권으로 보고, 욕실과 아침 준비 동선을 나눠 잡습니다.</p>
+	            </div>
+	            <div class="floorplan-grid" aria-label="Egnorts 101/102 침실 배정">
+	              <div class="unit-plan">
+	                <div class="unit-label"><strong>Egnorts 101</strong><span>men / shared</span></div>
+	                <div class="unit-zones">
+	                  <div class="zone-room is-common" data-zone="101-living">
+	                    <span class="zone-label">common</span>
+	                    <span class="zone-title">거실·주방</span>
+	                    <span class="zone-people">저녁 합류, 짐 정리</span>
+	                  </div>
+	                  <div class="zone-room is-men" data-zone="101-men">
+	                    <span class="zone-label">room 02</span>
+	                    <span class="zone-title">남2</span>
+	                    <span class="zone-people">홍수 · 현규</span>
+	                  </div>
+	                  <div class="zone-room is-bath" data-zone="101-bath">
+	                    <span class="zone-label">bath</span>
+	                    <span class="zone-title">남 공용</span>
+	                    <span class="zone-people">욕실·화장실</span>
+	                  </div>
+	                  <div class="zone-room is-single" data-zone="101-single">
+	                    <span class="zone-label">room 01 highlight</span>
+	                    <span class="zone-title">남1 단독</span>
+	                    <span class="zone-people">코골이가 심한 선웅을 위한 단독 침실</span>
+	                  </div>
+	                </div>
+	              </div>
+	              <div class="unit-plan">
+	                <div class="unit-label"><strong>Egnorts 102</strong><span>mixed / women bath</span></div>
+	                <div class="unit-zones">
+	                  <div class="zone-room is-men" data-zone="102-men">
+	                    <span class="zone-label">room 03</span>
+	                    <span class="zone-title">남2</span>
+	                    <span class="zone-people">신호 · 진우</span>
+	                  </div>
+	                  <div class="zone-room is-bath" data-zone="102-bath">
+	                    <span class="zone-label">bath</span>
+	                    <span class="zone-title">여 전용</span>
+	                    <span class="zone-people">욕실·화장실</span>
+	                  </div>
+	                  <div class="zone-room is-common" data-zone="102-living">
+	                    <span class="zone-label">common</span>
+	                    <span class="zone-title">거실·주방</span>
+	                    <span class="zone-people">아침 준비</span>
+	                  </div>
+	                  <div class="zone-room is-women" data-zone="102-women">
+	                    <span class="zone-label">room 04</span>
+	                    <span class="zone-title">여4</span>
+	                    <span class="zone-people">미영 · 고운 · 수형 · 지민</span>
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	            <div class="room-legend" aria-label="숙소 운영 메모">
+	              <span>선웅은 독립 방으로 수면 리스크를 분리합니다.</span>
+	              <span>여성 4명은 102 하단 방과 전용 욕실을 우선 사용합니다.</span>
+	              <span>남성 4명은 101/102에 2명씩 분산합니다.</span>
+	              <span>아침 샤워 순서는 101 남성, 102 여성 기준으로 나눕니다.</span>
+	            </div>
+	          </div>
+	        </div>
       </div>
       <footer class="slide-foot">
         <span class="label muted">toyohira-ku fixed base</span>
@@ -2402,7 +2792,7 @@
             <div class="running-map is-base" aria-label="도요히라강 러닝 코스 지도">
               <svg viewBox="0 0 720 470" role="img" aria-labelledby="run-map-title run-map-desc" preserveAspectRatio="xMidYMid slice">
                 <title id="run-map-title">도요히라강 러닝 코스</title>
-                <desc id="run-map-desc">숙소에서 도요히라강 둔치로 이동해 3km, 5km, 7~8km로 늘릴 수 있는 아침 러닝 코스입니다.</desc>
+	                <desc id="run-map-desc">숙소에서 도요히라강 둔치로 이동해 3km, 5km, 7km로 늘릴 수 있는 아침 러닝 코스입니다.</desc>
                 <rect class="run-map-paper" x="0" y="0" width="720" height="470"></rect>
                 <path class="run-map-river" d="M168 500 C214 410 232 338 278 282 C333 216 371 151 403 -34"></path>
                 <path class="run-map-park" d="M405 12 C495 24 566 66 609 136 C574 177 526 196 463 190 C409 184 383 145 385 93 C386 59 392 34 405 12 Z"></path>
@@ -2423,9 +2813,21 @@
                 <path class="run-route run-route-base" d="M334 240 C310 206 316 160 352 124"></path>
                 <path class="run-route run-route-long" d="M352 124 C392 84 438 62 484 55"></path>
                 <circle class="run-marker is-start" cx="608" cy="365" r="14"></circle>
-                <circle class="run-marker" cx="334" cy="240" r="12"></circle>
-                <circle class="run-marker" cx="352" cy="124" r="12"></circle>
-                <circle class="run-marker is-park" cx="484" cy="55" r="15"></circle>
+	                <circle class="run-marker is-short" cx="334" cy="240" r="12"></circle>
+	                <circle class="run-marker is-base" cx="352" cy="124" r="12"></circle>
+	                <circle class="run-marker is-long is-park" cx="484" cy="55" r="15"></circle>
+	                <g class="run-branch-label is-short" transform="translate(212 216)">
+	                  <rect x="0" y="0" width="96" height="24" rx="3"></rect>
+	                  <text x="12" y="17">BRANCH 3K</text>
+	                </g>
+	                <g class="run-branch-label is-base" transform="translate(250 92)">
+	                  <rect x="0" y="0" width="96" height="24" rx="3"></rect>
+	                  <text x="12" y="17">BRANCH 5K</text>
+	                </g>
+	                <g class="run-branch-label is-long" transform="translate(404 24)">
+	                  <rect x="0" y="0" width="108" height="24" rx="3"></rect>
+	                  <text x="12" y="17">EXTEND 7K</text>
+	                </g>
                 <g class="run-km-label run-km-short" transform="translate(292 264)">
                   <rect x="0" y="0" width="132" height="36" rx="4"></rect>
                   <text x="18" y="25">3 km 반환</text>
@@ -2436,7 +2838,7 @@
                 </g>
                 <g class="run-km-label run-km-long" transform="translate(496 62)">
                   <rect x="0" y="0" width="146" height="36" rx="4"></rect>
-                  <text x="18" y="25">7~8 km</text>
+	                  <text x="18" y="25">7 km 확장</text>
                 </g>
                 <g class="run-km-label" transform="translate(524 374)">
                   <rect x="0" y="0" width="88" height="32" rx="4"></rect>
@@ -2445,9 +2847,10 @@
               </svg>
             </div>
             <div class="run-legend">
-              <span>검은 점은 숙소 출발</span>
-              <span>오렌지 점은 나카지마공원 확장</span>
-            </div>
+	              <span class="is-short">3km 반환점</span>
+	              <span class="is-base">5km 기본 반환점</span>
+	              <span class="is-long">7km 나카지마공원 확장</span>
+	            </div>
           </div>
           <div class="running-options" aria-label="러닝 코스 선택">
             <button class="run-option" type="button" data-run-route="short">
@@ -2461,7 +2864,7 @@
               <span class="body">도요히라강을 따라 왕복합니다. 06:35 출발, 07:20 복귀 기준으로 가장 안정적입니다.</span>
             </button>
             <button class="run-option" type="button" data-run-route="long">
-              <span class="run-option-km">7~8km</span>
+	              <span class="run-option-km">7km</span>
               <span class="run-option-title">나카지마공원 확장</span>
               <span class="body">강변을 길게 이어 공원 방향으로 갑니다. 전날 밤 러닝복과 짐 정리가 필요합니다.</span>
             </button>
