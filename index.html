@@ -596,6 +596,245 @@
       line-height: 1.45;
     }
 
+    .running-layout {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 1.4vw;
+      max-width: 84vw;
+      align-items: stretch;
+    }
+
+    .running-map-card {
+      border: 1px solid var(--c-border);
+      background: var(--c-bg-alt);
+      padding: 2vh 1.5vw;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 1.2vh;
+      min-height: 0;
+    }
+
+    .running-map-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2vw;
+    }
+
+    .running-map-head .body {
+      max-width: 34vw;
+      text-align: right;
+    }
+
+    .running-map {
+      position: relative;
+      height: 37vh;
+      min-height: 0;
+      border: 1px solid var(--c-border);
+      overflow: hidden;
+      background: rgba(0,0,0,0.025);
+    }
+
+    .running-map svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+    }
+
+    .run-map-paper {
+      fill: var(--c-bg);
+    }
+
+    .run-map-river {
+      fill: none;
+      stroke: rgba(0,0,0,0.08);
+      stroke-width: 92;
+      stroke-linecap: round;
+    }
+
+    .run-map-park {
+      fill: rgba(0,0,0,0.045);
+      stroke: rgba(0,0,0,0.12);
+      stroke-width: 1;
+    }
+
+    .run-road {
+      fill: none;
+      stroke: rgba(0,0,0,0.12);
+      stroke-width: 3;
+      stroke-linecap: round;
+    }
+
+    .run-road.is-main {
+      stroke-width: 6;
+      stroke: rgba(0,0,0,0.18);
+    }
+
+    .run-map-label {
+      fill: rgba(0,0,0,0.42);
+      font-family: var(--font-meta);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .run-route-shadow,
+    .run-route {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .run-route-shadow {
+      stroke: rgba(0,0,0,0.2);
+      stroke-width: 15;
+    }
+
+    .run-route {
+      stroke: var(--c-accent);
+      stroke-width: 10;
+      opacity: 0.26;
+      transition: opacity 0.22s ease, stroke-width 0.22s ease;
+    }
+
+    .running-map.is-short .run-route-short,
+    .running-map.is-base .run-route-short,
+    .running-map.is-base .run-route-base,
+    .running-map.is-long .run-route-short,
+    .running-map.is-long .run-route-base,
+    .running-map.is-long .run-route-long {
+      opacity: 1;
+      stroke-width: 13;
+    }
+
+    .slide.is-active .run-route {
+      stroke-dasharray: 720;
+      stroke-dashoffset: 720;
+      animation: kRunTrace 1.05s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+
+    .run-marker {
+      fill: var(--c-bg);
+      stroke: var(--c-accent);
+      stroke-width: 8;
+    }
+
+    .run-marker.is-start {
+      stroke: var(--c-fg);
+    }
+
+    .run-marker.is-park {
+      fill: var(--c-accent);
+      stroke: var(--c-bg);
+    }
+
+    .run-km-label {
+      opacity: 0.46;
+      transition: opacity 0.22s ease;
+    }
+
+    .run-km-label rect {
+      fill: var(--c-bg);
+      stroke: var(--c-border);
+      stroke-width: 1;
+    }
+
+    .run-km-label text {
+      fill: var(--c-fg);
+      font-family: var(--font-ko);
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .running-map.is-short .run-km-short,
+    .running-map.is-base .run-km-base,
+    .running-map.is-long .run-km-long {
+      opacity: 1;
+    }
+
+    .run-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7vw;
+      color: var(--c-fg-2);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .run-legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45vw;
+    }
+
+    .run-legend span::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      background: var(--c-accent);
+      display: inline-block;
+    }
+
+    .running-options {
+      display: grid;
+      gap: 1vh;
+      align-content: stretch;
+    }
+
+    .run-option {
+      appearance: none;
+      border-radius: 0;
+      border: 1px solid var(--c-border);
+      background: var(--c-bg-alt);
+      color: inherit;
+      min-height: 13.8vh;
+      padding: 1.7vh 1.5vw;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 0.8vh;
+      text-align: left;
+      cursor: pointer;
+      transition: border-color 0.22s ease, background 0.22s ease, transform 0.22s ease;
+    }
+
+    .run-option:hover,
+    .run-option:focus-visible,
+    .run-option.is-selected {
+      border-color: var(--c-accent);
+      background: rgba(241,93,34,0.08);
+      outline: none;
+    }
+
+    .run-option:hover,
+    .run-option:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .run-option-km {
+      color: var(--c-accent);
+      font-family: var(--font-brand-serif);
+      font-size: 44px;
+      line-height: 0.9;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .run-option-title {
+      color: var(--c-fg);
+      font-size: 20px;
+      line-height: 1.12;
+      font-weight: 800;
+      word-break: keep-all;
+    }
+
+    .run-option .body {
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
     .flow {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -1067,6 +1306,75 @@
         grid-template-columns: 1fr;
       }
 
+      .running-layout {
+        grid-template-columns: 1fr;
+        max-width: 88vw;
+        gap: 1vh;
+      }
+
+      .running-map-card {
+        min-height: auto;
+        padding: 1.15vh 2vw;
+        gap: 0.7vh;
+      }
+
+      .running-map-head {
+        display: grid;
+        gap: 0.25vh;
+      }
+
+      .running-map-head .body {
+        max-width: none;
+        text-align: left;
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .running-map {
+        height: 25vh;
+      }
+
+      .run-map-label {
+        font-size: 11px;
+      }
+
+      .run-km-label text {
+        font-size: 16px;
+      }
+
+      .run-legend {
+        font-size: 11px;
+        gap: 1.4vw;
+      }
+
+      .running-options {
+        gap: 0.8vh;
+      }
+
+      .run-option {
+        min-height: 6.9vh;
+        padding: 1vh 2vw;
+        grid-template-columns: 56px 1fr;
+        grid-template-rows: auto auto;
+        column-gap: 2vw;
+        row-gap: 0.25vh;
+        align-items: start;
+      }
+
+      .run-option-km {
+        grid-row: 1 / span 2;
+        font-size: 30px;
+      }
+
+      .run-option-title {
+        font-size: 15px;
+      }
+
+      .run-option .body {
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
       .stay-layout {
         grid-template-columns: 1fr;
         max-width: 88vw;
@@ -1282,6 +1590,10 @@
     @keyframes kBarRise {
       from { transform: scaleX(0); }
       to { transform: scaleX(1); }
+    }
+
+    @keyframes kRunTrace {
+      to { stroke-dashoffset: 0; }
     }
 
     @keyframes kDonutSweep {
@@ -1741,21 +2053,78 @@
       <div class="slide-body">
         <p class="kicker" data-anim="fade-up" data-delay="0">day 4 morning</p>
         <h2 class="h2" data-anim="fade-up" data-delay="1">도요히라강 러닝은 선택입니다</h2>
-        <div class="stats-grid" data-anim="fade-up" data-delay="2">
-          <div class="stat-card">
-            <div class="stat-value" data-anim="scale-in" data-delay="2">3km</div>
-            <div class="stat-label">짧게 몸만 깨우는 코스입니다. 체크아웃 준비 시간을 가장 많이 남깁니다.</div>
-            <div class="stat-note">short course</div>
+        <div class="running-layout" data-anim="fade-up" data-delay="2">
+          <div class="running-map-card">
+            <div class="running-map-head">
+              <p class="mini">toyohira river route</p>
+              <p class="body">Egnorts에서 도요히라강 둔치로 붙고, 컨디션에 따라 나카지마공원 방향으로 늘립니다.</p>
+            </div>
+            <div class="running-map is-base" aria-label="도요히라강 러닝 코스 지도">
+              <svg viewBox="0 0 720 470" role="img" aria-labelledby="run-map-title run-map-desc" preserveAspectRatio="xMidYMid slice">
+                <title id="run-map-title">도요히라강 러닝 코스</title>
+                <desc id="run-map-desc">숙소에서 도요히라강 둔치로 이동해 3km, 5km, 7~8km로 늘릴 수 있는 아침 러닝 코스입니다.</desc>
+                <rect class="run-map-paper" x="0" y="0" width="720" height="470"></rect>
+                <path class="run-map-river" d="M168 500 C214 410 232 338 278 282 C333 216 371 151 403 -34"></path>
+                <path class="run-map-park" d="M405 12 C495 24 566 66 609 136 C574 177 526 196 463 190 C409 184 383 145 385 93 C386 59 392 34 405 12 Z"></path>
+                <path class="run-road is-main" d="M64 368 C146 344 224 318 314 274 C420 222 524 178 680 146"></path>
+                <path class="run-road is-main" d="M482 12 C467 87 447 151 412 210 C367 287 323 342 270 456"></path>
+                <path class="run-road" d="M52 112 C148 104 216 126 286 160 C347 190 409 194 490 170"></path>
+                <path class="run-road" d="M95 246 C184 224 240 222 316 244 C390 264 456 273 592 245"></path>
+                <path class="run-road" d="M540 30 C523 93 512 146 512 225 C512 305 530 381 566 470"></path>
+                <path class="run-road" d="M392 318 C450 340 508 360 616 368"></path>
+                <path class="run-road" d="M110 432 C188 388 244 364 326 338 C390 318 455 290 538 236"></path>
+                <text class="run-map-label" x="64" y="82">NAKAJIMA PARK</text>
+                <text class="run-map-label" x="424" y="242" transform="rotate(-69 424 242)">TOYOHIRA RIVER</text>
+                <text class="run-map-label" x="510" y="420">TOYOHIRA-KU</text>
+                <path class="run-route-shadow" d="M608 365 L520 322 L426 278 L334 240"></path>
+                <path class="run-route-shadow" d="M334 240 C310 206 316 160 352 124"></path>
+                <path class="run-route-shadow" d="M352 124 C392 84 438 62 484 55"></path>
+                <path class="run-route run-route-short" d="M608 365 L520 322 L426 278 L334 240"></path>
+                <path class="run-route run-route-base" d="M334 240 C310 206 316 160 352 124"></path>
+                <path class="run-route run-route-long" d="M352 124 C392 84 438 62 484 55"></path>
+                <circle class="run-marker is-start" cx="608" cy="365" r="14"></circle>
+                <circle class="run-marker" cx="334" cy="240" r="12"></circle>
+                <circle class="run-marker" cx="352" cy="124" r="12"></circle>
+                <circle class="run-marker is-park" cx="484" cy="55" r="15"></circle>
+                <g class="run-km-label run-km-short" transform="translate(292 264)">
+                  <rect x="0" y="0" width="132" height="36" rx="4"></rect>
+                  <text x="18" y="25">3 km 반환</text>
+                </g>
+                <g class="run-km-label run-km-base" transform="translate(356 135)">
+                  <rect x="0" y="0" width="132" height="36" rx="4"></rect>
+                  <text x="18" y="25">5 km 반환</text>
+                </g>
+                <g class="run-km-label run-km-long" transform="translate(496 62)">
+                  <rect x="0" y="0" width="146" height="36" rx="4"></rect>
+                  <text x="18" y="25">7~8 km</text>
+                </g>
+                <g class="run-km-label" transform="translate(524 374)">
+                  <rect x="0" y="0" width="88" height="32" rx="4"></rect>
+                  <text x="17" y="23">숙소</text>
+                </g>
+              </svg>
+            </div>
+            <div class="run-legend">
+              <span>검은 점은 숙소 출발</span>
+              <span>오렌지 점은 나카지마공원 확장</span>
+            </div>
           </div>
-          <div class="stat-card">
-            <div class="stat-value" data-anim="scale-in" data-delay="3">5km</div>
-            <div class="stat-label">기본 추천 코스입니다. 도요히라강을 왕복하고 샤워 시간을 확보합니다.</div>
-            <div class="stat-note">recommended course</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-value" data-anim="scale-in" data-delay="4">7~8km</div>
-            <div class="stat-label">도요히라강과 나카지마공원을 길게 잇는 코스입니다. 참여자는 전날 밤 준비가 필요합니다.</div>
-            <div class="stat-note">long course</div>
+          <div class="running-options" aria-label="러닝 코스 선택">
+            <button class="run-option" type="button" data-run-route="short">
+              <span class="run-option-km">3km</span>
+              <span class="run-option-title">짧게 몸만 깨우기</span>
+              <span class="body">숙소에서 도요히라강 둔치만 찍고 돌아옵니다. 체크아웃 준비 시간이 가장 넉넉합니다.</span>
+            </button>
+            <button class="run-option is-selected" type="button" data-run-route="base" aria-pressed="true">
+              <span class="run-option-km">5km</span>
+              <span class="run-option-title">기본 추천 코스</span>
+              <span class="body">도요히라강을 따라 왕복합니다. 06:35 출발, 07:20 복귀 기준으로 가장 안정적입니다.</span>
+            </button>
+            <button class="run-option" type="button" data-run-route="long">
+              <span class="run-option-km">7~8km</span>
+              <span class="run-option-title">나카지마공원 확장</span>
+              <span class="body">강변을 길게 이어 공원 방향으로 갑니다. 전날 밤 러닝복과 짐 정리가 필요합니다.</span>
+            </button>
           </div>
         </div>
       </div>
@@ -2175,6 +2544,34 @@
       });
     });
 
+    const runningMap = document.querySelector(".running-map");
+    const runningButtons = Array.from(document.querySelectorAll("[data-run-route]"));
+
+    function setRunningRoute(route) {
+      if (!runningMap) return;
+      runningMap.classList.remove("is-short", "is-base", "is-long");
+      runningMap.classList.add(`is-${route}`);
+      runningButtons.forEach((button) => {
+        const selected = button.dataset.runRoute === route;
+        button.classList.toggle("is-selected", selected);
+        button.setAttribute("aria-pressed", selected ? "true" : "false");
+      });
+    }
+
+    runningButtons.forEach((button) => {
+      ["click", "focus"].forEach((eventName) => {
+        button.addEventListener(eventName, (event) => {
+          if (eventName === "click") {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          setRunningRoute(button.dataset.runRoute);
+        });
+      });
+    });
+
+    setRunningRoute("base");
+
     function clamp(value) {
       return Math.max(0, Math.min(value, slides.length - 1));
     }
@@ -2224,7 +2621,7 @@
     });
 
     window.addEventListener("click", (event) => {
-      if (event.target.closest("#nav-dots, [data-slide-target]")) {
+      if (event.target.closest("#nav-dots, [data-slide-target], [data-run-route]")) {
         return;
       }
       if (event.clientX > window.innerWidth * 0.66) {
