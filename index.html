@@ -301,6 +301,38 @@
       gap: var(--gap-md);
     }
 
+    .cover-facts {
+      display: grid;
+      gap: 0.9vh;
+      max-width: min(860px, 72vw);
+    }
+
+    .cover-fact {
+      border: 1px solid rgba(0,0,0,0.18);
+      background: rgba(0,0,0,0.06);
+      padding: 1.2vh 1.2vw;
+      display: grid;
+      grid-template-columns: 8.2vw 1fr;
+      gap: 1.2vw;
+      align-items: baseline;
+      color: var(--c-fg-light);
+    }
+
+    .cover-fact .label {
+      color: var(--c-fg-light-3);
+      font-family: var(--font-meta);
+      font-size: 10px;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .cover-fact .value {
+      font-size: 15px;
+      line-height: 1.45;
+      font-weight: 700;
+      word-break: keep-all;
+    }
+
     .cover-meta {
       position: absolute;
       left: var(--pad-x);
@@ -1460,6 +1492,20 @@
         gap: 1vh;
       }
 
+      .cover-facts {
+        max-width: none;
+      }
+
+      .cover-fact {
+        grid-template-columns: 1fr;
+        gap: 0.5vh;
+        padding: 1.2vh 3vw;
+      }
+
+      .cover-fact .value {
+        font-size: 14px;
+      }
+
       .running-map-card {
         min-height: auto;
         padding: 1.15vh 2vw;
@@ -1828,6 +1874,16 @@
       <div class="cover-main">
         <h1 class="display" data-anim="fade-up" data-delay="1">삿포로<br>3박 4일</h1>
         <p class="lead" style="opacity: 0.65; max-width: 60%;" data-anim="fade-up" data-delay="3">숙소 위치, 3일차 자유일정, 4일차 러닝을 반영한 최종안 V5입니다.</p>
+        <div class="cover-facts" data-anim="fade-up" data-delay="4">
+          <div class="cover-fact">
+            <span class="label">Period</span>
+            <span class="value">2026년 7월 4일 ~ 7월 7일</span>
+          </div>
+          <div class="cover-fact">
+            <span class="label">Members</span>
+            <span class="value">9명: 미영(팀장), 신호, 수형, 지민, 현규, 홍수, 고운, 선웅, 진우</span>
+          </div>
+        </div>
       </div>
       <div class="cover-meta">
         <span>azitmaker itinerary v5</span>
