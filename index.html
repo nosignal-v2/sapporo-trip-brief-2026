@@ -1023,10 +1023,139 @@
 
     .spot-layout {
       display: grid;
-      grid-template-columns: 0.72fr 1.28fr;
+      grid-template-columns: 0.78fr 1.22fr;
       gap: 2vw;
       align-items: stretch;
       max-width: 82vw;
+    }
+
+    .spot-media-stack {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 1vh;
+      min-height: 46vh;
+    }
+
+    .spot-carousel {
+      position: relative;
+      height: 24vh;
+      border: 1px solid var(--c-border);
+      background: var(--c-bg-alt);
+      overflow: hidden;
+    }
+
+    .spot-carousel-track,
+    .spot-image {
+      position: absolute;
+      inset: 0;
+    }
+
+    .spot-image {
+      margin: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.38s ease;
+    }
+
+    .spot-image.is-active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .spot-image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      filter: grayscale(0.22) contrast(1.06);
+    }
+
+    .spot-image figcaption {
+      position: absolute;
+      left: 1vw;
+      right: 1vw;
+      bottom: 1vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1vw;
+      color: var(--c-fg);
+      font-size: 12px;
+      line-height: 1.3;
+      font-weight: 800;
+      word-break: keep-all;
+    }
+
+    .spot-image figcaption span,
+    .spot-image figcaption a {
+      background: rgba(242,239,230,0.9);
+      padding: 0.42vh 0.55vw;
+    }
+
+    .spot-image figcaption a {
+      color: var(--c-accent);
+      font-family: var(--font-meta);
+      font-size: 9px;
+      line-height: 1;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .spot-carousel-button {
+      position: absolute;
+      top: 50%;
+      width: 30px;
+      height: 38px;
+      padding: 0;
+      border: 1px solid rgba(242,239,230,0.8);
+      background: rgba(0,0,0,0.48);
+      color: var(--c-fg-light);
+      font-family: var(--font-meta);
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      transform: translateY(-50%);
+      transition: background 0.2s ease, border-color 0.2s ease;
+      z-index: 2;
+    }
+
+    .spot-carousel-button:hover,
+    .spot-carousel-button:focus-visible {
+      border-color: var(--c-accent);
+      background: var(--c-accent);
+      color: var(--c-fg);
+      outline: none;
+    }
+
+    .spot-carousel-button.is-prev {
+      left: 0.7vw;
+    }
+
+    .spot-carousel-button.is-next {
+      right: 0.7vw;
+    }
+
+    .spot-carousel-dots {
+      position: absolute;
+      left: 1vw;
+      top: 1vh;
+      display: flex;
+      gap: 0.35vw;
+      z-index: 2;
+    }
+
+    .spot-carousel-dot {
+      width: 7px;
+      height: 7px;
+      padding: 0;
+      border: 1px solid rgba(242,239,230,0.84);
+      background: rgba(0,0,0,0.3);
+      cursor: pointer;
+    }
+
+    .spot-carousel-dot.is-active {
+      background: var(--c-accent);
+      border-color: var(--c-accent);
     }
 
     .spot-intro {
@@ -1037,6 +1166,25 @@
       align-content: start;
       gap: 2vh;
       min-height: 46vh;
+    }
+
+    .spot-media-stack .spot-intro {
+      min-height: auto;
+      padding: 1.75vh 1.35vw;
+      gap: 1vh;
+    }
+
+    .spot-media-stack .spot-num {
+      font-size: 58px;
+    }
+
+    .spot-media-stack .spot-title {
+      font-size: 24px;
+    }
+
+    .spot-media-stack .body {
+      font-size: 14px;
+      line-height: 1.5;
     }
 
     .spot-badges {
@@ -1456,10 +1604,60 @@
       }
 
       .spot-layout {
-        grid-template-columns: 0.6fr 1.4fr;
-        gap: 3vw;
+        grid-template-columns: 1fr;
+        gap: 0.8vh;
         max-width: 88vw;
         align-items: start;
+      }
+
+      .spot-media-stack {
+        min-height: auto;
+        gap: 0.7vh;
+      }
+
+      .spot-carousel {
+        height: 16.5vh;
+      }
+
+      .spot-image figcaption {
+        left: 1.5vw;
+        right: 1.5vw;
+        bottom: 0.7vh;
+        font-size: 9px;
+      }
+
+      .spot-image figcaption span,
+      .spot-image figcaption a {
+        padding: 0.28vh 0.8vw;
+      }
+
+      .spot-image figcaption a {
+        font-size: 7px;
+      }
+
+      .spot-carousel-button {
+        width: 22px;
+        height: 28px;
+        font-size: 14px;
+      }
+
+      .spot-carousel-button.is-prev {
+        left: 1vw;
+      }
+
+      .spot-carousel-button.is-next {
+        right: 1vw;
+      }
+
+      .spot-carousel-dots {
+        left: 1.5vw;
+        top: 0.7vh;
+        gap: 0.7vw;
+      }
+
+      .spot-carousel-dot {
+        width: 6px;
+        height: 6px;
       }
 
       .spot-intro {
@@ -1468,17 +1666,35 @@
         gap: 1vh;
       }
 
+      .spot-media-stack .spot-intro {
+        padding: 1vh 1.4vw;
+        gap: 0.55vh;
+      }
+
       .spot-num {
         font-size: 44px;
+      }
+
+      .spot-media-stack .spot-num {
+        font-size: 30px;
       }
 
       .spot-title {
         font-size: 18px;
       }
 
+      .spot-media-stack .spot-title {
+        font-size: 14px;
+      }
+
       .spot-intro .body {
         font-size: 11px;
         line-height: 1.4;
+      }
+
+      .spot-media-stack .body {
+        font-size: 10.5px;
+        line-height: 1.32;
       }
 
       .spot-badges {
@@ -2269,7 +2485,7 @@
         <p class="kicker" data-anim="fade-up" data-delay="0">odori / tv tower</p>
         <h2 class="h2" data-anim="fade-up" data-delay="1">오도리공원 / 삿포로 TV타워</h2>
         <div class="spot-layout" data-anim="fade-up" data-delay="2">
-          <div class="spot-intro"><div class="spot-num">01</div><div class="spot-badges"><span class="spot-badge is-recommend">추천</span><span class="spot-badge">Day 1</span></div><div class="spot-title">Day 1 저녁</div><p class="body">삿포로 첫날 가볍게 보기 좋고, 숙소가 오도리·스스키노 근처면 접근성이 좋습니다.</p></div>
+          <div class="spot-media-stack"><div class="spot-carousel" data-spot-carousel="odori" aria-label="오도리공원과 삿포로 TV타워 대표 이미지"></div><div class="spot-intro"><div class="spot-num">01</div><div class="spot-badges"><span class="spot-badge is-recommend">추천</span><span class="spot-badge">Day 1</span></div><div class="spot-title">Day 1 저녁</div><p class="body">삿포로 첫날 가볍게 보기 좋고, 숙소가 오도리·스스키노 근처면 접근성이 좋습니다.</p></div></div>
           <div class="spot-table">
             <div class="spot-row"><div class="spot-key">추천 일정</div><div class="spot-value">Day 1 저녁</div></div>
             <div class="spot-row"><div class="spot-key">소요 시간</div><div class="spot-value">오도리공원 산책 30분, TV타워 전망대 포함 시 45~60분</div></div>
@@ -2295,7 +2511,7 @@
         <p class="kicker" data-anim="fade-up" data-delay="0">jr tower t38</p>
         <h2 class="h2" data-anim="fade-up" data-delay="1">JR타워 전망대 T38</h2>
         <div class="spot-layout" data-anim="fade-up" data-delay="2">
-          <div class="spot-intro"><div class="spot-num">02</div><div class="spot-badges"><span class="spot-badge is-recommend">추천</span><span class="spot-badge">안정적</span></div><div class="spot-title">Day 1 밤</div><p class="body">삿포로역 바로 연결이라 첫날 늦은 도착 후에도 가장 안정적인 전망대입니다.</p></div>
+          <div class="spot-media-stack"><div class="spot-carousel" data-spot-carousel="jr" aria-label="JR타워 전망대 T38 대표 이미지"></div><div class="spot-intro"><div class="spot-num">02</div><div class="spot-badges"><span class="spot-badge is-recommend">추천</span><span class="spot-badge">안정적</span></div><div class="spot-title">Day 1 밤</div><p class="body">삿포로역 바로 연결이라 첫날 늦은 도착 후에도 가장 안정적인 전망대입니다.</p></div></div>
           <div class="spot-table">
             <div class="spot-row"><div class="spot-key">추천 일정</div><div class="spot-value">Day 1 밤</div></div>
             <div class="spot-row"><div class="spot-key">소요 시간</div><div class="spot-value">40~60분</div></div>
@@ -2322,7 +2538,7 @@
         <p class="kicker" data-anim="fade-up" data-delay="0">mt. moiwa</p>
         <h2 class="h2" data-anim="fade-up" data-delay="1">모이와야마 전망대</h2>
         <div class="spot-layout" data-anim="fade-up" data-delay="2">
-          <div class="spot-intro"><div class="spot-num">03</div><div class="spot-badges"><span class="spot-badge is-conditional">조건부</span><span class="spot-badge">날씨</span></div><div class="spot-title">야경 선택지</div><p class="body">도시 외곽 산 위에서 보는 야경입니다. 날씨가 좋을 때만 확실히 가치가 있습니다.</p></div>
+          <div class="spot-media-stack"><div class="spot-carousel" data-spot-carousel="moiwa" aria-label="모이와야마 전망대 대표 이미지"></div><div class="spot-intro"><div class="spot-num">03</div><div class="spot-badges"><span class="spot-badge is-conditional">조건부</span><span class="spot-badge">날씨</span></div><div class="spot-title">야경 선택지</div><p class="body">도시 외곽 산 위에서 보는 야경입니다. 날씨가 좋을 때만 확실히 가치가 있습니다.</p></div></div>
           <div class="spot-table">
             <div class="spot-row"><div class="spot-key">추천 일정</div><div class="spot-value">Day 3 저녁 선택</div></div>
             <div class="spot-row"><div class="spot-key">소요 시간</div><div class="spot-value">이동 포함 2~2.5시간</div></div>
@@ -2350,7 +2566,7 @@
         <p class="kicker" data-anim="fade-up" data-delay="0">biei / furano</p>
         <h2 class="h2" data-anim="fade-up" data-delay="1">비에이·후라노</h2>
         <div class="spot-layout" data-anim="fade-up" data-delay="2">
-          <div class="spot-intro"><div class="spot-num">04</div><div class="spot-badges"><span class="spot-badge is-recommend">추천</span><span class="spot-badge">메인</span></div><div class="spot-title">Day 2 전일</div><p class="body">팜 토미타, 사계채의 언덕, 청의호수를 묶는 이번 여행의 메인 일정입니다.</p></div>
+          <div class="spot-media-stack"><div class="spot-carousel" data-spot-carousel="biei" aria-label="비에이와 후라노 대표 이미지"></div><div class="spot-intro"><div class="spot-num">04</div><div class="spot-badges"><span class="spot-badge is-recommend">추천</span><span class="spot-badge">메인</span></div><div class="spot-title">Day 2 전일</div><p class="body">팜 토미타, 사계채의 언덕, 청의호수를 묶는 이번 여행의 메인 일정입니다.</p></div></div>
           <div class="spot-table">
             <div class="spot-row"><div class="spot-key">추천 일정</div><div class="spot-value">Day 2 전일</div></div>
             <div class="spot-row"><div class="spot-key">소요 시간</div><div class="spot-value">삿포로 출발 기준 약 10시간</div></div>
@@ -2379,7 +2595,7 @@
         <p class="kicker" data-anim="fade-up" data-delay="0">otaru</p>
         <h2 class="h2" data-anim="fade-up" data-delay="1">오타루 오르골당 / 오타루 운하</h2>
         <div class="spot-layout" data-anim="fade-up" data-delay="2">
-          <div class="spot-intro"><div class="spot-num">05</div><div class="spot-badges"><span class="spot-badge is-recommend">추천</span><span class="spot-badge">실내</span></div><div class="spot-title">Day 3 오후</div><p class="body">오타루의 대표 실내 스팟입니다. 비가 와도 일정 유지가 쉽습니다.</p></div>
+          <div class="spot-media-stack"><div class="spot-carousel" data-spot-carousel="otaru" aria-label="오타루 운하와 오르골당 대표 이미지"></div><div class="spot-intro"><div class="spot-num">05</div><div class="spot-badges"><span class="spot-badge is-recommend">추천</span><span class="spot-badge">실내</span></div><div class="spot-title">Day 3 오후</div><p class="body">오타루의 대표 실내 스팟입니다. 비가 와도 일정 유지가 쉽습니다.</p></div></div>
           <div class="spot-table">
             <div class="spot-row"><div class="spot-key">추천 일정</div><div class="spot-value">Day 3 오후</div></div>
             <div class="spot-row"><div class="spot-key">소요 시간</div><div class="spot-value">오르골당 30~45분, 운하 산책 20~30분</div></div>
@@ -2407,7 +2623,7 @@
         <p class="kicker" data-anim="fade-up" data-delay="0">cape kamui</p>
         <h2 class="h2" data-anim="fade-up" data-delay="1">샤코탄 가무이곶</h2>
         <div class="spot-layout" data-anim="fade-up" data-delay="2">
-          <div class="spot-intro"><div class="spot-num">06</div><div class="spot-badges"><span class="spot-badge is-conditional">조건부</span><span class="spot-badge">맑은 날</span></div><div class="spot-title">맑은 날 자연 스팟</div><p class="body">7월 맑은 날 해안 경관이 가장 강합니다. 비와 강풍이면 바로 리스크가 생깁니다.</p></div>
+          <div class="spot-media-stack"><div class="spot-carousel" data-spot-carousel="shakotan" aria-label="샤코탄 가무이곶 대표 이미지"></div><div class="spot-intro"><div class="spot-num">06</div><div class="spot-badges"><span class="spot-badge is-conditional">조건부</span><span class="spot-badge">맑은 날</span></div><div class="spot-title">맑은 날 자연 스팟</div><p class="body">7월 맑은 날 해안 경관이 가장 강합니다. 비와 강풍이면 바로 리스크가 생깁니다.</p></div></div>
           <div class="spot-table">
             <div class="spot-row"><div class="spot-key">추천 일정</div><div class="spot-value">Day 3 오전</div></div>
             <div class="spot-row"><div class="spot-key">소요 시간</div><div class="spot-value">현지 체류 60분 이상 권장</div></div>
@@ -2436,7 +2652,7 @@
         <p class="kicker" data-anim="fade-up" data-delay="0">beer museum</p>
         <h2 class="h2" data-anim="fade-up" data-delay="1">삿포로 맥주박물관</h2>
         <div class="spot-layout" data-anim="fade-up" data-delay="2">
-          <div class="spot-intro"><div class="spot-num">07</div><div class="spot-badges"><span class="spot-badge is-excluded">제외</span><span class="spot-badge">대체</span></div><div class="spot-title">메인 일정 제외</div><p class="body">이번 항공편 기준으로는 Day 1과 Day 4 모두 시간이 맞지 않습니다.</p></div>
+          <div class="spot-media-stack"><div class="spot-carousel" data-spot-carousel="beer" aria-label="삿포로 맥주박물관 대표 이미지"></div><div class="spot-intro"><div class="spot-num">07</div><div class="spot-badges"><span class="spot-badge is-excluded">제외</span><span class="spot-badge">대체</span></div><div class="spot-title">메인 일정 제외</div><p class="body">이번 항공편 기준으로는 Day 1과 Day 4 모두 시간이 맞지 않습니다.</p></div></div>
           <div class="spot-table">
             <div class="spot-row"><div class="spot-key">추천 일정</div><div class="spot-value">이번 항공편 기준 메인 일정 제외</div></div>
             <div class="spot-row"><div class="spot-key">소요 시간</div><div class="spot-value">전시만 20~30분, 시음 포함 1시간 내외</div></div>
@@ -2463,7 +2679,7 @@
         <p class="kicker" data-anim="fade-up" data-delay="0">shikotsu-toya</p>
         <h2 class="h2" data-anim="fade-up" data-delay="1">시코쓰토야 국립공원 / 지코츠호 / 타루마에산</h2>
         <div class="spot-layout" data-anim="fade-up" data-delay="2">
-          <div class="spot-intro"><div class="spot-num">08</div><div class="spot-badges"><span class="spot-badge is-conditional">조건부</span><span class="spot-badge">대체</span></div><div class="spot-title">Day 3 대체안</div><p class="body">호수, 화산, 숲을 보는 자연형 전일 일정입니다. 넣으려면 기존 메인 중 하나를 빼야 합니다.</p></div>
+          <div class="spot-media-stack"><div class="spot-carousel" data-spot-carousel="shikotsu" aria-label="시코쓰토야 국립공원과 지코츠호 대표 이미지"></div><div class="spot-intro"><div class="spot-num">08</div><div class="spot-badges"><span class="spot-badge is-conditional">조건부</span><span class="spot-badge">대체</span></div><div class="spot-title">Day 3 대체안</div><p class="body">호수, 화산, 숲을 보는 자연형 전일 일정입니다. 넣으려면 기존 메인 중 하나를 빼야 합니다.</p></div></div>
           <div class="spot-table">
             <div class="spot-row"><div class="spot-key">추천 일정</div><div class="spot-value">메인 일정 제외, Day 3 대체안</div></div>
             <div class="spot-row"><div class="spot-key">소요 시간</div><div class="spot-value">삿포로 출발 기준 전일</div></div>
@@ -2492,7 +2708,7 @@
         <p class="kicker" data-anim="fade-up" data-delay="0">jozankei sauna</p>
         <h2 class="h2" data-anim="fade-up" data-delay="1">조잔케이 휴일탕 / 사우나</h2>
         <div class="spot-layout" data-anim="fade-up" data-delay="2">
-          <div class="spot-intro"><div class="spot-num">09</div><div class="spot-badges"><span class="spot-badge is-excluded">제외</span><span class="spot-badge">연장</span></div><div class="spot-title">연장 일정 후보</div><p class="body">온천, 사우나, 라운지형 휴식 일정입니다. 3박 4일 안에서는 우선순위가 낮습니다.</p></div>
+          <div class="spot-media-stack"><div class="spot-carousel" data-spot-carousel="jozankei" aria-label="조잔케이 온천 대표 이미지"></div><div class="spot-intro"><div class="spot-num">09</div><div class="spot-badges"><span class="spot-badge is-excluded">제외</span><span class="spot-badge">연장</span></div><div class="spot-title">연장 일정 후보</div><p class="body">온천, 사우나, 라운지형 휴식 일정입니다. 3박 4일 안에서는 우선순위가 낮습니다.</p></div></div>
           <div class="spot-table">
             <div class="spot-row"><div class="spot-key">추천 일정</div><div class="spot-value">메인 일정 제외, 대체 또는 연장 일정</div></div>
             <div class="spot-row"><div class="spot-key">소요 시간</div><div class="spot-value">삿포로 왕복 이동 포함 최소 반나절</div></div>
@@ -2542,6 +2758,134 @@
           goTo(slideNumber - 1);
         }
       });
+    });
+
+    const spotImageGroups = {
+      odori: [
+        { file: "Sapporo TV Tower and Odori park.JPG", label: "TV타워와 오도리공원" },
+        { file: "Odori park at Sapporo TV tower.jpg", label: "전망대에서 본 오도리공원" }
+      ],
+      jr: [
+        { file: "Jr tower sapporo sta.jpg", label: "삿포로역 JR타워" },
+        { file: "Night cityscape from JR Tower (south side).jpg", label: "JR타워 남쪽 야경" }
+      ],
+      moiwa: [
+        { file: "Japan Sapporo Mt.Moiwa 0049.jpg", label: "모이와야마에서 본 삿포로" },
+        { file: "Cable Car (Ropeway) to Mount Moiwayama - Sapporo - Hokkaido - Japan (47977611532).jpg", label: "모이와야마 로프웨이" }
+      ],
+      biei: [
+        { file: "A Field Of Lavender Farm Tomita (32578019).jpeg", label: "팜 토미타 라벤더" },
+        { file: "Hokkaido - Biei, Shikisai no Oka, july 2007 (941993652).jpg", label: "사계채의 언덕" },
+        { file: "Blue Pond (Aoiike) at Biei, Hokkaido, Japan.jpg", label: "비에이 청의호수" }
+      ],
+      otaru: [
+        { file: "Hokkaido Otaru-unga.jpg", label: "오타루 운하" },
+        { file: "Otaru Music Box Museum interior.jpg", label: "오타루 오르골당" }
+      ],
+      shakotan: [
+        { file: "130823 Cape Kamui Shakotan Hokkaido Japan01s3.jpg", label: "가무이곶 산책로" },
+        { file: "Cape Kamui HDR1.jpg", label: "샤코탄 해안 전망" }
+      ],
+      beer: [
+        { file: "Sapporo beer museum-20091012-RM-211854.jpg", label: "삿포로 맥주박물관 외관" },
+        { file: "Tasting Room - Sapporo Beer Museum - Sapporo - Hokkaido - Japan (47971137686).jpg", label: "맥주박물관 시음 공간" }
+      ],
+      shikotsu: [
+        { file: "Lake Shikotsu Mt Fuppushi01bs4272.jpg", label: "지코츠호와 풍경" },
+        { file: "Lake Shikotsu Mt Tarumae01n3200.jpg", label: "지코츠호와 타루마에산" }
+      ],
+      jozankei: [
+        { file: "JozankeiOnsen.jpg", label: "조잔케이 온천 마을" },
+        { file: "定山渓二見吊橋 (Jozankei Futami suspension bridge) - panoramio.jpg", label: "후타미 현수교" }
+      ]
+    };
+
+    function commonsFilePath(file) {
+      return `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(file)}?width=1000`;
+    }
+
+    function commonsFilePage(file) {
+      return `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(file).replace(/%20/g, "_")}`;
+    }
+
+    function setCarouselIndex(carousel, index) {
+      const items = Array.from(carousel.querySelectorAll(".spot-image"));
+      const dots = Array.from(carousel.querySelectorAll(".spot-carousel-dot"));
+      if (!items.length) return;
+      const nextIndex = (index + items.length) % items.length;
+      carousel.dataset.activeIndex = String(nextIndex);
+      items.forEach((item, itemIndex) => {
+        item.classList.toggle("is-active", itemIndex === nextIndex);
+        item.setAttribute("aria-hidden", itemIndex === nextIndex ? "false" : "true");
+      });
+      dots.forEach((dot, dotIndex) => {
+        dot.classList.toggle("is-active", dotIndex === nextIndex);
+        dot.setAttribute("aria-current", dotIndex === nextIndex ? "true" : "false");
+      });
+    }
+
+    document.querySelectorAll("[data-spot-carousel]").forEach((carousel) => {
+      const spotKey = carousel.dataset.spotCarousel;
+      const images = spotImageGroups[spotKey] || [];
+      if (!images.length) return;
+      const track = document.createElement("div");
+      track.className = "spot-carousel-track";
+      images.forEach((image, index) => {
+        const figure = document.createElement("figure");
+        figure.className = `spot-image${index === 0 ? " is-active" : ""}`;
+        figure.setAttribute("aria-hidden", index === 0 ? "false" : "true");
+        const img = document.createElement("img");
+        img.src = commonsFilePath(image.file);
+        img.alt = image.label;
+        img.loading = index === 0 ? "eager" : "lazy";
+        img.decoding = "async";
+        const caption = document.createElement("figcaption");
+        const label = document.createElement("span");
+        label.textContent = image.label;
+        const source = document.createElement("a");
+        source.href = commonsFilePage(image.file);
+        source.target = "_blank";
+        source.rel = "noreferrer";
+        source.textContent = "Commons";
+        caption.append(label, source);
+        figure.append(img, caption);
+        track.appendChild(figure);
+      });
+      const dotsWrap = document.createElement("div");
+      dotsWrap.className = "spot-carousel-dots";
+      images.forEach((image, index) => {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = `spot-carousel-dot${index === 0 ? " is-active" : ""}`;
+        dot.setAttribute("aria-label", `${image.label} 이미지 보기`);
+        dot.setAttribute("aria-current", index === 0 ? "true" : "false");
+        dot.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          setCarouselIndex(carousel, index);
+        });
+        dotsWrap.appendChild(dot);
+      });
+      const prev = document.createElement("button");
+      prev.type = "button";
+      prev.className = "spot-carousel-button is-prev";
+      prev.setAttribute("aria-label", "이전 이미지");
+      prev.textContent = "<";
+      const next = document.createElement("button");
+      next.type = "button";
+      next.className = "spot-carousel-button is-next";
+      next.setAttribute("aria-label", "다음 이미지");
+      next.textContent = ">";
+      [prev, next].forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          const currentIndex = Number(carousel.dataset.activeIndex || "0");
+          setCarouselIndex(carousel, currentIndex + (button === next ? 1 : -1));
+        });
+      });
+      carousel.append(track, dotsWrap, prev, next);
+      carousel.dataset.activeIndex = "0";
     });
 
     const runningMap = document.querySelector(".running-map");
@@ -2621,7 +2965,7 @@
     });
 
     window.addEventListener("click", (event) => {
-      if (event.target.closest("#nav-dots, [data-slide-target], [data-run-route]")) {
+      if (event.target.closest("#nav-dots, [data-slide-target], [data-run-route], .spot-carousel")) {
         return;
       }
       if (event.clientX > window.innerWidth * 0.66) {
